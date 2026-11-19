@@ -1,0 +1,39 @@
+# docker-compose.yml — Bản khung do [A] khởi tạo (db, adminer)
+# [B] sẽ bổ sung app & meilisearch theo phân công
+services:
+  db:
+    image: mysql:8.4
+    container_name: book_ai_store_db
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootsecret}
+      MYSQL_DATABASE: ${DB_NAME:-book_ai_store}
+      MYSQL_USER: ${DB_USER:-book_app}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-booksecret}
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+
+  adminer:
+    image: adminer:latest
+    container_name: book_ai_store_adminer
+    profiles:
+      - tools
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  mysql_data:

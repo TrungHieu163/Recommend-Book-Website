@@ -1,0 +1,528 @@
+[
+  {
+    "productId": "BK00001",
+    "productName": "Nhà Giả Kim",
+    "author": "Paulo Coelho",
+    "productType": "Văn học",
+    "publisher": "NXB Hội Nhà Văn",
+    "publishYear": 2020,
+    "isbn": "9786045375549",
+    "tags": ["tiểu thuyết", "triết lý", "ước mơ", "hành trình", "kinh điển"],
+    "description": "Nhà Giả Kim kể về hành trình đầy trải nghiệm của chàng trai chăn cừu Santiago đi tìm kho báu ẩn sâu trong Kim tự tháp Ai Cập. Xuyên suốt chuyến phiêu lưu, cậu học được cách lắng nghe tiếng nói con tim và nhận ra dấu hiệu của vũ trụ. Cuốn sách là bản trường ca nhẹ nhàng khích lệ mỗi con người dũng cảm theo đuổi ước mơ của đời mình.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/nha-gia-kim-p381532.html" },
+      { "store": "Fahasa", "url": "https://www.fahasa.com/nha-gia-kim.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00002",
+    "productName": "Đắc Nhân Tâm",
+    "author": "Dale Carnegie",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Tổng Hợp TP.HCM",
+    "publishYear": 2021,
+    "isbn": "9786045887264",
+    "tags": ["giao tiếp", "kỹ năng mềm", "ứng xử", "lãnh đạo", "thành công"],
+    "description": "Đắc Nhân Tâm là tác phẩm kinh điển về nghệ thuật ứng xử và thu phục lòng người qua nhiều thế hệ. Cuốn sách đúc kết những nguyên tắc vàng trong giao tiếp chân thành, tôn trọng và khơi gợi tiềm năng ở người khác. Đây là cẩm nang không thể thiếu giúp xây dựng các mối quan hệ xã hội tốt đẹp và bền vững.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/dac-nhan-tam-kho-lon-p523820.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00003",
+    "productName": "Sapiens: Lược Sử Loài Người",
+    "author": "Yuval Noah Harari",
+    "productType": "Lịch sử",
+    "publisher": "NXB Tri Thức",
+    "publishYear": 2018,
+    "isbn": "9786049433153",
+    "tags": ["lịch sử", "tiến hóa", "nhân loại", "xã hội học", "khoa học"],
+    "description": "Sapiens đưa người đọc vào một chuyến hành trình ngoạn mục xuyên suốt chiều dài lịch sử loài người từ thời kỳ đồ đá đến kỷ nguyên trí tuệ nhân tạo. Tác giả chỉ ra ba cuộc cách mạng trọng đại: Cách mạng Nhận thức, Cách mạng Nông nghiệp và Cách mạng Khoa học đã đưa Homo sapiens lên ngôi thống trị Trái Đất. Cuốn sách đặt ra nhiều câu hỏi sắc sảo về hạnh phúc, tương lai và bản chất giống loài.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/sapiens-luoc-su-loai-nguoi.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00004",
+    "productName": "Tư Duy Nhanh Và Chậm",
+    "author": "Daniel Kahneman",
+    "productType": "Tâm lý",
+    "publisher": "NXB Thế Giới",
+    "publishYear": 2019,
+    "isbn": "9786047738242",
+    "tags": ["tâm lý học", "ra quyết định", "hành vi", "nhận thức", "tư duy"],
+    "description": "Cuốn sách phân tích sâu sắc hai hệ thống vận hành trí não: Hệ thống 1 hoạt động tự động, trực giác và nhanh chóng; Hệ thống 2 đòi hỏi sự tập trung, tính toán logic và nỗ lực. Tác giả Daniel Kahneman chỉ ra những cạm bẫy thiên kiến mà con người thường vô tình mắc phải khi đưa ra các phán đoán trong cuộc sống và kinh doanh. Tác phẩm đã làm thay đổi nền kinh tế học hành vi hiện đại.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/tu-duy-nhanh-va-cham-p1256429.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00005",
+    "productName": "Clean Code: A Handbook of Agile Software Craftsmanship",
+    "author": "Robert C. Martin",
+    "productType": "Công nghệ",
+    "publisher": "Prentice Hall",
+    "publishYear": 2008,
+    "isbn": "9780132350884",
+    "tags": ["lập trình", "phần mềm", "clean code", "refactoring", "kỹ thuật"],
+    "description": "Clean Code là cuốn cẩm nang kinh điển mà mọi kỹ sư phần mềm đều nên đọc ít nhất một lần trong sự nghiệp. Tác giả Robert C. Martin giải thích chi tiết cách viết mã nguồn dễ đọc, dễ hiểu, dễ kiểm thử và dễ bảo trì. Sách cung cấp các quy tắc đặt tên, thiết kế hàm, xử lý lỗi và thực hành tái cấu trúc mã nguồn thông qua nhiều ví dụ thực tế.",
+    "buyLinks": [
+      { "store": "Amazon", "url": "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00006",
+    "productName": "Vũ Trụ Trong Vỏ Hạt Dẻ",
+    "author": "Stephen Hawking",
+    "productType": "Khoa học",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2021,
+    "isbn": "9786041177659",
+    "tags": ["vật lý", "vũ trụ", "lỗ đen", "khoa học phổ thông", "thời gian"],
+    "description": "Tác phẩm khoa học phổ thông nổi tiếng của nhà vật lý thiên tài Stephen Hawking đưa người đọc khám phá các lý thuyết biên giới của vật lý hiện đại. Cuốn sách bàn luận về thuyết tương đối rộng, cơ học lượng tử, lý thuyết dây và bản chất của lỗ đen. Lối hành văn hóm hỉnh cùng nhiều minh họa trực quan giúp những khái niệm phức tạp trở nên lôi cuốn và dễ tiếp cận.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/vu-tru-trong-vo-hat-de.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00007",
+    "productName": "Cha Giàu Cha Nghèo",
+    "author": "Robert T. Kiyosaki",
+    "productType": "Kinh tế",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2022,
+    "isbn": "9786041215436",
+    "tags": ["tài chính cá nhân", "đầu tư", "quản lý tiền", "kinh doanh", "tư duy làm giàu"],
+    "description": "Cuốn sách đối chiếu sự khác biệt sâu sắc trong tư duy tài chính giữa người cha ruột có học vị cao và người cha nuôi giàu có của tác giả. Tác phẩm nhấn mạnh tầm quan trọng của giáo dục tài chính sớm, phân biệt rõ ràng giữa tài sản và tiêu sản. Đây là ngọn đuốc mở đường cho phong trào độc lập tài chính và xây dựng thu nhập thụ động trên toàn cầu.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/cha-giau-cha-ngheo-tap-1-p1876523.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00008",
+    "productName": "Doraemon Tuyển Tập Tranh Truyện Màu - Tập 1",
+    "author": "Fujiko F. Fujio",
+    "productType": "Truyện tranh",
+    "publisher": "NXB Kim Đồng",
+    "publishYear": 2023,
+    "isbn": "9786042318457",
+    "tags": ["manga", "thiếu nhi", "bảo bối", "tình bạn", "hài hước"],
+    "description": "Tập truyện tranh màu kinh điển về chú mèo máy thông minh Doraemon đến từ thế kỷ 22 và cậu bạn Nobita hậu đậu nhưng giàu lòng nhân ái. Mỗi mẩu chuyện là một chuyến phiêu lưu kỳ thú với các món bảo bối thần kỳ mở ra trí tưởng tượng vô tận cho tuổi thơ. Bộ truyện gắn liền với nhiều bài học nhân văn ấm áp về tình cảm gia đình và tình bạn chân thành.",
+    "buyLinks": [
+      { "store": "Kim Đồng", "url": "https://nxbkimdong.com.vn/doraemon-truyen-tranh-mau" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00009",
+    "productName": "Hoàng Tử Bé",
+    "author": "Antoine de Saint-Exupéry",
+    "productType": "Thiếu nhi",
+    "publisher": "NXB Kim Đồng",
+    "publishYear": 2021,
+    "isbn": "9786042194853",
+    "tags": ["văn học thiếu nhi", "triết lý sống", "tình bạn", "tình yêu", "kinh điển"],
+    "description": "Hoàng Tử Bé là câu chuyện cổ tích triết học diệu kỳ về cuộc gặp gỡ giữa một viên phi công gặp nạn trên sa mạc Sahara và cậu bé hoàng tử đến từ tiểu hành tinh B612. Tác phẩm phản ánh cái nhìn trong trẻo, ngây thơ của trẻ em đối lập với sự phức tạp, máy móc của người lớn. Thông điệp sâu sắc nhất của cuốn sách nhắc nhở chúng ta rằng điều cốt lõi chỉ có thể nhìn thấu bằng trái tim.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/hoang-tu-be-p487219.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00010",
+    "productName": "English Grammar in Use",
+    "author": "Raymond Murphy",
+    "productType": "Ngoại ngữ",
+    "publisher": "Cambridge University Press",
+    "publishYear": 2019,
+    "isbn": "9781108457651",
+    "tags": ["tiếng anh", "ngữ pháp", "tự học", "ielts", "bài tập"],
+    "description": "English Grammar in Use là cuốn sách học ngữ pháp tiếng Anh trung cấp được ưa chuộng và tin cậy nhất trên toàn thế giới. Sách được thiết kế thông minh với một trang lý thuyết ngắn gọn, dễ hiểu song hành với một trang bài tập thực hành ứng dụng ngay bên cạnh. Đây là tài liệu ôn luyện chuẩn mực cho học sinh, sinh viên và người đi làm muốn củng cố ngữ pháp vững vàng.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/english-grammar-in-use.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00011",
+    "productName": "Rừng Na Uy",
+    "author": "Haruki Murakami",
+    "productType": "Văn học",
+    "publisher": "NXB Hội Nhà Văn",
+    "publishYear": 2021,
+    "isbn": "9786049894321",
+    "tags": ["tiểu thuyết", "nhật bản", "tuổi trẻ", "cô đơn", "tình yêu"],
+    "description": "Rừng Na Uy là một trong những kiệt tác văn học đương đại của nhà văn Nhật Bản Haruki Murakami. Tác phẩm tái hiện lại bức tranh tuổi trẻ đầy cô đơn, trăn trở, những mất mát và khát khao yêu thương của nhân vật Toru Watanabe cùng hai người con gái Naoko và Midori. Lối viết u hoài mà lôi cuốn đã làm rung động hàng triệu trái tim độc giả trên khắp thế giới.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/rung-na-uy-p283742.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00012",
+    "productName": "Kinh Tế Học Hài Hước",
+    "author": "Steven D. Levitt, Stephen J. Dubner",
+    "productType": "Kinh tế",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2020,
+    "isbn": "9786041162341",
+    "tags": ["kinh tế học", "xã hội", "động lực", "dữ liệu", "hài hước"],
+    "description": "Cuốn sách tiếp cận các hiện tượng đời sống thường nhật dưới góc nhìn dữ liệu và phân tích động cơ kinh tế một cách hóm hỉnh. Từ câu chuyện về các đô vật sumo, giáo viên gian lận điểm đến tội phạm đường phố, các tác giả hé lộ những sự thật bất ngờ đằng sau vẻ ngoài hiển nhiên. Cuốn sách rèn luyện cho người đọc khả năng đặt câu hỏi phản biện sắc bén trước các định kiến số đông.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/kinh-te-hoc-hai-huoc.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00013",
+    "productName": "Hành Trình Về Phương Đông",
+    "author": "Baird T. Spalding",
+    "productType": "Tâm lý",
+    "publisher": "NXB Thế Giới",
+    "publishYear": 2022,
+    "isbn": "9786047794123",
+    "tags": ["tâm linh", "triết lý phương đông", "ấn độ", "thiền định", "khoa học huyền bí"],
+    "description": "Cuốn sách ghi lại hành trình khảo cứu của phái đoàn khoa học Hoàng gia Anh tại đất nước Ấn Độ huyền bí vào cuối thế kỷ 19. Đoàn đã chứng kiến những hiện tượng siêu nhiên, gặp gỡ các bậc chân tu và tiếp cận triết lý sâu xa về sự sống, cái chết cùng luật nhân quả. Tác phẩm như một cây cầu nối liền tư duy thực nghiệm phương Tây với kho tàng minh triết ngàn đời của phương Đông.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/hanh-trinh-ve-phuong-dong-p129482.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00014",
+    "productName": "Đại Việt Sử Ký Toàn Thư",
+    "author": "Ngô Sĩ Liên",
+    "productType": "Lịch sử",
+    "publisher": "NXB Khoa Học Xã Hội",
+    "publishYear": 2020,
+    "isbn": "9786049561234",
+    "tags": ["sử học", "việt nam", "cổ sử", "triều đại", "nghiên cứu"],
+    "description": "Đại Việt Sử Ký Toàn Thư là bộ quốc sử vĩ đại và đồ sộ ghi chép lại toàn bộ tiến trình lịch sử Việt Nam từ thời Hồng Bàng cho đến thời Hậu Lê. Tác phẩm do nhà sử học Ngô Sĩ Liên cùng các sử quan triều Lê biên soạn với tinh thần cẩn trọng, lời bình sâu sắc thể hiện khí phách độc lập dân tộc. Đây là tài liệu gốc không thể thiếu cho bất kỳ ai muốn tìm hiểu cội nguồn văn hóa và lịch sử đất nước.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/dai-viet-su-ky-toan-thu.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00015",
+    "productName": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+    "productType": "Công nghệ",
+    "publisher": "Addison-Wesley Professional",
+    "publishYear": 2015,
+    "isbn": "9780201633610",
+    "tags": ["lập trình", "thiết kế phần mềm", "oop", "design patterns", "gang of four"],
+    "description": "Cuốn sách huyền thoại của nhóm Gang of Four giới thiệu 23 mẫu thiết kế hướng đối tượng kinh điển được áp dụng rộng rãi trong phát triển phần mềm hiện đại. Mỗi mẫu thiết kế giải quyết một vấn đề kiến trúc cụ thể nhằm tối ưu hóa tính linh hoạt, khả năng mở rộng và tái sử dụng mã nguồn. Đây là nền tảng tri thức quan trọng giúp lập trình viên nâng tầm tư duy kiến trúc hệ thống.",
+    "buyLinks": [
+      { "store": "Amazon", "url": "https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00016",
+    "productName": "Lược Sử Thời Gian",
+    "author": "Stephen Hawking",
+    "productType": "Khoa học",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2022,
+    "isbn": "9786041198734",
+    "tags": ["vũ trụ học", "big bang", "thời gian", "vật lý lý thuyết", "khoa học"],
+    "description": "Lược Sử Thời Gian là cuốn sách khoa học bán chạy nhất mọi thời đại giải thích sự khởi đầu và kết thúc của vũ trụ bao la. Stephen Hawking đưa người đọc đi qua các cột mốc tư duy từ thuyết nhật tâm của Galileo, thuyết hấp dẫn của Newton đến cơ học lượng tử đương đại. Tác phẩm khơi dậy niềm đam mê khám phá bí ẩn vũ trụ cho độc giả ở mọi lứa tuổi.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/luoc-su-thoi-gian-p294821.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00017",
+    "productName": "Dế Mèn Phiêu Lưu Ký",
+    "author": "Tô Hoài",
+    "productType": "Thiếu nhi",
+    "publisher": "NXB Kim Đồng",
+    "publishYear": 2021,
+    "isbn": "9786042183215",
+    "tags": ["thiếu nhi", "việt nam", "phiêu lưu", "tình bạn", "truyện đồng thoại"],
+    "description": "Dế Mèn Phiêu Lưu Ký là kiệt tác truyện đồng thoại Việt Nam viết cho thiếu nhi đã được dịch ra gần 40 thứ tiếng trên thế giới. Tác phẩm kể về những bài học đắt giá đầu đời của chú Dế Mèn nông nổi, rồi sau đó là hành trình phiêu lưu khắp bốn phương để kết giao bạn bè và cùng muôn loài kết nghĩa anh em. Câu chuyện ngập tràn tình yêu thiên nhiên, lòng nhân ái và khát vọng hòa bình.",
+    "buyLinks": [
+      { "store": "Kim Đồng", "url": "https://nxbkimdong.com.vn/de-men-phieu-luu-ky" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00018",
+    "productName": "Khéo Ăn Nói Sẽ Có Được Thiên Hạ",
+    "author": "Trác Nhã",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2021,
+    "isbn": "9786046985421",
+    "tags": ["giao tiếp", "thuyết phục", "kỹ năng nói", "ứng xử", "tâm lý"],
+    "description": "Giao tiếp khéo léo là chiếc chìa khóa vạn năng mở ra cánh cửa thành công trong mọi ngành nghề và khía cạnh cuộc sống. Tác giả Trác Nhã chia sẻ những kỹ thuật thực tế từ cách bắt đầu một cuộc trò chuyện, nghệ thuật lắng nghe đến cách từ chối khéo léo và giải tỏa xung đột. Cuốn sách giúp người đọc tự tin hơn khi đứng trước đám đông và trong các cuộc đàm phán quan trọng.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/kheo-an-noi-se-co-duoc-thien-ha-p145293.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00019",
+    "productName": "Thám Tử Lừng Danh Conan - Tập 100",
+    "author": "Gosho Aoyama",
+    "productType": "Truyện tranh",
+    "publisher": "NXB Kim Đồng",
+    "publishYear": 2022,
+    "isbn": "9786042245612",
+    "tags": ["manga", "trinh thám", "suy luận", "áo đen", "hồi hộp"],
+    "description": "Tập thứ 100 đánh dấu cột mốc lịch sử của bộ truyện tranh trinh thám nổi tiếng toàn cầu Thám Tử Lừng Danh Conan. Shinichi Kudo trong hình hài cậu bé Conan tiếp tục sử dụng trí tuệ sắc bén để vạch trần những vụ án ly kỳ và đối đầu gay cấn với Tổ chức Áo Đen. Những nút thắt dần được mở ra mang đến sự phấn khích tột độ cho người hâm mộ sau nhiều năm theo dõi.",
+    "buyLinks": [
+      { "store": "Kim Đồng", "url": "https://nxbkimdong.com.vn/conan-tap-100" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00020",
+    "productName": "Hacking: The Art of Exploitation",
+    "author": "Jon Erickson",
+    "productType": "Công nghệ",
+    "publisher": "No Starch Press",
+    "publishYear": 2008,
+    "isbn": "9781593271442",
+    "tags": ["an toàn thông tin", "bảo mật", "hacking", "lập trình c", "hệ thống"],
+    "description": "Cuốn sách đi sâu vào bản chất kỹ thuật của việc khai thác lỗ hổng và bảo mật hệ thống từ góc nhìn của lập trình viên ngôn ngữ C và hợp ngữ. Tác giả giải thích chi tiết cơ chế tràn bộ đệm (buffer overflow), tấn công mạng, kỹ thuật mật mã và cách viết mã khai thác một cách trực quan. Tác phẩm truyền cảm hứng mạnh mẽ về tinh thần tò mò, khám phá cách vận hành cốt lõi của máy tính.",
+    "buyLinks": [
+      { "store": "Amazon", "url": "https://www.amazon.com/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00021",
+    "productName": "Nghệ Thuật Tư Duy Rành Mạch",
+    "author": "Rolf Dobelli",
+    "productType": "Tâm lý",
+    "publisher": "NXB Thế Giới",
+    "publishYear": 2020,
+    "isbn": "9786047781290",
+    "tags": ["tư duy phản biện", "sai lầm nhận thức", "logic", "quyết định", "triết học"],
+    "description": "Tác phẩm tổng hợp 99 lỗi tư duy phổ biến mà con người thường vô thức lặp đi lặp lại hàng ngày như ảo tưởng về sự kiểm soát, chi phí chìm hay hiệu ứng đám đông. Bằng những ví dụ ngắn gọn, thực tế và hóm hỉnh, tác giả giúp người đọc nhận diện rõ các bẫy tâm lý để từ đó đưa ra những quyết định sáng suốt hơn. Đây là cẩm nang giúp thanh lọc tâm trí và nâng cao chất lượng tư duy cá nhân.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/nghe-thuat-tu-duy-ranh-mach-p214982.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00022",
+    "productName": "Chiến Tranh Tiền Tệ",
+    "author": "Song Hongbing",
+    "productType": "Kinh tế",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2019,
+    "isbn": "9786041149210",
+    "tags": ["tài chính", "ngân hàng", "lịch sử tiền tệ", "kinh tế học", "chính trị"],
+    "description": "Chiến Tranh Tiền Tệ vén màn bí mật đằng sau các biến cố lịch sử thế giới thông qua lăng kính của những cuộc thao túng tiền tệ và quyền lực tài chính quốc tế. Tác giả phác họa vai trò của các gia tộc ngân hàng hùng mạnh trong việc phát hành tiền, gây ra các cuộc khủng hoảng kinh tế và chi phối nền tài chính toàn cầu. Cuốn sách mang đến góc nhìn độc đáo, kích thích trí tò mò của bạn đọc về bản chất thực sự của tiền bạc.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/chien-tranh-tien-te.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00023",
+    "productName": "Tuổi Trẻ Đáng Giá Bao Nhiêu?",
+    "author": "Rosie Nguyễn",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Hội Nhà Văn",
+    "publishYear": 2021,
+    "isbn": "9786049891283",
+    "tags": ["tuổi trẻ", "đọc sách", "học tập", "trải nghiệm", "phát triển bản thân"],
+    "description": "Cuốn sách là lời tâm tình mộc mạc và chân thành của một người đi trước dành tặng cho các bạn trẻ đang hoang mang giữa ngã rẽ cuộc đời. Tác giả chia sẻ phương pháp tự học hiệu quả, rèn luyện thói quen đọc sách và dấn thân trải nghiệm qua những chuyến đi để tìm kiếm đam mê thực sự. Cuốn sách thổi bùng ngọn lửa nhiệt huyết, nhắc nhở thanh xuân là món quà vô giá không nên để lãng phí.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/tuoi-tre-dang-gia-bao-nhieu-p518294.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00024",
+    "productName": "Gen: Lịch Sử Và Tương Lai Của Nhân Loại",
+    "author": "Siddhartha Mukherjee",
+    "productType": "Khoa học",
+    "publisher": "NXB Dân Trí",
+    "publishYear": 2021,
+    "isbn": "9786043142981",
+    "tags": ["di truyền học", "sinh học", "y học", "lịch sử khoa học", "nhân loại"],
+    "description": "Tác phẩm là bản thiên hùng ca về lịch sử khám phá mã di truyền của sự sống, từ những hạt đậu Hà Lan của Mendel đến công nghệ chỉnh sửa gen CRISPR tân tiến. Bác sĩ Siddhartha Mukherjee đan xen giữa lịch sử khoa học chặt chẽ và câu chuyện bệnh lý có thật của gia đình mình để đưa ra cảnh báo về đạo đức sinh học. Cuốn sách giúp bạn đọc thấu hiểu cách gen định hình diện mạo và số phận con người.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/gen-lich-su-va-tuong-lai-cua-nhan-loai.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00025",
+    "productName": "Gia Định Thành Thông Chí",
+    "author": "Trịnh Hoài Đức",
+    "productType": "Lịch sử",
+    "publisher": "NXB Tổng Hợp TP.HCM",
+    "publishYear": 2019,
+    "isbn": "9786045892145",
+    "tags": ["nam bộ", "địa chí", "lịch sử", "khẩn hoang", "văn hóa"],
+    "description": "Gia Định Thành Thông Chí là bộ địa chí lịch sử vô giá về vùng đất Nam Bộ thuở ban đầu khẩn hoang và định cư dưới thời các chúa Nguyễn. Trịnh Hoài Đức đã ghi chép tỉ mỉ về hình thế núi sông, phong tục tập quán, thành lũy, sản vật và đời sống cư dân miền Tây Nam Bộ xưa. Đây là nguồn tư liệu chuẩn xác hàng đầu phục vụ nghiên cứu lịch sử và văn hóa phương Nam.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/gia-dinh-thanh-thong-chi.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00026",
+    "productName": "Một Lít Nước Mắt",
+    "author": "Kito Aya",
+    "productType": "Văn học",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2020,
+    "isbn": "9786046998214",
+    "tags": ["nhật ký", "nghị lực", "nhật bản", "xúc động", "ý nghĩa cuộc sống"],
+    "description": "Một Lít Nước Mắt là cuốn nhật ký có thật đẫm nước mắt của cô gái trẻ Kito Aya dũng cảm chiến đấu chống lại căn bệnh thoái hóa tiểu não quái ác từ năm 15 tuổi. Dù cơ thể dần mất đi khả năng vận động và nói năng, Aya vẫn kiên trì viết từng trang nhật ký tràn đầy niềm tin và lòng biết ơn cuộc sống. Cuốn sách lay động hàng triệu người về nghị lực sống phi thường và giá trị thiêng liêng của từng ngày được sống khỏe mạnh.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/mot-lit-nuoc-mat-p329184.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00027",
+    "productName": "One Piece - Tập 100",
+    "author": "Eiichiro Oda",
+    "productType": "Truyện tranh",
+    "publisher": "NXB Kim Đồng",
+    "publishYear": 2022,
+    "isbn": "9786042258913",
+    "tags": ["manga", "hải tặc", "phiêu lưu", "tình bạn", "hành động"],
+    "description": "One Piece tập 100 ghi nhận mốc son chói lọi trong hành trình chinh phục Đại Hải Trình của thuyền trưởng Monkey D. Luffy và băng Mũ Rơm. Cuộc chiến ác liệt tại Wano Quốc bước vào giai đoạn kịch tính nhất khi các thế hệ hải tặc trẻ đương đầu trực diện với Tứ Hoàng quyền năng. Tác phẩm tiếp tục khẳng định vị thế bộ truyện tranh ăn khách nhất lịch sử với thông điệp kiên định về ước mơ và tự do.",
+    "buyLinks": [
+      { "store": "Kim Đồng", "url": "https://nxbkimdong.com.vn/one-piece-tap-100" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00028",
+    "productName": "Lập Trình Web Với Node.js & Express",
+    "author": "Ethan Brown",
+    "productType": "Công nghệ",
+    "publisher": "O'Reilly Media",
+    "publishYear": 2020,
+    "isbn": "9781492053514",
+    "tags": ["javascript", "nodejs", "express", "backend", "web development"],
+    "description": "Cuốn sách hướng dẫn toàn diện cách xây dựng các ứng dụng web hiện đại, hiệu năng cao bằng nền tảng Node.js và framework Express. Tác giả trình bày tường tận về kiến trúc MVC, xử lý template engine, tích hợp cơ sở dữ liệu, xây dựng RESTful API và kiểm thử tự động. Đây là giáo trình thực hành lý tưởng cho sinh viên và kỹ sư muốn làm chủ công nghệ backend bằng JavaScript.",
+    "buyLinks": [
+      { "store": "Amazon", "url": "https://www.amazon.com/Web-Development-Node-Express-Leveraging/dp/1492053513" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00029",
+    "productName": "Hacking Growth: Cách Các Công Ty Tăng Trưởng Đột Phá",
+    "author": "Sean Ellis, Morgan Brown",
+    "productType": "Kinh tế",
+    "publisher": "NXB Công Thương",
+    "publishYear": 2021,
+    "isbn": "9786049982415",
+    "tags": ["growth hacking", "marketing", "khởi nghiệp", "dữ liệu", "kinh doanh"],
+    "description": "Cuốn sách tiết lộ bí quyết tăng trưởng thần tốc của những kỳ lân công nghệ hàng đầu như Facebook, Airbnb hay Uber thông qua phương pháp Growth Hacking. Tác giả chỉ ra quy trình thử nghiệm nhanh các kênh tiếp thị và tính năng sản phẩm dựa trên dữ liệu phân tích hành vi người dùng thực tế. Đây là cẩm nang chiến lược sắc bén cho các nhà sáng lập và chuyên gia tiếp thị trong thời đại số.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/hacking-growth-p138492.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00030",
+    "productName": "Cambridge IELTS 18 Academic with Answers",
+    "author": "Cambridge English Assessment",
+    "productType": "Ngoại ngữ",
+    "publisher": "Cambridge University Press",
+    "publishYear": 2023,
+    "isbn": "9781009275187",
+    "tags": ["ielts", "tiếng anh", "luyện thi", "đề thi mẫu", "academic"],
+    "description": "Cuốn sách cung cấp 4 bài thi IELTS Academic chuẩn hóa do chính hội đồng khảo thí Cambridge biên soạn và phát hành mới nhất. Kèm theo sách là đáp án chi tiết, bài viết mẫu có thang điểm chấm và giải thích cặn kẽ các kỹ năng Nghe, Đọc, Viết, Nói. Đây là tài liệu ôn luyện gối đầu giường bắt buộc cho mọi sĩ tử chuẩn bị bước vào kỳ thi IELTS thực tế.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/cambridge-ielts-18-academic.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00031",
+    "productName": "Cây Cam Ngọt Của Tôi",
+    "author": "José Mauro de Vasconcelos",
+    "productType": "Văn học",
+    "publisher": "NXB Hội Nhà Văn",
+    "publishYear": 2021,
+    "isbn": "9786049901452",
+    "tags": ["văn học kinh điển", "brazil", "tuổi thơ", "cảm động", "tình thương"],
+    "description": "Tác phẩm tự truyện nổi tiếng của nhà văn Brazil đưa người đọc theo chân cậu bé năm tuổi Zezé thông minh, giàu trí tưởng tượng nhưng thiếu thốn tình thương gia đình. Zezé đã kết bạn và tâm sự cùng cây cam ngọt sau vườn, trước khi gặp gỡ bác Bồ Đào Nha tốt bụng người đã trao cho cậu tình yêu ấm áp đầu đời. Cuốn sách dạy chúng ta biết dịu dàng với trái tim non nớt của trẻ thơ.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/cay-cam-ngot-cua-toi-p739812.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00032",
+    "productName": "Không Gia Đình",
+    "author": "Hector Malot",
+    "productType": "Thiếu nhi",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2020,
+    "isbn": "9786046974128",
+    "tags": ["văn học pháp", "thiếu nhi", "nghị lực", "kinh điển", "tình người"],
+    "description": "Không Gia Đình kể về cuộc đời gian truân nhưng sáng ngời nhân cách của cậu bé mồ côi Rémi đi theo đoàn xiếc rong của cụ Vitalis nhân từ. Trải qua muôn vàn đói rét, hiểm nguy trên khắp các nẻo đường nước Pháp, Rémi luôn giữ trọn lòng dũng cảm, sự trung thực và tình yêu thương đồng loại. Tác phẩm là bài ca bất hủ ca ngợi tình người và tinh thần tự lập vượt khó của trẻ em.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/khong-gia-dinh.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00033",
+    "productName": "Đọc Vị Bất Kỳ Ai",
+    "author": "David J. Lieberman",
+    "productType": "Tâm lý",
+    "publisher": "NXB Thế Giới",
+    "publishYear": 2021,
+    "isbn": "9786047761929",
+    "tags": ["ngôn ngữ cơ thể", "tâm lý học", "phát hiện nói dối", "hành vi", "giao tiếp"],
+    "description": "Cuốn sách đúc kết những nghiên cứu tâm lý học hành vi thực nghiệm của tiến sĩ David Lieberman nhằm giải mã suy nghĩ và cảm xúc thật của người khác. Tác giả hướng dẫn cách quan sát ngôn ngữ cơ thể, cử chỉ ánh mắt và nhịp độ lời nói để nhận diện sự thiếu trung thực hoặc thái độ ngập ngừng. Đây là công cụ hữu ích ứng dụng trong công việc đàm phán, quản trị nhân sự và các mối quan hệ đời thường.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/doc-vi-bat-ky-ai-p231894.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00034",
+    "productName": "Lịch Sử Việt Nam Bằng Tranh",
+    "author": "Trần Bạch Đằng",
+    "productType": "Lịch sử",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2022,
+    "isbn": "9786041189421",
+    "tags": ["lịch sử", "tranh vẽ", "dựng nước", "giữ nước", "việt nam"],
+    "description": "Bộ sách tái hiện sinh động hàng ngàn năm lịch sử dựng nước và giữ nước của dân tộc Việt Nam qua những nét vẽ minh họa chân thực và lôi cuốn. Từng trang sách đưa các giai thoại hào hùng từ thời các vua Hùng, Hai Bà Trưng, Ngô Quyền đến thời hiện đại đến gần hơn với độc giả trẻ. Đây là công trình kết hợp hài hòa giữa nghệ thuật hội họa và sử học giáo dục lòng yêu nước sâu sắc.",
+    "buyLinks": [
+      { "store": "Trẻ", "url": "https://www.nxbtre.com.vn/lich-su-viet-nam-bang-tranh" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00035",
+    "productName": "Trí Tuệ Nhân Tạo: Kỷ Nguyên Khai Phóng",
+    "author": "Kai-Fu Lee",
+    "productType": "Khoa học",
+    "publisher": "NXB Dân Trí",
+    "publishYear": 2021,
+    "isbn": "9786043141878",
+    "tags": ["trí tuệ nhân tạo", "ai", "công nghệ tương lai", "dữ liệu lớn", "kinh tế"],
+    "description": "Chuyên gia hàng đầu về AI - tiến sĩ Kai-Fu Lee - vẽ nên bức tranh toàn cảnh về cuộc đua phát triển trí tuệ nhân tạo toàn cầu và tầm ảnh hưởng sâu rộng của nó tới việc làm, xã hội và kinh tế. Cuốn sách phân tích cách AI đang tái định hình thế giới và nhấn mạnh những phẩm chất độc nhất của con người như lòng trắc ẩn và sự sáng tạo mà máy móc không thể thay thế. Tác phẩm truyền tải thông điệp lạc quan về một tương lai nơi con người và AI cùng chung sống hài hòa.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/ai-superpowers-p481923.html" }
+    ],
+    "pathImage": ""
+  }
+]

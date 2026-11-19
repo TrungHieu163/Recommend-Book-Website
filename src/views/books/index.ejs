@@ -1,0 +1,322 @@
+<%# Trang quản trị sách /admin/books (A sở hữu) %>
+<div class="card shadow-sm border-0 mb-4">
+  <div class="card-body">
+    <!-- Tiêu đề & Toolbar -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3 pb-3 border-bottom">
+      <div>
+        <h4 class="card-title fw-bold mb-1">
+          <i class="bi bi-journal-album text-primary me-2"></i>Quản lý danh mục sách
+        </h4>
+        <p class="text-muted small mb-0">Xem, tìm kiếm, thêm mới, sửa, xóa và xuất nhập dữ liệu sách</p>
+      </div>
+
+      <!-- Nút Thêm mới (F02 - A sở hữu) -->
+      <div class="d-flex gap-2 align-items-center">
+        <button type="button" class="btn btn-primary" id="btnOpenCreateModal">
+          <i class="bi bi-plus-lg me-1"></i>Thêm sách mới
+        </button>
+      </div>
+    </div>
+
+    <!-- Hàng công cụ Toolbar: Search (B), Bulk Actions (B), Import/Export (B), Columns (C) -->
+    <div class="row g-2 align-items-center justify-content-between mb-3">
+      <!-- Search & Lọc thể loại (B) -->
+      <%- include('../partials/toolbar-search') %>
+
+      <!-- Các công cụ bên phải: Bulk, Import/Export, Columns -->
+      <div class="col-md-7 d-flex flex-wrap justify-content-md-end gap-2 align-items-center">
+        <%- include('../partials/toolbar-bulk') %>
+        <%- include('../partials/toolbar-import-export') %>
+        <%- include('../partials/toolbar-columns') %>
+      </div>
+    </div>
+
+    <!-- Bảng dữ liệu Sách (F01 - A sở hữu) -->
+    <div class="table-responsive">
+      <table class="table table-hover align-middle border mb-0" id="booksTable">
+        <thead class="table-light">
+          <tr>
+            <th scope="col" style="width: 40px;" class="text-center" data-col="select">
+              <input class="form-check-input" type="checkbox" id="selectAllCheckbox" aria-label="Chọn tất cả dòng">
+            </th>
+            <th scope="col" style="width: 70px;" data-col="pathImage">Ảnh</th>
+            <th scope="col" style="width: 110px;" data-col="productId">Mã sách</th>
+            <th scope="col" data-col="productName">Tên sách</th>
+            <th scope="col" style="width: 140px;" data-col="productType">Thể loại</th>
+            <th scope="col" style="width: 140px;" data-col="author">Tác giả</th>
+            <th scope="col" style="width: 100px;" data-col="publishYear">Năm XB</th>
+            <th scope="col" style="width: 140px;" data-col="createDate">Ngày tạo</th>
+            <th scope="col" style="width: 130px;" class="text-center" data-col="actions">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="booksTableBody">
+          <!-- Hàng dữ liệu sẽ được render bằng JS client (books.table.js) -->
+          <tr>
+            <td colspan="9" class="text-center py-5 text-muted" id="tableLoadingState">
+              <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+              <span>Đang tải dữ liệu sách...</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Thanh phân trang & chọn số dòng (F01 - A sở hữu) -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3 pt-3 border-top">
+      <div class="d-flex align-items-center gap-2">
+        <span class="small text-muted">Hiển thị:</span>
+        <select class="form-select form-select-sm" id="limitSelect" style="width: 80px;" aria-label="Số dòng mỗi trang">
+          <option value="10">10</option>
+          <option value="15" selected>15</option>
+          <option value="20">20</option>
+        </select>
+        <span class="small text-muted" id="paginationInfo">Hiển thị 0–0 / 0</span>
+      </div>
+
+      <nav aria-label="Phân trang danh mục sách">
+        <ul class="pagination pagination-sm mb-0" id="paginationNav">
+          <!-- Phân trang render qua JS -->
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Form Thêm mới / Chỉnh sửa sách (F02, F03 - A sở hữu) -->
+<div class="modal fade" id="bookFormModal" tabindex="-1" aria-labelledby="bookFormModalLabel" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content shadow-lg">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="bookFormModalLabel">
+          <i class="bi bi-plus-circle text-primary me-2"></i>Thêm sách mới
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="bookForm" novalidate>
+          <input type="hidden" id="formBookId" name="id">
+
+          <!-- Hàng 1: Mã sách & Tên sách -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-4">
+              <label for="formProductId" class="form-label fw-semibold">Mã sách</label>
+              <input type="text" class="form-control" id="formProductId" name="productId" placeholder="Tự sinh nếu để trống (BKxxxxx)" maxlength="20">
+              <div class="invalid-feedback" id="err-productId"></div>
+              <small class="text-muted d-block mt-1">Để trống hệ thống sẽ tự sinh mã tăng dần.</small>
+            </div>
+            <div class="col-md-8">
+              <label for="formProductName" class="form-label fw-semibold">Tên sách <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="formProductName" name="productName" placeholder="Nhập tên sách..." required minlength="2" maxlength="200">
+              <div class="invalid-feedback" id="err-productName"></div>
+            </div>
+          </div>
+
+          <!-- Hàng 2: Thể loại, Nút gợi ý AI, Tác giả -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label for="formProductType" class="form-label fw-semibold mb-0">Thể loại <span class="text-danger">*</span></label>
+                <button type="button" class="btn btn-outline-primary btn-sm py-0 px-2" id="btnAiSuggestMetadata" title="AI gợi ý thể loại & tags từ mô tả">
+                  <i class="bi bi-stars text-warning me-1"></i>✨ AI gợi ý
+                </button>
+              </div>
+              <input type="text" class="form-control" id="formProductType" name="productType" list="productTypeList" placeholder="Chọn hoặc nhập thể loại..." required maxlength="100">
+              <datalist id="productTypeList">
+                <option value="Văn học"></option>
+                <option value="Kinh tế"></option>
+                <option value="Kỹ năng sống"></option>
+                <option value="Tâm lý"></option>
+                <option value="Thiếu nhi"></option>
+                <option value="Khoa học"></option>
+                <option value="Công nghệ"></option>
+                <option value="Lịch sử"></option>
+                <option value="Ngoại ngữ"></option>
+                <option value="Truyện tranh"></option>
+              </datalist>
+              <div class="invalid-feedback" id="err-productType"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="formAuthor" class="form-label fw-semibold">Tác giả</label>
+              <input type="text" class="form-control" id="formAuthor" name="author" placeholder="Tên tác giả..." maxlength="150">
+              <div class="invalid-feedback" id="err-author"></div>
+            </div>
+          </div>
+
+          <!-- Hàng 3: NXB, Năm XB, ISBN -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-5">
+              <label for="formPublisher" class="form-label fw-semibold">Nhà xuất bản</label>
+              <input type="text" class="form-control" id="formPublisher" name="publisher" placeholder="Nhà xuất bản..." maxlength="150">
+              <div class="invalid-feedback" id="err-publisher"></div>
+            </div>
+            <div class="col-md-3">
+              <label for="formPublishYear" class="form-label fw-semibold">Năm xuất bản</label>
+              <input type="number" class="form-control" id="formPublishYear" name="publishYear" placeholder="Năm..." min="1000" max="2100">
+              <div class="invalid-feedback" id="err-publishYear"></div>
+            </div>
+            <div class="col-md-4">
+              <label for="formIsbn" class="form-label fw-semibold">Mã ISBN</label>
+              <input type="text" class="form-control" id="formIsbn" name="isbn" placeholder="Mã ISBN..." maxlength="20">
+              <div class="invalid-feedback" id="err-isbn"></div>
+            </div>
+          </div>
+
+          <!-- Hàng 4: Tags & Mô tả -->
+          <div class="mb-3">
+            <label for="formTags" class="form-label fw-semibold">Tags (từ khóa phân cách bằng dấu phẩy)</label>
+            <input type="text" class="form-control" id="formTags" name="tags" placeholder="tiểu thuyết, kinh điển, triết học...">
+            <div class="invalid-feedback" id="err-tags"></div>
+          </div>
+
+          <div class="mb-3">
+            <label for="formDescription" class="form-label fw-semibold">Mô tả tóm tắt nội dung</label>
+            <textarea class="form-control" id="formDescription" name="description" rows="4" placeholder="Nhập mô tả tóm tắt nội dung sách (3–5 câu)..." maxlength="5000"></textarea>
+            <div class="invalid-feedback" id="err-description"></div>
+          </div>
+
+          <!-- Hàng 5: Ảnh bìa (Upload hoặc URL) & Xem trước -->
+          <div class="card bg-light border p-3 mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="fw-bold mb-0"><i class="bi bi-image me-1"></i>Ảnh bìa sách</h6>
+              <button type="button" class="btn btn-outline-danger btn-sm py-0 px-2 d-none" id="btnRemoveImage">
+                <i class="bi bi-trash me-1"></i>Xóa ảnh
+              </button>
+            </div>
+            <input type="hidden" id="formRemoveImage" name="removeImage" value="false">
+            <div class="row g-3 align-items-center">
+              <div class="col-md-8">
+                <div class="mb-2">
+                  <label for="formImageFile" class="form-label small mb-1">Tải file ảnh (JPG, PNG, WebP ≤ 2MB)</label>
+                  <input class="form-control form-control-sm" type="file" id="formImageFile" name="image" accept="image/jpeg,image/png,image/webp">
+                </div>
+                <div>
+                  <label for="formPathImage" class="form-label small mb-1">Hoặc nhập URL ảnh trực tiếp (https://)</label>
+                  <input type="url" class="form-control form-control-sm" id="formPathImage" name="pathImage" placeholder="https://example.com/anh-bia.jpg">
+                </div>
+                <div class="invalid-feedback" id="err-image"></div>
+              </div>
+              <div class="col-md-4 text-center">
+                <div class="border rounded bg-white p-1 d-inline-block position-relative shadow-sm" style="width: 100px; height: 130px;">
+                  <img id="imagePreview" src="/images/no-cover.png" alt="Xem trước" class="w-100 h-100 object-fit-contain">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hàng 6: Link mua sách (0-5 links) -->
+          <div class="card bg-light border p-3 mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="fw-bold mb-0"><i class="bi bi-cart-check me-1"></i>Link mua sách ngoài (tối đa 5 link)</h6>
+              <button type="button" class="btn btn-outline-primary btn-sm" id="btnAddBuyLink">
+                <i class="bi bi-plus-lg me-1"></i>Thêm link
+              </button>
+            </div>
+            <div id="buyLinksContainer" class="d-flex flex-column gap-2">
+              <!-- Các dòng link mua động -->
+            </div>
+            <div class="invalid-feedback d-block" id="err-buyLinks"></div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
+        <button type="button" class="btn btn-primary px-4" id="btnSubmitBookForm">
+          <span class="spinner-border spinner-border-sm d-none me-1" id="submitBtnSpinner" role="status"></span>
+          <span id="submitBtnText">Lưu sách</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Xem chi tiết sách (F04 - A sở hữu) -->
+<div class="modal fade" id="bookDetailModal" tabindex="-1" aria-labelledby="bookDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content shadow-lg border-0">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold" id="bookDetailModalLabel">
+          <i class="bi bi-info-circle text-primary me-2"></i>Thông tin chi tiết sách
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body p-4" id="bookDetailModalBody">
+        <div class="row g-4">
+          <!-- Cột trái: Ảnh bìa lớn & Link mua -->
+          <div class="col-md-4 text-center">
+            <div class="border rounded bg-white p-2 shadow-sm mb-3">
+              <img id="detailImage" src="/images/no-cover.png" alt="Ảnh sách" class="img-fluid rounded object-fit-contain w-100" style="max-height: 320px;">
+            </div>
+            
+            <!-- Danh sách Link mua sách ngoài -->
+            <div class="card bg-light border-0 shadow-sm p-3 text-start">
+              <h6 class="fw-bold mb-2 small text-uppercase text-secondary">
+                <i class="bi bi-cart me-1"></i>Mua ở đâu
+              </h6>
+              <div id="detailBuyLinks" class="d-flex flex-column gap-2">
+                <!-- Links mua render qua JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Cột phải: Thông tin chi tiết các trường -->
+          <div class="col-md-8">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge bg-primary" id="detailProductType">Thể loại</span>
+              <span class="badge bg-light text-dark border font-monospace" id="detailProductId">BK00000</span>
+            </div>
+
+            <h4 class="fw-bold mb-2 text-primary" id="detailProductName">Tên sách</h4>
+            <p class="text-muted mb-3 fs-6">Tác giả: <strong id="detailAuthor" class="text-dark">—</strong></p>
+
+            <div class="row g-2 mb-3 small bg-light p-3 rounded">
+              <div class="col-6"><strong>Nhà xuất bản:</strong> <span id="detailPublisher">—</span></div>
+              <div class="col-6"><strong>Năm xuất bản:</strong> <span id="detailPublishYear">—</span></div>
+              <div class="col-6"><strong>Mã ISBN:</strong> <span id="detailIsbn">—</span></div>
+              <div class="col-6"><strong>Ngày tạo:</strong> <span id="detailCreateDate">—</span></div>
+              <div class="col-12"><strong>Cập nhật lần cuối:</strong> <span id="detailUpdateDate">—</span></div>
+            </div>
+
+            <!-- Tags -->
+            <div class="mb-3">
+              <h6 class="fw-bold small text-uppercase text-secondary mb-2">Tags / Từ khóa</h6>
+              <div id="detailTags" class="d-flex flex-wrap gap-1">
+                <!-- Tags badge -->
+              </div>
+            </div>
+
+            <!-- Mô tả nội dung -->
+            <div class="mb-4">
+              <h6 class="fw-bold small text-uppercase text-secondary mb-2">Mô tả tóm tắt nội dung</h6>
+              <div class="p-3 bg-white border rounded text-secondary" style="line-height: 1.6;" id="detailDescription">
+                <!-- Mô tả chi tiết -->
+              </div>
+            </div>
+
+            <!-- Khối Sách tương tự (gọi /api/books/:id/similar) -->
+            <div class="border-top pt-3">
+              <h6 class="fw-bold text-dark mb-2">
+                <i class="bi bi-collection me-1 text-primary"></i>Sách tương tự
+              </h6>
+              <div id="detailSimilarBooks" class="row row-cols-3 g-2">
+                <!-- Danh sách sách tương tự -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-outline-primary btn-sm" id="btnDetailEditBook">
+          <i class="bi bi-pencil me-1"></i>Sửa cuốn sách này
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts của chức năng quản trị sách F01-F04 (A sở hữu) -->
+<script src="/js/books.api.js"></script>
+<script src="/js/books.table.js"></script>
+<script src="/js/books.form.js"></script>
+<script src="/js/books.detail.js"></script>
+<script src="/js/books.page.js"></script>

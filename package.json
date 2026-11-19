@@ -1,0 +1,53 @@
+{
+  "name": "book-ai-store",
+  "version": "1.0.0",
+  "description": "Website hỗ trợ tìm kiếm, đề xuất Sách tích hợp AI",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "seed": "node scripts/seed.js",
+    "lint": "eslint src/ scripts/ tests/ --fix --no-error-on-unmatched-pattern",
+    "test": "jest --forceExit --detectOpenHandles",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:migrate:undo": "sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "sequelize-cli db:migrate:undo:all"
+  },
+  "keywords": [
+    "book",
+    "ai",
+    "search",
+    "recommendation"
+  ],
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "archiver": "^8.0.0",
+    "bcryptjs": "^3.0.3",
+    "connect-session-sequelize": "^8.0.6",
+    "dotenv": "^18.0.10",
+    "ejs": "^7.0.2",
+    "exceljs": "^4.4.0",
+    "express": "^5.3.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^8.7.5",
+    "express-session": "^1.19.0",
+    "fast-xml-parser": "^5.12.1",
+    "helmet": "^8.3.0",
+    "morgan": "^1.12.1",
+    "multer": "^2.5.0",
+    "mysql2": "^3.24.6",
+    "sequelize": "^6.37.8",
+    "sequelize-cli": "^6.6.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "jest": "^30.5.2",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.10.1",
+    "supertest": "^7.3.2"
+  }
+}

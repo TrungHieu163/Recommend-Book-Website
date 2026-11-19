@@ -1,0 +1,18 @@
+<%# toolbar-import-export.ejs — Do [B] phát triển (Stub tạm thời) %>
+<div class="btn-group" role="group" id="toolbarImportExportArea">
+  <button type="button" class="btn btn-outline-success btn-sm" id="btnImportModal" data-bs-toggle="modal" data-bs-target="#importModal">
+    <i class="bi bi-file-earmark-arrow-up me-1"></i>Import
+  </button>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-outline-success btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-file-earmark-arrow-down me-1"></i>Export
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow">
+      <li><a class="dropdown-item" href="#" data-export="xlsx">Excel (.xlsx)</a></li>
+      <li><a class="dropdown-item" href="#" data-export="json">JSON (.json)</a></li>
+      <li><a class="dropdown-item" href="#" data-export="xml">XML (.xml)</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#" data-export="zip">Gói ZIP kèm ảnh (.zip)</a></li>
+    </ul>
+  </div>
+</div>
