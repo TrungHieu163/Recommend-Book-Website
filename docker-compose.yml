@@ -1,5 +1,4 @@
-# docker-compose.yml — Bản khung do [A] khởi tạo (db, adminer)
-# [B] sẽ bổ sung app & meilisearch theo phân công
+# docker-compose.yml — Đầy đủ dịch vụ cho dự án (Hoàn thiện bởi [B])
 services:
   db:
     image: mysql:8.4
@@ -24,6 +23,19 @@ services:
       start_period: 30s
     restart: unless-stopped
 
+  meilisearch:
+    image: getmeili/meilisearch:v1.12
+    container_name: book_ai_store_meilisearch
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:-masterKeyChangeMe123456}
+      MEILI_NO_ANALYTICS: "true"
+      MEILI_ENV: ${NODE_ENV:-development}
+    ports:
+      - "7700:7700"
+    volumes:
+      - meili_data:/meili_data
+    restart: unless-stopped
+
   adminer:
     image: adminer:latest
     container_name: book_ai_store_adminer
@@ -35,5 +47,26 @@ services:
       - db
     restart: unless-stopped
 
+  app:
+    build: .
+    container_name: book_ai_store_app
+    env_file: .env
+    environment:
+      # Ghi đè để trỏ tới mạng nội bộ docker
+      DB_HOST: db
+      DB_PORT: "3306"
+      MEILI_HOST: http://meilisearch:7700
+      OLLAMA_HOST: http://ollama:11434
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - uploads_data:/app/public/uploads/books
+    restart: unless-stopped
+
 volumes:
   mysql_data:
+  meili_data:
+  uploads_data:
