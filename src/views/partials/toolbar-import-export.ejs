@@ -1,18 +1,100 @@
-<%# toolbar-import-export.ejs — Do [B] phát triển (Stub tạm thời) %>
+<%# toolbar-import-export.ejs — Do [B] phát triển (F09) %>
 <div class="btn-group" role="group" id="toolbarImportExportArea">
   <button type="button" class="btn btn-outline-success btn-sm" id="btnImportModal" data-bs-toggle="modal" data-bs-target="#importModal">
     <i class="bi bi-file-earmark-arrow-up me-1"></i>Import
   </button>
   <div class="btn-group" role="group">
-    <button type="button" class="btn btn-outline-success btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn btn-outline-success btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="btnExportDropdown">
       <i class="bi bi-file-earmark-arrow-down me-1"></i>Export
     </button>
     <ul class="dropdown-menu dropdown-menu-end shadow">
-      <li><a class="dropdown-item" href="#" data-export="xlsx">Excel (.xlsx)</a></li>
-      <li><a class="dropdown-item" href="#" data-export="json">JSON (.json)</a></li>
-      <li><a class="dropdown-item" href="#" data-export="xml">XML (.xml)</a></li>
+      <li><h6 class="dropdown-header small text-muted" id="exportScopeHeader">Phạm vi: Tất cả sách</h6></li>
+      <li><a class="dropdown-item export-action" href="#" data-export="xlsx"><i class="bi bi-file-earmark-excel text-success me-2"></i>Excel (.xlsx)</a></li>
+      <li><a class="dropdown-item export-action" href="#" data-export="json"><i class="bi bi-file-earmark-code text-warning me-2"></i>JSON (.json)</a></li>
+      <li><a class="dropdown-item export-action" href="#" data-export="xml"><i class="bi bi-file-earmark-text text-info me-2"></i>XML (.xml)</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#" data-export="zip">Gói ZIP kèm ảnh (.zip)</a></li>
+      <li><a class="dropdown-item export-action" href="#" data-export="zip"><i class="bi bi-file-earmark-zip text-primary me-2"></i>Gói ZIP kèm ảnh (.zip)</a></li>
     </ul>
   </div>
 </div>
+
+<!-- Modal Import dữ liệu sách (F09 - B sở hữu) -->
+<div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold" id="importModalLabel">
+          <i class="bi bi-file-earmark-arrow-up text-success me-2"></i>Nhập dữ liệu sách (Import)
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="importForm" novalidate>
+          <div class="mb-3">
+            <label for="importFileInput" class="form-label fw-semibold">Chọn file dữ liệu <span class="text-danger">*</span></label>
+            <input class="form-control" type="file" id="importFileInput" accept=".xlsx,.json,.xml,.zip" required>
+            <div class="form-text">
+              Chấp nhận file <strong>.xlsx</strong>, <strong>.json</strong>, <strong>.xml</strong> (≤ 5MB, ≤ 5000 dòng) hoặc gói <strong>.zip</strong> kèm ảnh (≤ 50MB).
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Chế độ xử lý mã sách trùng (Mã sách đã tồn tại):</label>
+            <div class="d-flex gap-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="importMode" id="modeSkip" value="skip" checked>
+                <label class="form-check-label" for="modeSkip">
+                  <strong>Bỏ qua (Skip)</strong> <span class="text-muted small">— Không ghi đè</span>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="importMode" id="modeOverwrite" value="overwrite">
+                <label class="form-check-label" for="modeOverwrite">
+                  <strong>Ghi đè (Overwrite)</strong> <span class="text-muted small">— Cập nhật thông tin mới</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tải file mẫu -->
+          <div class="card bg-light border-0 p-3 mb-3">
+            <span class="small fw-semibold text-secondary mb-2"><i class="bi bi-download me-1"></i>Tải file / gói mẫu chuẩn:</span>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="/api/books/import/template?format=xlsx" class="btn btn-sm btn-outline-secondary"><i class="bi bi-filetype-xlsx text-success me-1"></i>Excel mẫu</a>
+              <a href="/api/books/import/template?format=json" class="btn btn-sm btn-outline-secondary"><i class="bi bi-filetype-json text-warning me-1"></i>JSON mẫu</a>
+              <a href="/api/books/import/template?format=xml" class="btn btn-sm btn-outline-secondary"><i class="bi bi-filetype-xml text-info me-1"></i>XML mẫu</a>
+              <a href="/api/books/import/template?format=zip" class="btn btn-sm btn-outline-primary"><i class="bi bi-file-earmark-zip me-1"></i>Gói ZIP mẫu kèm ảnh</a>
+            </div>
+          </div>
+
+          <!-- Khu vực hiển thị tiến trình và kết quả -->
+          <div id="importResultArea" class="d-none">
+            <div class="alert alert-info py-2" id="importStatusAlert">
+              <span class="spinner-border spinner-border-sm me-2" role="status" id="importSpinner"></span>
+              <span id="importStatusText">Đang xử lý nhập dữ liệu sách...</span>
+            </div>
+            <div id="importStatsDetails" class="d-none">
+              <div class="d-flex gap-3 mb-2 small fw-semibold">
+                <span class="text-secondary">Tổng số: <strong id="statTotal">0</strong></span>
+                <span class="text-success">Thêm mới: <strong id="statInserted">0</strong></span>
+                <span class="text-primary">Cập nhật: <strong id="statUpdated">0</strong></span>
+                <span class="text-warning">Bỏ qua: <strong id="statSkipped">0</strong></span>
+                <span class="text-danger">Lỗi: <strong id="statErrors">0</strong></span>
+              </div>
+              <div id="importErrorLogs" class="alert alert-danger p-2 small d-none" style="max-height: 150px; overflow-y: auto;"></div>
+              <div id="importWarningLogs" class="alert alert-warning p-2 small d-none" style="max-height: 120px; overflow-y: auto;"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-success px-4" id="btnSubmitImport">
+          <i class="bi bi-upload me-1"></i>Tiến hành Import
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/books.importExport.js"></script>
