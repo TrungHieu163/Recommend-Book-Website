@@ -10,6 +10,9 @@ const { listBooksQuerySchema, createBookSchema, updateBookSchema } = require('..
 // GET /api/books: Danh sách phân trang + lọc + sắp xếp (F01)
 router.get('/', validate(listBooksQuerySchema, 'query'), bookController.listBooks);
 
+// GET /api/books/types: Danh sách thể loại hiện có (phải đặt trước /:id)
+router.get('/types', bookController.getProductTypes);
+
 // POST /api/books: Thêm mới sách (F02)
 router.post('/', uploadImage, validate(createBookSchema, 'body'), bookController.createBook);
 

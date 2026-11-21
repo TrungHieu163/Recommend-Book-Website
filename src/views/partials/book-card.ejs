@@ -7,7 +7,7 @@
            class="card-img-top h-100 w-auto object-fit-contain p-2" 
            alt="<%= currentBook.productName || 'Ảnh sách' %>"
            loading="lazy"
-           onerror="this.src='/images/no-cover.png'">
+           onerror="this.onerror=null; this.src='/images/no-cover.png';">
       <span class="badge bg-secondary position-absolute top-0 start-0 m-2">
         <%= currentBook.productType || 'Sách' %>
       </span>

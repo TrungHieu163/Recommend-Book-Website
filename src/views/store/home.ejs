@@ -1,13 +1,141 @@
-<div class="py-4">
-  <div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
-    <div class="container-fluid py-2">
-      <h1 class="display-6 fw-bold">Khám phá kho sách thông minh với AI</h1>
-      <p class="col-md-8 fs-5 text-muted">
-        Tìm kiếm sách theo nội dung, ngữ cảnh và nhận gợi ý phù hợp dựa trên sở thích của bạn.
-      </p>
-      <a href="/admin/books" class="btn btn-primary btn-lg px-4">
-        <i class="bi bi-gear-fill me-2"></i>Đến trang Quản trị sách
-      </a>
+<%# Trang khám phá sách (F14 - A sở hữu) %>
+<div class="store-page pb-5">
+  <!-- Hero Banner -->
+  <div class="p-4 p-md-5 mb-4 rounded-4 bg-primary text-white shadow-sm position-relative overflow-hidden" style="background: linear-gradient(135deg, #0d6efd 0%, #0a4ebd 100%);">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <span class="badge bg-white text-primary mb-2 px-3 py-2 fw-semibold">
+          <i class="bi bi-stars me-1 text-warning"></i>Hệ thống đề xuất & tìm kiếm sách
+        </span>
+        <h1 class="display-6 fw-bold mb-3">Khám phá kho sách thông minh với AI</h1>
+        <p class="fs-6 text-white-50 mb-4" style="max-width: 650px;">
+          Tìm sách theo tên, tác giả, thể loại hoặc miêu tả nội dung tự nhiên. BookWeb hỗ trợ kết nối bạn tới các nhà sách uy tín bên ngoài.
+        </p>
+
+        <!-- Ô Tìm kiếm lớn -->
+        <div class="card p-2 bg-white rounded-3 shadow">
+          <div class="input-group">
+            <span class="input-group-text bg-white border-0"><i class="bi bi-search text-primary fs-5"></i></span>
+            <input type="text" id="storeSearchInput" class="form-control border-0 fs-6 shadow-none" placeholder="Tìm tên sách, tác giả, thể loại, hoặc mô tả nội dung..." autocomplete="off">
+            <button class="btn btn-link text-muted text-decoration-none d-none" type="button" id="storeSearchClearBtn" title="Xóa từ khóa">&times;</button>
+            <button class="btn btn-primary px-4 fw-semibold" type="button" id="storeSearchBtn">Tìm sách</button>
+          </div>
+        </div>
+
+        <!-- Công tắc Tìm thông minh AI (Chuẩn bị sẵn sàng cho Phase 5 của B) -->
+        <div class="d-flex align-items-center gap-2 mt-3 text-white-50 small">
+          <div class="form-check form-switch mb-0">
+            <input class="form-check-input" type="checkbox" role="switch" id="smartSearchSwitch">
+            <label class="form-check-label text-white" for="smartSearchSwitch">
+              <strong>Tìm thông minh (AI)</strong>
+            </label>
+          </div>
+          <span class="badge bg-warning text-dark"><i class="bi bi-robot me-1"></i>AI</span>
+          <span class="d-none d-md-inline">— Tìm kiếm theo ngữ nghĩa và bối cảnh tự nhiên</span>
+        </div>
+
+        <!-- Dòng hiển thị Hiểu truy vấn AI (Phase 5) -->
+        <div id="aiQueryInterpretation" class="alert alert-light alert-dismissible fade show mt-3 mb-0 text-dark small py-2 d-none shadow-sm" role="alert">
+          <i class="bi bi-lightbulb text-warning me-1"></i>
+          <span id="aiQueryText">AI hiểu truy vấn: ...</span>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-block text-center">
+        <i class="bi bi-book-half text-white-50" style="font-size: 10rem; opacity: 0.3;"></i>
+      </div>
     </div>
   </div>
+
+  <!-- Thanh lọc thể loại (Chips) -->
+  <div class="mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h6 class="fw-bold mb-0 text-secondary text-uppercase small">
+        <i class="bi bi-tags-fill me-1 text-primary"></i>Thể loại sách
+      </h6>
+    </div>
+    <div class="d-flex flex-wrap gap-2" id="genreChipsContainer">
+      <button type="button" class="btn btn-sm btn-primary rounded-pill genre-chip active" data-type="">
+        Tất cả
+      </button>
+      <div class="spinner-border spinner-border-sm text-secondary" id="genreChipsLoading" role="status"></div>
+      <!-- Các chip thể loại sẽ được sinh động qua JS từ /api/books/types -->
+    </div>
+  </div>
+
+  <!-- Khối DÀNH CHO BẠN (Cá nhân hóa / Nổi bật) -->
+  <section class="mb-5 p-3 p-md-4 rounded-4 bg-white border shadow-sm" id="forYouSection">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h5 class="fw-bold mb-0 text-dark">
+          <i class="bi bi-sparkles text-warning me-2"></i>Dành cho bạn
+        </h5>
+        <small class="text-muted">Gợi ý sách nổi bật dựa trên xu hướng và danh mục yêu thích</small>
+      </div>
+      <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Gợi ý</span>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="forYouGrid">
+      <!-- Thẻ sách gợi ý render qua JS -->
+      <div class="col-12 text-center py-4 text-muted small">
+        <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+        <span>Đang nạp gợi ý sách...</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Danh mục khám phá chính (Grid) -->
+  <section>
+    <!-- Thanh điều khiển: Tiêu đề + Đếm số lượng + Sắp xếp -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3 pb-2 border-bottom">
+      <div>
+        <h5 class="fw-bold mb-0 text-dark">
+          <i class="bi bi-grid-fill text-primary me-2"></i>Kho sách khám phá
+        </h5>
+        <small class="text-muted" id="storeResultsCount">Đang tải danh sách sách...</small>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <label for="storeSortSelect" class="small text-muted text-nowrap mb-0">Sắp xếp:</label>
+        <select class="form-select form-select-sm" id="storeSortSelect" style="min-width: 170px;">
+          <option value="-createDate" selected>Mới nhất</option>
+          <option value="createDate">Cũ nhất</option>
+          <option value="productName">Tên sách: A &rarr; Z</option>
+          <option value="-productName">Tên sách: Z &rarr; A</option>
+          <option value="-publishYear">Năm XB: Mới nhất</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Trạng thái Đang tải -->
+    <div id="storeLoadingState" class="text-center py-5">
+      <div class="spinner-border text-primary mb-2" role="status" style="width: 3rem; height: 3rem;"></div>
+      <div class="text-muted">Đang tải danh sách sách...</div>
+    </div>
+
+    <!-- Trạng thái Rỗng -->
+    <div id="storeEmptyState" class="text-center py-5 d-none bg-white rounded-3 border p-5 my-3">
+      <i class="bi bi-journal-x display-4 text-secondary mb-3 d-block"></i>
+      <h5 class="fw-bold">Không tìm thấy cuốn sách nào</h5>
+      <p class="text-muted small mb-3">Hãy thử tìm kiếm với từ khóa khác hoặc bỏ chọn bộ lọc thể loại.</p>
+      <button type="button" class="btn btn-outline-primary btn-sm px-3" id="btnResetStoreFilters">
+        <i class="bi bi-arrow-clockwise me-1"></i>Đặt lại bộ lọc
+      </button>
+    </div>
+
+    <!-- Lưới hiển thị sách chính -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 d-none" id="storeBooksGrid">
+      <!-- Các thẻ sách sẽ được render động qua JS hoặc book-card partial -->
+    </div>
+
+    <!-- Thanh phân trang Store -->
+    <div class="d-flex justify-content-center mt-5">
+      <nav aria-label="Phân trang sách">
+        <ul class="pagination pagination-sm shadow-sm" id="storePaginationNav">
+          <!-- Phân trang render qua JS -->
+        </ul>
+      </nav>
+    </div>
+  </section>
 </div>
+
+<!-- Script điều khiển khu khám phá F14 (A sở hữu) -->
+<script src="/js/store.js"></script>

@@ -1,0 +1,222 @@
+<%# Trang chi tiết sách (F14 - A sở hữu) %>
+<div class="book-detail-page py-3">
+  <!-- Breadcrumb điều hướng -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="bi bi-house-door me-1"></i>Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="/?productType=<%= encodeURIComponent(book.productType || '') %>" class="text-decoration-none"><%= book.productType || 'Sách' %></a></li>
+      <li class="breadcrumb-item active text-truncate" style="max-width: 350px;" aria-current="page"><%= book.productName %></li>
+    </ol>
+  </nav>
+
+  <div class="row g-4">
+    <!-- Cột trái: Ảnh bìa lớn, Nút Yêu thích, Khối Mua ở đâu -->
+    <div class="col-lg-4 col-md-5">
+      <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4 bg-white text-center p-3">
+        <div class="position-relative d-inline-block mx-auto mb-3" style="max-height: 420px;">
+          <img src="<%= book.pathImage || '/images/no-cover.png' %>" 
+               alt="<%= book.productName %>" 
+               class="img-fluid rounded-3 shadow-sm object-fit-contain" 
+               style="max-height: 400px; width: auto;"
+               onerror="this.onerror=null; this.src='/images/no-cover.png';">
+          <span class="badge bg-primary position-absolute top-0 start-0 m-2">
+            <%= book.productType || 'Sách' %>
+          </span>
+        </div>
+
+        <!-- Nút Yêu thích (F15 của C) -->
+        <button class="btn btn-outline-danger w-100 py-2 fw-semibold btn-favorite" data-book-id="<%= book.id %>">
+          <i class="bi bi-heart me-1"></i>Thêm vào yêu thích
+        </button>
+      </div>
+
+      <!-- Khối MUA Ở ĐÂU (F14 Bắt buộc: mỗi buyLink là nút mở tab mới target="_blank" rel="noopener noreferrer nofollow") -->
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+        <h5 class="fw-bold mb-3 text-dark d-flex align-items-center">
+          <i class="bi bi-cart3 text-success me-2 fs-5"></i>Mua ở đâu
+        </h5>
+
+        <% if (Array.isArray(book.buyLinks) && book.buyLinks.length > 0) { %>
+          <div class="d-flex flex-column gap-2 mb-3">
+            <% book.buyLinks.forEach(function(link) { %>
+              <%
+                let domain = '';
+                try {
+                  domain = new URL(link.url).hostname.replace('www.', '');
+                } catch(_e) {
+                  domain = link.store || 'Trang bán ngoài';
+                }
+              %>
+              <a href="<%= link.url %>" 
+                 target="_blank" 
+                 rel="noopener noreferrer nofollow" 
+                 class="btn btn-outline-success py-2 px-3 text-start d-flex justify-content-between align-items-center shadow-sm">
+                <div>
+                  <div class="fw-bold small text-dark"><i class="bi bi-shop me-2 text-success"></i><%= link.store || 'Nhà sách' %></div>
+                  <div class="text-muted" style="font-size: 0.75rem;"><%= domain %></div>
+                </div>
+                <i class="bi bi-box-arrow-up-right text-success small"></i>
+              </a>
+            <% }); %>
+          </div>
+        <% } else { %>
+          <div class="alert alert-light border text-muted small p-3 mb-2">
+            <i class="bi bi-info-circle me-1"></i>Hiện tại chưa có liên kết mua ngoài cho cuốn sách này.
+          </div>
+        <% } %>
+
+        <div class="text-muted" style="font-size: 0.75rem; line-height: 1.4;">
+          <i class="bi bi-shield-check text-primary me-1"></i>Ghi chú: Liên kết dẫn tới trang bán sách của bên thứ ba uy tín; BookWeb là hệ thống đề xuất sách phi thương mại và không bán sách trực tiếp.
+        </div>
+      </div>
+    </div>
+
+    <!-- Cột phải: Thông tin chi tiết, Tags, Mô tả, Sách tương tự -->
+    <div class="col-lg-8 col-md-7">
+      <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white mb-4">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">
+            <%= book.productType %>
+          </span>
+          <span class="badge bg-light text-secondary border font-monospace">
+            Mã: <%= book.productId %>
+          </span>
+        </div>
+
+        <h1 class="h2 fw-bold text-dark mb-3"><%= book.productName %></h1>
+        <p class="fs-6 text-muted mb-4">
+          Tác giả: <strong class="text-dark"><%= book.author || 'Chưa cập nhật' %></strong>
+        </p>
+
+        <!-- Bảng thông số tóm tắt -->
+        <div class="row g-2 mb-4 p-3 bg-light rounded-3 small">
+          <div class="col-sm-6">
+            <span class="text-muted">Nhà xuất bản:</span> 
+            <strong class="text-dark ms-1"><%= book.publisher || '—' %></strong>
+          </div>
+          <div class="col-sm-6">
+            <span class="text-muted">Năm xuất bản:</span> 
+            <strong class="text-dark ms-1"><%= book.publishYear || '—' %></strong>
+          </div>
+          <div class="col-sm-6">
+            <span class="text-muted">Mã chuẩn ISBN:</span> 
+            <strong class="text-dark ms-1"><%= book.isbn || '—' %></strong>
+          </div>
+          <div class="col-sm-6">
+            <span class="text-muted">Thể loại:</span> 
+            <a href="/?productType=<%= encodeURIComponent(book.productType || '') %>" class="text-decoration-none fw-semibold ms-1">
+              <%= book.productType %>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tags / Từ khóa -->
+        <div class="mb-4">
+          <h6 class="fw-bold small text-secondary text-uppercase mb-2">
+            <i class="bi bi-hash me-1"></i>Từ khóa chủ đề
+          </h6>
+          <div class="d-flex flex-wrap gap-1">
+            <% if (Array.isArray(book.tags) && book.tags.length > 0) { %>
+              <% book.tags.forEach(function(tag) { %>
+                <a href="/?q=<%= encodeURIComponent(tag) %>" class="badge bg-secondary-subtle text-secondary-emphasis text-decoration-none px-2 py-1">
+                  #<%= tag %>
+                </a>
+              <% }); %>
+            <% } else { %>
+              <span class="text-muted small">Không có từ khóa</span>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Mô tả nội dung -->
+        <div class="mb-5">
+          <h5 class="fw-bold text-dark mb-3">
+            <i class="bi bi-file-text text-primary me-2"></i>Giới thiệu nội dung sách
+          </h5>
+          <div class="text-secondary fs-6" style="line-height: 1.8; white-space: pre-line;">
+            <%= book.description || 'Chưa có thông tin mô tả chi tiết cho cuốn sách này.' %>
+          </div>
+        </div>
+
+        <!-- Khối SÁCH TƯƠNG TỰ (F14 & AI-4) -->
+        <div class="border-top pt-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold text-dark mb-0">
+              <i class="bi bi-collection-fill text-primary me-2"></i>Sách tương tự có thể bạn quan tâm
+            </h5>
+            <small class="text-muted">Gợi ý cùng chủ đề</small>
+          </div>
+          
+          <div class="row row-cols-1 row-cols-sm-3 g-3" id="similarBooksGrid" data-book-id="<%= book.id %>" data-book-type="<%= book.productType %>">
+            <div class="col-12 text-center py-4 text-muted small">
+              <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+              <span>Đang tải sách tương tự...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a href="/" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left me-1"></i>Quay lại trang khám phá
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script hỗ trợ nạp sách tương tự cho trang chi tiết -->
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const grid = document.getElementById('similarBooksGrid');
+    if (!grid) return;
+
+    const bookId = grid.getAttribute('data-book-id');
+    const bookType = grid.getAttribute('data-book-type');
+
+    try {
+      // 1. Thử gọi API sách tương tự (/api/books/:id/similar của C)
+      let res = await fetch(`/api/books/${bookId}/similar?limit=3`, { headers: { Accept: 'application/json' } });
+      let books = [];
+
+      if (res.ok) {
+        const result = await res.json();
+        books = result.data || [];
+      }
+
+      // 2. Fallback nếu API tương tự chưa có hoặc rỗng: lấy sách cùng thể loại
+      if (books.length === 0 && bookType) {
+        const fallbackRes = await fetch(`/api/books?productType=${encodeURIComponent(bookType)}&limit=4`, { headers: { Accept: 'application/json' } });
+        if (fallbackRes.ok) {
+          const fallbackResult = await fallbackRes.json();
+          books = (fallbackResult.data || []).filter(b => String(b.id) !== String(bookId)).slice(0, 3);
+        }
+      }
+
+      if (books.length === 0) {
+        grid.innerHTML = '<div class="col-12 text-muted small">Chưa có gợi ý sách tương tự phù hợp.</div>';
+        return;
+      }
+
+      grid.innerHTML = books.map(b => `
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0 text-center p-2 bg-light">
+            <a href="/books/${b.id}" class="text-decoration-none text-dark">
+              <img src="${b.pathImage || '/images/no-cover.png'}" 
+                   class="card-img-top mx-auto object-fit-contain p-1" 
+                   style="height: 120px; width: auto;" 
+                   alt="${b.productName}"
+                   onerror="this.onerror=null; this.src='/images/no-cover.png';">
+              <div class="card-body p-2">
+                <h6 class="card-title small fw-bold text-truncate mb-1" title="${b.productName}">${b.productName}</h6>
+                <p class="card-text text-muted" style="font-size: 0.75rem;">${b.author || 'Tác giả'}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    } catch (_err) {
+      grid.innerHTML = '<div class="col-12 text-muted small">Chưa thể nạp sách tương tự lúc này.</div>';
+    }
+  });
+</script>

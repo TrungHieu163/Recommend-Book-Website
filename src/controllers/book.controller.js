@@ -32,6 +32,19 @@ const getBookById = asyncHandler(async (req, res) => {
 });
 
 /**
+ * Controller lấy danh sách thể loại sách hiện có
+ * GET /api/books/types
+ */
+const getProductTypes = asyncHandler(async (req, res) => {
+  const types = await bookService.getDistinctProductTypes();
+
+  return res.status(200).json({
+    success: true,
+    data: types,
+  });
+});
+
+/**
  * Controller thêm mới sách (F02)
  * POST /api/books
  */
@@ -62,6 +75,7 @@ const updateBook = asyncHandler(async (req, res) => {
 module.exports = {
   listBooks,
   getBookById,
+  getProductTypes,
   createBook,
   updateBook,
 };

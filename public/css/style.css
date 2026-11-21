@@ -42,3 +42,39 @@ body {
 .table td {
   vertical-align: middle;
 }
+
+/* Cố định chiều cao dòng & chống giật layout (Layout shift / CLS) cho bảng sách */
+#booksTable tbody tr {
+  height: 73px;
+}
+
+#booksTable td {
+  height: 73px;
+  box-sizing: border-box;
+}
+
+.book-thumb-container {
+  width: 42px;
+  height: 56px;
+  min-width: 42px;
+  min-height: 56px;
+  max-width: 42px;
+  max-height: 56px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f3f5;
+  border-radius: 0.25rem;
+}
+
+.book-thumb-img {
+  width: 42px;
+  height: 56px;
+  min-width: 42px;
+  min-height: 56px;
+  max-width: 42px;
+  max-height: 56px;
+  object-fit: cover;
+  display: block;
+}
