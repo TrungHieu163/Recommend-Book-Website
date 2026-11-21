@@ -8,7 +8,11 @@ const { sequelize } = require('./config/db');
 const errorHandler = require('./middlewares/errorHandler');
 const AppError = require('./utils/AppError');
 const pageRoutes = require('./routes/page.routes');
+const pageContactRoutes = require('./routes/pageContact.routes');
+const bookToolsRoutes = require('./routes/bookTools.routes'); // B: xóa, sao chép, types (mount trước CRUD)
 const bookRoutes = require('./routes/book.routes');
+const contactRoutes = require('./routes/contact.routes');
+const aiSearchRoutes = require('./routes/aiSearch.routes');
 
 const app = express();
 
@@ -65,8 +69,16 @@ app.get('/health', async (req, res) => {
   return res.status(isHealthy ? 200 : 503).json(payload);
 });
 
+// Mount BookTools routes TRƯỚC book routes (B sở hữu: xóa, sao chép, types, bulk)
+app.use('/api/books', bookToolsRoutes);
+
 // Mount API Books (A sở hữu)
 app.use('/api/books', bookRoutes);
+
+// Mount Contact API & Pages (B sở hữu)
+app.use('/api', contactRoutes);
+app.use('/api/ai', aiSearchRoutes);
+app.use('/', pageContactRoutes);
 
 // Mount Page Routes (A sở hữu)
 app.use('/', pageRoutes);

@@ -1,0 +1,85 @@
+<%# Trang gửi liên hệ /contact (B sở hữu, F17) %>
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4 p-md-5">
+          <div class="text-center mb-4">
+            <h3 class="fw-bold text-primary mb-2">
+              <i class="bi bi-envelope-paper me-2"></i>Liên hệ & Góp ý
+            </h3>
+            <p class="text-muted">
+              Bạn có câu hỏi, đề xuất hoặc phản hồi về hệ thống đề xuất sách? Hãy gửi tin nhắn cho chúng tôi!
+            </p>
+          </div>
+
+          <form id="contactForm" novalidate>
+            <!-- Honeypot field (ẩn với người dùng thật, bẫy spam bot) -->
+            <div style="display: none !important;">
+              <label for="hpField">Vui lòng để trống ô này:</label>
+              <input type="text" id="hpField" name="hpField" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="fullName" class="form-label fw-semibold">Họ và tên <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="fullName" name="fullName"
+                  value="<%= currentUser ? currentUser.fullName : '' %>"
+                  placeholder="Nguyễn Văn A" required minlength="2" maxlength="100">
+                <div class="invalid-feedback" id="err-fullName"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label fw-semibold">Địa chỉ Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email"
+                  value="<%= currentUser ? currentUser.email : '' %>"
+                  placeholder="email@example.com" required maxlength="255">
+                <div class="invalid-feedback" id="err-email"></div>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="phone" class="form-label fw-semibold">Số điện thoại</label>
+                <input type="tel" class="form-control" id="phone" name="phone"
+                  value="<%= currentUser && currentUser.phone ? currentUser.phone : '' %>"
+                  placeholder="0912345678 (tùy chọn)" maxlength="20">
+                <div class="invalid-feedback" id="err-phone"></div>
+              </div>
+              <div class="col-md-6">
+                <label for="subject" class="form-label fw-semibold">Chủ đề <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="subject" name="subject"
+                  placeholder="Ví dụ: Đề xuất thêm sách mới..." required minlength="2" maxlength="150">
+                <div class="invalid-feedback" id="err-subject"></div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="message" class="form-label fw-semibold">Nội dung tin nhắn <span class="text-danger">*</span></label>
+              <textarea class="form-control" id="message" name="message" rows="5"
+                placeholder="Nhập nội dung bạn muốn chia sẻ với chúng tôi (tối đa 2000 ký tự)..."
+                required minlength="5" maxlength="2000"></textarea>
+              <div class="d-flex justify-content-between mt-1">
+                <div class="invalid-feedback d-block" id="err-message"></div>
+                <small class="text-muted ms-auto" id="charCounter">0 / 2000</small>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitContact">
+                <span class="spinner-border spinner-border-sm d-none me-2" id="contactSpinner" role="status"></span>
+                <i class="bi bi-send me-1"></i>Gửi tin nhắn liên hệ
+              </button>
+            </div>
+          </form>
+
+          <div id="contactSuccessAlert" class="alert alert-success mt-4 d-none">
+            <h5 class="alert-heading fw-bold"><i class="bi bi-check-circle-fill me-2"></i>Gửi thành công!</h5>
+            <p class="mb-0" id="successMsgText">Cảm ơn bạn đã liên hệ. Hệ thống đã tiếp nhận tin nhắn của bạn!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/contact.js"></script>

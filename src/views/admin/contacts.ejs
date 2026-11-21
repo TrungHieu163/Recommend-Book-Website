@@ -1,0 +1,98 @@
+<%# Trang quản trị liên hệ /admin/contacts (B sở hữu, F17) %>
+<div class="card shadow-sm border-0 mb-4">
+  <div class="card-body">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3 pb-3 border-bottom">
+      <div>
+        <h4 class="card-title fw-bold mb-1">
+          <i class="bi bi-chat-left-dots text-primary me-2"></i>Quản lý tin nhắn liên hệ
+        </h4>
+        <p class="text-muted small mb-0">Xem và cập nhật trạng thái phản hồi của người dùng</p>
+      </div>
+
+      <!-- Lọc theo trạng thái -->
+      <div class="d-flex gap-2 align-items-center">
+        <label for="statusFilter" class="small text-muted text-nowrap">Trạng thái:</label>
+        <select class="form-select form-select-sm" id="statusFilter" style="width: 150px;">
+          <option value="">Tất cả</option>
+          <option value="new">Mới (Chưa đọc)</option>
+          <option value="read">Đã đọc</option>
+          <option value="replied">Đã phản hồi</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Bảng danh sách liên hệ -->
+    <div class="table-responsive">
+      <table class="table table-hover align-middle border mb-0" id="contactsTable">
+        <thead class="table-light">
+          <tr>
+            <th scope="col" style="width: 60px;">ID</th>
+            <th scope="col" style="width: 160px;">Người gửi</th>
+            <th scope="col" style="width: 200px;">Email / SĐT</th>
+            <th scope="col">Chủ đề & Nội dung</th>
+            <th scope="col" style="width: 130px;">Trạng thái</th>
+            <th scope="col" style="width: 150px;">Thời gian</th>
+            <th scope="col" style="width: 100px;" class="text-center">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="contactsTableBody">
+          <tr>
+            <td colspan="7" class="text-center py-5 text-muted">
+              <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+              <span>Đang tải danh sách liên hệ...</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Phân trang -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3 pt-3 border-top">
+      <span class="small text-muted" id="contactsPaginationInfo">Hiển thị 0–0 / 0</span>
+      <nav aria-label="Phân trang liên hệ">
+        <ul class="pagination pagination-sm mb-0" id="contactsPaginationNav"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- Modal xem chi tiết liên hệ -->
+<div class="modal fade" id="contactDetailModal" tabindex="-1" aria-labelledby="contactDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow border-0">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold" id="contactDetailModalLabel">Chi tiết tin nhắn liên hệ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="mb-3">
+          <label class="small text-muted fw-bold">Người gửi:</label>
+          <div class="fs-6 fw-semibold" id="detailSender"></div>
+          <div class="text-muted small" id="detailEmailPhone"></div>
+        </div>
+        <div class="mb-3">
+          <label class="small text-muted fw-bold">Chủ đề:</label>
+          <div class="fw-bold text-primary" id="detailSubject"></div>
+        </div>
+        <div class="mb-3">
+          <label class="small text-muted fw-bold">Nội dung tin nhắn:</label>
+          <div class="p-3 bg-light rounded border text-secondary" style="white-space: pre-wrap;" id="detailMessage"></div>
+        </div>
+        <div class="mb-3">
+          <label for="detailStatusSelect" class="small text-muted fw-bold">Cập nhật trạng thái:</label>
+          <select class="form-select form-select-sm" id="detailStatusSelect">
+            <option value="new">Mới (Chưa đọc)</option>
+            <option value="read">Đã đọc</option>
+            <option value="replied">Đã phản hồi</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary btn-sm px-3" id="btnSaveContactStatus">Lưu trạng thái</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/admin.contacts.js"></script>
