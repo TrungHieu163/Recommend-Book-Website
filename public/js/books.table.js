@@ -151,11 +151,15 @@
               <input class="form-check-input row-checkbox" type="checkbox" value="${book.id}" aria-label="Chọn sách ${escapeHtml(book.productName)}">
             </td>
             <td data-col="pathImage">
-              <img src="${escapeHtml(pathImage)}" 
-                   alt="${escapeHtml(book.productName)}" 
-                   class="rounded object-fit-cover border" 
-                   style="width: 42px; height: 56px;" 
-                   onerror="this.src='/images/no-cover.png'">
+              <div class="book-thumb-container border">
+                <img src="${escapeHtml(pathImage)}" 
+                     alt="${escapeHtml(book.productName)}" 
+                     class="book-thumb-img rounded" 
+                     width="42" 
+                     height="56" 
+                     loading="lazy" 
+                     onerror="this.onerror=null; this.src='/images/no-cover.png';">
+              </div>
             </td>
             <td data-col="productId">
               <span class="badge bg-light text-dark border font-monospace">${escapeHtml(book.productId)}</span>

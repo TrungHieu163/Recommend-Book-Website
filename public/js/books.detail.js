@@ -168,7 +168,7 @@
             (b) => `
             <div class="col">
               <div class="card h-100 shadow-sm border p-2 text-center" style="cursor: pointer;" onclick="window.BookDetailModal.open(${b.id})">
-                <img src="${escapeHtml(b.pathImage || '/images/no-cover.png')}" class="card-img-top mx-auto object-fit-contain mb-1" style="height: 70px; width: auto;" alt="${escapeHtml(b.productName)}" onerror="this.src='/images/no-cover.png'">
+                <img src="${escapeHtml(b.pathImage || '/images/no-cover.png')}" class="card-img-top mx-auto object-fit-contain mb-1" style="height: 70px; width: auto;" alt="${escapeHtml(b.productName)}" onerror="this.onerror=null; this.src='/images/no-cover.png';">
                 <div class="small fw-semibold text-truncate" title="${escapeHtml(b.productName)}">${escapeHtml(b.productName)}</div>
               </div>
             </div>

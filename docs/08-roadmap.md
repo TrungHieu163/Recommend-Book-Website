@@ -48,7 +48,7 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 ## Phase 4B — Khu người dùng (F12–F17, đề bài môn Ngôn ngữ kịch bản)
 - [ ] [C] Migration + model `User`, đăng ký (F12), chọn thể loại yêu thích khi đăng ký
 - [ ] [C] Đăng nhập/đăng xuất, session (bảng `sessions`) + CSRF, `requireAuth`/`requireAdmin` thật; bật phân quyền cho các route admin (F13)
-- [ ] [A] Trang khám phá `/` (lưới sách, tìm từ khóa, lọc thể loại, sắp xếp, phân trang) và trang chi tiết `/books/:id` có khối "Mua ở đâu" (F14)
+- [x] [A] Trang khám phá `/` (lưới sách, tìm từ khóa, lọc thể loại, sắp xếp, phân trang) và trang chi tiết `/books/:id` có khối "Mua ở đâu" (F14)
 - [ ] [C] Yêu thích: migration + model `Favorite`, API, nút ❤ dùng chung, trang `/me/favorites` (F15)
 - [ ] [C] Hồ sơ & sở thích: sửa thông tin, thể loại yêu thích, đổi mật khẩu (F16)
 - [ ] [B] Liên hệ: migration + model `Contact`, form `/contact`, rate limit + honeypot, trang `/admin/contacts` (F17)

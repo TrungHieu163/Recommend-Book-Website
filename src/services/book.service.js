@@ -90,6 +90,20 @@ async function getBookById(id) {
 }
 
 /**
+ * Lấy danh sách thể loại duy nhất hiện có trong DB (phục vụ bộ lọc F14)
+ * @returns {Promise<Array<string>>}
+ */
+async function getDistinctProductTypes() {
+  const types = await models.Book.findAll({
+    attributes: [[models.sequelize.fn('DISTINCT', models.sequelize.col('product_type')), 'productType']],
+    order: [['product_type', 'ASC']],
+    raw: true,
+  });
+
+  return types.map((t) => t.productType).filter(Boolean);
+}
+
+/**
  * Thêm mới sách (F02) trong 1 transaction an toàn
  */
 async function createBook(data, file) {
@@ -233,6 +247,7 @@ async function updateBook(id, data, file) {
 module.exports = {
   listBooks,
   getBookById,
+  getDistinctProductTypes,
   createBook,
   updateBook,
 };
