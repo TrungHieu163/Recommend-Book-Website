@@ -280,7 +280,18 @@
 
               if (aiResult.interpretation && this.aiQueryBox && this.aiQueryText) {
                 const interp = aiResult.interpretation;
-                this.aiQueryText.textContent = `AI hiểu: Thể loại gợi ý [${(interp.genres || []).join(', ')}] | Từ khóa [${(interp.keywords || []).join(', ')}]`;
+                const parts = [];
+                if (interp.genres && interp.genres.length > 0) {
+                  parts.push(`Thể loại: <strong>${interp.genres.map(escapeHtml).join(', ')}</strong>`);
+                }
+                if (interp.keywords && interp.keywords.length > 0) {
+                  parts.push(`Từ khóa: <strong>${interp.keywords.map(escapeHtml).join(', ')}</strong>`);
+                }
+                if (parts.length > 0) {
+                  this.aiQueryText.innerHTML = `Hiểu truy vấn: ${parts.join(' &bull; ')}`;
+                } else {
+                  this.aiQueryText.innerHTML = `Tìm kiếm ngữ nghĩa với: "<em>${escapeHtml(this.params.q)}</em>"`;
+                }
                 this.aiQueryBox.classList.remove('d-none');
               }
             } else {
