@@ -11,16 +11,16 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 - [x] [A] Layout EJS chính (navbar, Bootstrap, vùng toast, chỗ include toolbar), trang 404/500, `errorHandler`, `AppError`, `asyncHandler`
 - [x] [A] `docker-compose.yml` bản đầu: `db` (MySQL 8.4, `utf8mb4`, healthcheck, volume) và `adminer` (profile `tools`); cả nhóm chạy DB bằng `docker compose up -d db`
 - [x] [B] Bản stub `SearchService` (`services/search/index.js`) để A và C import được ngay
-- [ ] [C] Bản stub `middlewares/auth.js` (`attachUser`, `requireAuth`, `requireAdmin` cho qua mọi request) để A và B gắn vào route ngay từ đầu
-- [ ] [C] `llm.client.js` (`generateText`, `generateJson`, `embedText`) + provider Gemini (mặc định; key từ Google AI Studio), xử lý timeout/lỗi/429 → `AI_UNAVAILABLE`, cache embedding truy vấn (làm độc lập, thử bằng script CLI)
+- [x] [C] Bản stub `middlewares/auth.js` (`attachUser`, `requireAuth`, `requireAdmin` cho qua mọi request) để A và B gắn vào route ngay từ đầu
+- [x] [C] `llm.client.js` (`generateText`, `generateJson`, `embedText`) + provider Gemini (mặc định; key từ Google AI Studio), xử lý timeout/lỗi/429 → `AI_UNAVAILABLE`, cache embedding truy vấn (làm độc lập, thử bằng script CLI)
 
 ## Phase 1 — Dữ liệu & danh sách (F01)
 - [x] [A] Migration + model `Book`, `BookBuyLink`, `Counter` (bảng `books`, `book_buy_links`, `counters`), sinh `productId` bằng `counters`, `normalizeText` + `search_text`
 - [x] [A] `npm run seed` đọc `scripts/seed.data/*.json`, idempotent, tạo tài khoản admin từ `.env`
-- [ ] [A] [B] [C] Mỗi người soạn **≥ 35 sách** thành một gói `scripts/seed.data/<a|b|c>/` (`books.json` + thư mục `images/`; mô tả 3–5 câu tự viết, thể loại, tags, 0–2 `buyLinks`) đúng định dạng của chức năng Import (F09) — xem `03` mục 11; **không crawl hàng loạt** trang bán sách
+- [x] [A] [B] [C] Mỗi người soạn **≥ 35 sách** thành một gói `scripts/seed.data/<a|b|c>/` (`books.json` + thư mục `images/`; mô tả 3–5 câu tự viết, thể loại, tags, 0–2 `buyLinks`) đúng định dạng của chức năng Import (F09) — xem `03` mục 11; **không crawl hàng loạt** trang bán sách
 - [x] [A] `GET /api/books` có phân trang, sắp xếp mặc định
 - [x] [A] Trang `/admin/books`: bảng, thanh phân trang, chọn số dòng 10/15/20, trạng thái URL, loading/rỗng; cung cấp `window.BooksTable` và `data-col` theo hợp đồng
-- [ ] [C] Đóng gói app (sau khi A đẩy skeleton): `Dockerfile` (multi-stage, Node 24 alpine, non-root, healthcheck), `.dockerignore`, `.gitattributes`, `docker/entrypoint.sh` (migrate + `AUTO_SEED`)
+- [x] [C] Đóng gói app (sau khi A đẩy skeleton): `Dockerfile` (multi-stage, Node 24 alpine, non-root, healthcheck), `.dockerignore`, `.gitattributes`, `docker/entrypoint.sh` (migrate + `AUTO_SEED`)
 - [x] [B] Hoàn thiện `docker-compose.yml`: thêm `app` (build từ Dockerfile, `depends_on` db healthy, volume uploads) và `meilisearch` (volume, master key); `.env.example` cho compose; hướng dẫn chạy 2 cách (dev / toàn bộ Docker)
 
 ## Phase 2 — CRUD cơ bản (F02, F03, F04, F05-một)
@@ -46,8 +46,8 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 > Cuối Phase 4: **11 chức năng quản trị hoàn tất.** Chạy checklist thủ công ở `09`.
 
 ## Phase 4B — Khu người dùng (F12–F17, đề bài môn Ngôn ngữ kịch bản)
-- [ ] [C] Migration + model `User`, đăng ký (F12), chọn thể loại yêu thích khi đăng ký
-- [ ] [C] Đăng nhập/đăng xuất, session (bảng `sessions`) + CSRF, `requireAuth`/`requireAdmin` thật; bật phân quyền cho các route admin (F13)
+- [x] [C] Migration + model `User`, đăng ký (F12), chọn thể loại yêu thích khi đăng ký
+- [x] [C] Đăng nhập/đăng xuất, session (bảng `sessions`) + CSRF, `requireAuth`/`requireAdmin` thật; bật phân quyền cho các route admin (F13)
 - [x] [A] Trang khám phá `/` (lưới sách, tìm từ khóa, lọc thể loại, sắp xếp, phân trang) và trang chi tiết `/books/:id` có khối "Mua ở đâu" (F14)
 - [ ] [C] Yêu thích: migration + model `Favorite`, API, nút ❤ dùng chung, trang `/me/favorites` (F15)
 - [ ] [C] Hồ sơ & sở thích: sửa thông tin, thể loại yêu thích, đổi mật khẩu (F16)

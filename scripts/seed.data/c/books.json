@@ -1,0 +1,528 @@
+[
+  {
+    "productId": "BK00071",
+    "productName": "Muôn Kiếp Nhân Sinh",
+    "author": "Nguyên Phong",
+    "productType": "Tâm lý",
+    "publisher": "NXB Tổng Hợp TP.HCM",
+    "publishYear": 2020,
+    "isbn": "9786045888209",
+    "tags": ["tâm linh", "nhân quả", "luân hồi", "triết lý sống", "thức tỉnh"],
+    "description": "Muôn Kiếp Nhân Sinh ghi lại những trải nghiệm tiền kiếp kỳ lạ của một doanh nhân tài chính tại New York qua ngòi bút của giáo sư John Vũ. Cuốn sách bàn luận sâu sắc về luật nhân quả, sự thức tỉnh tâm thức và mối liên kết vô hình giữa các kiếp sống con người. Tác phẩm gửi gắm thông điệp cảnh tỉnh nhân loại về tình thương, lòng trắc ẩn và trách nhiệm với tương lai của Trái Đất.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/muon-kiep-nhan-sinh-p55288229.html" },
+      { "store": "Fahasa", "url": "https://www.fahasa.com/muon-kiep-nhan-sinh.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00072",
+    "productName": "Hiểu Về Trái Tim",
+    "author": "Thích Minh Niệm",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2021,
+    "isbn": "9786041183025",
+    "tags": ["chữa lành", "nội tâm", "cảm xúc", "thiền định", "hạnh phúc"],
+    "description": "Hiểu Về Trái Tim là tác phẩm chữa lành tâm hồn sâu sắc với hơn 50 bài viết về các cung bậc cảm xúc thường nhật như giận dữ, ghen tuông, đau khổ và tha thứ. Tác giả soi sáng những góc khuất trong tâm trí con người dưới lăng kính thiền quán và tâm lý học phương Đông. Cuốn sách giúp người đọc tìm lại sự bình yên nội tại, thấu hiểu chính mình và học cách bao dung với người khác.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/hieu-ve-trai-tim-p504423.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00073",
+    "productName": "Tội Ác Và Trừng Phạt",
+    "author": "Fyodor Dostoevsky",
+    "productType": "Văn học",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2019,
+    "isbn": "9786049826344",
+    "tags": ["tiểu thuyết Nga", "tâm lý tội phạm", "chuộc tội", "kinh điển", "hiện sinh"],
+    "description": "Tội Ác Và Trừng Phạt theo chân chàng sinh viên Raskolnikov rơi vào bế tắc tài chính và quyết định sát hại một mụ già cầm đồ độc ác để thử thách học thuyết siêu nhân của mình. Sau vụ án, anh phải trải qua những cơn dằn vặt lương tâm khủng khiếp và sự truy lùng của điều tra viên sắc sảo. Tác phẩm đi sâu vào ngõ ngách u tối của tâm lý con người và hành trình cứu rỗi linh hồn thông qua tình yêu thương chân thành.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/toi-ac-va-trung-phat.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00074",
+    "productName": "Không Diệt Không Sinh Đừng Sợ Hãi",
+    "author": "Thích Nhất Hạnh",
+    "productType": "Tâm lý",
+    "publisher": "NXB Hội Nhà Văn",
+    "publishYear": 2018,
+    "isbn": "9786045388013",
+    "tags": ["chánh niệm", "bình an", "triết lý phật giáo", "sinh tử", "tĩnh thức"],
+    "description": "Không Diệt Không Sinh Đừng Sợ Hãi truyền tải tuệ giác Phật giáo sâu sắc về bản chất vô thường và tương tức của vạn vật trên cõi đời. Thiền sư Thích Nhất Hạnh dẫn dắt người đọc gỡ bỏ nỗi sợ hãi cố hữu về cái chết và sự ly tán để tận hưởng trọn vẹn từng khoảnh khắc hiện tại. Tác phẩm mở ra cái nhìn thanh thản, giúp xoa dịu những vết thương mất mát lớn lao trong đời sống.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/khong-diet-khong-sinh-dung-so-hai-p487332.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00075",
+    "productName": "Tôi Tự Học",
+    "author": "Nguyễn Duy Cần",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2020,
+    "isbn": "9786041164925",
+    "tags": ["tự học", "phương pháp học tập", "tư duy độc lập", "đọc sách", "tri thức"],
+    "description": "Tôi Tự Học là trước tác kinh điển của học giả Thu Giang Nguyễn Duy Cần bàn về mục đích chân chính và tinh thần của việc học suốt đời. Sách vạch ra những phương pháp rèn luyện trí não, thói quen đọc sách có phê phán và kỹ năng tích lũy tri thức độc lập. Đây là kim chỉ nam quý giá cho học sinh, sinh viên và bất kỳ ai khao khát trau dồi nhân cách cũng như sự hiểu biết sâu rộng.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/toi-tu-hoc.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00076",
+    "productName": "Bàn Về Khế Ước Xã Hội",
+    "author": "Jean-Jacques Rousseau",
+    "productType": "Khoa học",
+    "publisher": "NXB Tri Thức",
+    "publishYear": 2017,
+    "isbn": "9786049434129",
+    "tags": ["chính trị", "triết học", "khế ước xã hội", "tự do", "dân chủ"],
+    "description": "Bàn Về Khế Ước Xã Hội là một trong những kiệt tác triết học chính trị có ảnh hưởng mạnh mẽ nhất đến nền dân chủ hiện đại và Cách mạng Pháp. Rousseau luận giải về nguồn gốc của nhà nước, quyền tự do nguyên bản của con người và ý chí tối cao của nhân dân trong việc quản trị xã hội. Cuốn sách cung cấp cơ sở lý luận vững chắc về mối quan hệ giữa công dân và quyền lực nhà nước.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/ban-ve-khe-uoc-xa-hoi-p372849.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00077",
+    "productName": "Kiến Trúc Máy Tính Và Hệ Điều Hành",
+    "author": "Andrew S. Tanenbaum",
+    "productType": "Công nghệ",
+    "publisher": "NXB Bách Khoa Hà Nội",
+    "publishYear": 2021,
+    "isbn": "9786049987113",
+    "tags": ["hệ điều hành", "kiến trúc máy tính", "khoa học máy tính", "tiến trình", "bộ nhớ"],
+    "description": "Kiến Trúc Máy Tính Và Hệ Điều Hành giải thích tường tận nguyên lý hoạt động cốt lõi của phần cứng và hệ điều hành máy tính hiện đại. Từ cơ chế quản lý tiến trình, bộ nhớ ảo, lập lịch CPU cho đến hệ thống tập tin và giao tiếp mạng đều được phân tích cặn kẽ. Giáo trình này là tài liệu nền tảng bắt buộc đối với sinh viên ngành công nghệ thông tin và kỹ thuật phần mềm.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/kien-truc-may-tinh-va-he-dieu-hanh.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00078",
+    "productName": "Người Giàu Có Nhất Thành Babylon",
+    "author": "George S. Clason",
+    "productType": "Kinh tế",
+    "publisher": "NXB Tổng Hợp TP.HCM",
+    "publishYear": 2019,
+    "isbn": "9786045892015",
+    "tags": ["tài chính cá nhân", "tiết kiệm", "đầu tư", "làm giàu", "quản lý tiền"],
+    "description": "Người Giàu Có Nhất Thành Babylon mang đến những bí quyết quản lý tài chính kinh điển qua các câu chuyện ngụ ngôn cổ xưa tại thành Babylon thịnh vượng. Cuốn sách nhấn mạnh nguyên tắc giữ lại một phần thu nhập cho bản thân, đầu tư thông minh và kiểm soát các chi phí không cần thiết. Tác phẩm là bài học tài chính vỡ lòng nhưng vô cùng thực tế và bền vững cho mọi thế hệ bạn đọc.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/nguoi-giau-co-nhat-thanh-babylon-p543210.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00079",
+    "productName": "Bí Mật Của May Mắn",
+    "author": "Álex Rovira",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2018,
+    "isbn": "9786041123456",
+    "tags": ["may mắn", "ngụ ngôn", "thành công", "nỗ lực", "cơ hội"],
+    "description": "Bí Mật Của May Mắn kể về hành trình tìm kiếm cây cỏ bốn lá thần kỳ của hai hiệp sĩ trong khu rừng mê cung huyền bí. Câu chuyện phân định ranh giới rõ ràng giữa vận may tình cờ thoáng qua và sự may mắn bền vững do chính con người tự tay tạo dựng. Cuốn sách truyền cảm hứng cho người đọc chủ động gieo hạt giống nỗ lực và chuẩn bị sẵn sàng đón nhận cơ hội trong đời.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/bi-mat-cua-may-man.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00080",
+    "productName": "Trăm Năm Cô Đơn",
+    "author": "Gabriel García Márquez",
+    "productType": "Văn học",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2020,
+    "isbn": "9786049826788",
+    "tags": ["chủ nghĩa hiện thực huyền ảo", "văn học Mỹ Latinh", "dòng họ Buendia", "kinh điển", "cô đơn"],
+    "description": "Trăm Năm Cô Đơn là thiên sử thi vĩ đại khắc họa lịch sử bảy thế hệ của dòng họ Buendía tại ngôi làng huyền thoại Macondo. Phong cách hiện thực huyền ảo tài tình hòa quyện giữa yếu tố thần kỳ và thực tế nghiệt ngã của chiến tranh và biến động xã hội. Tác phẩm đoạt giải Nobel văn học này cảnh tỉnh sâu sắc về căn bệnh cô đơn và sự tha hóa của con người trong dòng chảy thời gian.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/tram-nam-co-don-p1029384.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00081",
+    "productName": "Thế Giới Phẳng",
+    "author": "Thomas L. Friedman",
+    "productType": "Kinh tế",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2019,
+    "isbn": "9786041154322",
+    "tags": ["toàn cầu hóa", "công nghệ", "kinh tế thế giới", "chuỗi cung ứng", "xu hướng"],
+    "description": "Thế Giới Phẳng phân tích sự biến đổi ngoạn mục của kinh tế toàn cầu bước vào thế kỷ 21 dưới tác động của Internet, thuê ngoài và chuỗi cung ứng mở rộng. Tác giả chỉ ra sân chơi kinh tế đang trở nên bình đẳng hơn giữa các quốc gia đang phát triển và cường quốc công nghiệp. Cuốn sách là tài liệu kinh tế kinh điển giúp người đọc thấu hiểu làn sóng toàn cầu hóa và định vị bản thân trong thời đại mới.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/the-gioi-phang.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00082",
+    "productName": "Lập Trình Hệ Thống Với Rust",
+    "author": "Jim Blandy",
+    "productType": "Công nghệ",
+    "publisher": "NXB Thông Tin Và Truyền Thông",
+    "publishYear": 2022,
+    "isbn": "9786048054321",
+    "tags": ["rust", "lập trình hệ thống", "an toàn bộ nhớ", "concurrency", "hiệu năng cao"],
+    "description": "Lập Trình Hệ Thống Với Rust giới thiệu chi tiết về ngôn ngữ Rust hiện đại với khả năng quản lý bộ nhớ an toàn tuyệt đối mà không cần bộ thu gom rác. Tác phẩm giải thích cơ chế quyền sở hữu (ownership), mượn (borrowing), vòng đời (lifetimes) và lập trình đồng thời không lỗi tương tranh. Sách phù hợp cho các kỹ sư muốn xây dựng ứng dụng mạng hiệu năng cao, công cụ hệ thống và blockchain.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/lap-trinh-he-thong-voi-rust-p987654.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00083",
+    "productName": "Chiến Tranh Và Hòa Bình",
+    "author": "Lev Tolstoy",
+    "productType": "Văn học",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2018,
+    "isbn": "9786049765432",
+    "tags": ["văn học cổ điển", "nước Nga", "Napoléon", "chiến tranh", "lịch sử"],
+    "description": "Chiến Tranh Và Hòa Bình là đại kiệt tác văn học tái hiện bức tranh xã hội Nga rộng lớn trong thời kỳ cuộc chiến tranh chống Napoléon đầu thế kỷ 19. Qua số phận của các gia tộc quý tộc Rostov, Bolkonsky và Bezukhov, Tolstoy mổ xẻ ý nghĩa của tình yêu, lý tưởng sống và quy luật lịch sử. Cuốn tiểu thuyết bất hủ này chinh phục độc giả bởi chiều sâu tâm lý nhân vật và tầm vóc triết lý hoành tráng.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/chien-tranh-va-hoa-binh.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00084",
+    "productName": "Nguồn Cội (Origin)",
+    "author": "Dan Brown",
+    "productType": "Văn học",
+    "publisher": "NXB Lao Động",
+    "publishYear": 2018,
+    "isbn": "9786045999882",
+    "tags": ["trinh thám", "biểu tượng học", "trí tuệ nhân tạo", "khoa học tôn giáo", "Robert Langdon"],
+    "description": "Nguồn Cội đưa giáo sư biểu tượng học Robert Langdon vào cuộc truy đuổi nghẹt thở tại Tây Ban Nha nhằm giải mã bí mật chấn động về nguồn gốc và tương lai của loài người. Cuộc đối đầu kịch tính giữa các thế lực tôn giáo bảo thủ và những tiến bộ công nghệ vượt bậc mở ra câu hỏi sinh tử về sự tồn tại của nhân loại. Tác phẩm cuốn hút người đọc bởi tình tiết dồn dập, kiến trúc tráng lệ và các câu đố hóc búa.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/nguon-coi-dan-brown-p1122334.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00085",
+    "productName": "7 Thói Quen Của Người Thành Đạt",
+    "author": "Stephen R. Covey",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Tổng Hợp TP.HCM",
+    "publishYear": 2021,
+    "isbn": "9786045898765",
+    "tags": ["thành công", "lãnh đạo bản thân", "kỹ năng làm việc", "tư duy cùng thắng", "hiệu suất"],
+    "description": "7 Thói Quen Của Người Thành Đạt đúc kết những nguyên tắc nền tảng xây dựng hiệu quả cá nhân và sự hợp tác thành công dựa trên nhân cách chính trực. Sách hướng dẫn từng bước từ chủ động hành động, xác định mục tiêu ưu tiên cho đến tư duy cùng thắng và rèn giũa bản thân liên tục. Đây là cuốn cẩm nang lãnh đạo và phát triển bản thân có sức ảnh hưởng to lớn trên phạm vi toàn cầu.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/7-thoi-quen-hieu-qua.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00086",
+    "productName": "Dữ Liệu Lớn: Cuộc Cách Mạng Thông Tin",
+    "author": "Viktor Mayer-Schönberger",
+    "productType": "Công nghệ",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2019,
+    "isbn": "9786041147890",
+    "tags": ["dữ liệu lớn", "big data", "khoa học dữ liệu", "kinh doanh số", "công nghệ mới"],
+    "description": "Dữ Liệu Lớn: Cuộc Cách Mạng Thông Tin lý giải cách công nghệ thu thập và phân tích dữ liệu quy mô lớn đang định hình lại phương thức kinh doanh, y tế và quản lý xã hội. Tác giả làm rõ sự chuyển dịch từ việc tìm kiếm nguyên nhân sang nắm bắt các mối tương quan có giá trị dự đoán cao. Tác phẩm mang lại góc nhìn chiến lược sắc bén cho các nhà lãnh đạo và chuyên viên công nghệ trong thời đại số.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/du-lieu-lon-p876543.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00087",
+    "productName": "Việt Nam Sử Lược",
+    "author": "Trần Trọng Kim",
+    "productType": "Lịch sử",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2020,
+    "isbn": "9786049821234",
+    "tags": ["lịch sử việt nam", "sử ký", "triều đại", "nghiên cứu lịch sử", "kinh điển sử học"],
+    "description": "Việt Nam Sử Lược là bộ thông sử đầu tiên của Việt Nam viết bằng chữ quốc ngữ với lối hành văn mạch lạc, khách quan và khoa học. Cuốn sách tái hiện toàn bộ tiến trình lịch sử dân tộc từ thời kỳ Hồng Bàng dựng nước qua các triều đại phong kiến cho đến thời kỳ cận đại. Đây là tác phẩm gối đầu giường thiết yếu cho bất kỳ ai muốn nắm vững dòng chảy lịch sử và văn hóa hào hùng của đất nước.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/viet-nam-su-luoc.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00088",
+    "productName": "Bố Già (The Godfather)",
+    "author": "Mario Puzo",
+    "productType": "Văn học",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2019,
+    "isbn": "9786049825431",
+    "tags": ["tiểu thuyết mafia", "gia đình", "quyền lực", "bố già", "kinh điển mỹ"],
+    "description": "Bố Già tái hiện thế giới ngầm mafia Mỹ đầy khốc liệt nhưng cũng thấm đẫm tình cảm gia đình và danh dự của dòng tộc Corleone dưới sự bảo bọc của Don Vito. Khi các thế lực tội phạm khác dòm ngó, chàng cựu binh Michael buộc phải bước vào bóng tối để gìn giữ đế chế gia tộc. Tác phẩm được ngợi ca là đỉnh cao của tiểu thuyết tội phạm với cốt truyện nghẹt thở và triết lý thâm thúy về quyền lực.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/bo-gia-mario-puzo-p456789.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00089",
+    "productName": "Tâm Lý Học Đám Đông",
+    "author": "Gustave Le Bon",
+    "productType": "Tâm lý",
+    "publisher": "NXB Thế Giới",
+    "publishYear": 2020,
+    "isbn": "9786047781207",
+    "tags": ["tâm lý xã hội", "đám đông", "hành vi bầy đàn", "tuyên truyền", "thao túng"],
+    "description": "Tâm Lý Học Đám Đông phân tích các hiện tượng tâm lý đặc thù xảy ra khi các cá nhân riêng lẻ tập hợp thành một đám đông vô thức và dễ bị kích động. Le Bon chỉ ra rằng trong đám đông, năng lực suy xét lý trí suy giảm nhường chỗ cho sự lây lan cảm xúc và tính bầy đàn mù quáng. Cuốn sách là nghiên cứu xã hội học nền tảng giúp lý giải các biến động chính trị và truyền thông xã hội hiện đại.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/tam-ly-hoc-dam-dong.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00090",
+    "productName": "Blink: Trong Chớp Mắt",
+    "author": "Malcolm Gladwell",
+    "productType": "Tâm lý",
+    "publisher": "NXB Thế Giới",
+    "publishYear": 2021,
+    "isbn": "9786047785670",
+    "tags": ["trực giác", "quyết định nhanh", "tiềm thức", "tâm lý học nhận thức", "thấu hiểu"],
+    "description": "Blink: Trong Chớp Mắt khám phá sức mạnh và cạm bẫy của những quyết định chớp nhoáng được đưa ra chỉ trong vài giây đầu tiên dựa trên trực giác. Tác giả phân tích lý do tại sao các chuyên gia có thể nhận định chính xác tức thì, đồng thời cảnh báo những thiên kiến vô thức dẫn đến sai lầm tai hại. Sách rèn luyện cho người đọc khả năng tinh lọc thông tin quan trọng nhất để phản xạ sáng suốt trong môi trường biến động.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/blink-trong-chop-mat-p654321.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00091",
+    "productName": "Chủ Nghĩa Khắc Kỷ: Phong Cách Sống Bản Lĩnh",
+    "author": "William B. Irvine",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Công Thương",
+    "publishYear": 2020,
+    "isbn": "9786049901235",
+    "tags": ["khắc kỷ", "stoicism", "bình thản", "bản lĩnh sống", "kiểm soát cảm xúc"],
+    "description": "Chủ Nghĩa Khắc Kỷ: Phong Cách Sống Bản Lĩnh mang triết học Stoic cổ đại La Mã trở lại cuộc sống đương đại như một nghệ thuật sống an nhiên giữa nghịch cảnh. Tác giả hướng dẫn các kỹ thuật thực hành như phân biệt điều ta kiểm soát được và không kiểm soát được để trút bỏ âu lo vô ích. Tác phẩm rèn luyện sự dẻo dai tinh thần, giúp con người giữ vững sự điềm tĩnh và sống trọn vẹn từng ngày.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/chu-nghia-khac-ky.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00092",
+    "productName": "Chinh Phục Khách Hàng Khó Tính",
+    "author": "Jill Konrath",
+    "productType": "Kinh tế",
+    "publisher": "NXB Lao Động",
+    "publishYear": 2019,
+    "isbn": "9786045997654",
+    "tags": ["bán hàng b2b", "nghệ thuật thương thuyết", "chăm sóc khách hàng", "bán hàng", "kinh doanh"],
+    "description": "Chinh Phục Khách Hàng Khó Tính cung cấp các chiến lược bán hàng B2B đột phá để tiếp cận và tạo dựng lòng tin với những nhà quản lý bận rộn. Tác phẩm chỉ dẫn cách thức tạo ra đề xuất giá trị khác biệt, lắng nghe nhu cầu cốt lõi và tháo gỡ rào cản phòng thủ của đối tác. Cuốn sách là cẩm nang thực chiến quý báu cho đội ngũ kinh doanh, tư vấn viên và chuyên viên quan hệ khách hàng.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/chinh-phuc-khach-hang-kho-tinh-p789012.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00093",
+    "productName": "Cơ Sở Dữ Liệu: Khái Niệm Và Thiết Kế",
+    "author": "Abraham Silberschatz",
+    "productType": "Công nghệ",
+    "publisher": "NXB Khoa Học Và Kỹ Thuật",
+    "publishYear": 2021,
+    "isbn": "9786046712345",
+    "tags": ["cơ sở dữ liệu", "sql", "chuẩn hóa dữ liệu", "giao dịch acid", "lập chỉ mục"],
+    "description": "Cơ Sở Dữ Liệu: Khái Niệm Và Thiết Kế là cuốn giáo trình toàn diện hàng đầu thế giới về hệ thống quản trị cơ sở dữ liệu quan hệ và phân tán. Sách trình bày chi tiết từ đại số quan hệ, thiết kế lược đồ chuẩn hóa, ngôn ngữ SQL cho đến kiểm soát tương tranh và tối ưu hóa câu truy vấn. Đây là cuốn sách nền móng không thể thiếu cho các kỹ sư backend, quản trị viên DB và kiến trúc sư hệ thống.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/co-so-du-lieu-khai-niem-va-thiet-ke.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00094",
+    "productName": "Đạo Của Vật Lý",
+    "author": "Fritjof Capra",
+    "productType": "Khoa học",
+    "publisher": "NXB Hồng Đức",
+    "publishYear": 2020,
+    "isbn": "9786048995431",
+    "tags": ["vật lý lượng tử", "triết học phương đông", "vũ trụ quan", "khoa học hiện đại", "tương đồng"],
+    "description": "Đạo Của Vật Lý vạch ra những điểm tương đồng đáng kinh ngạc giữa vật lý lượng tử phương Tây và triết học thần bí phương Đông như Đạo giáo, Phật giáo và Ấn Độ giáo. Tác giả chứng minh rằng thế giới hạ nguyên tử không phải là những khối vật chất cô lập mà là một mạng lưới tương tác động hài hòa. Cuốn sách mở rộng tầm nhìn nhận thức của con người về bản chất toàn thể của vũ trụ và vạn vật.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/dao-cua-vat-ly-p321654.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00095",
+    "productName": "Chuyện Con Mèo Dạy Hải Âu Bay",
+    "author": "Luis Sepúlveda",
+    "productType": "Văn học",
+    "publisher": "NXB Hội Nhà Văn",
+    "publishYear": 2019,
+    "isbn": "9786045398761",
+    "tags": ["ngụ ngôn hiện đại", "tình mẫu tử", "giữ lời hứa", "bảo vệ môi trường", "ấm áp"],
+    "description": "Chuyện Con Mèo Dạy Hải Âu Bay là khúc ca ngợi lòng vị tha và tình yêu thương vượt qua mọi định kiến của chú mèo mập Zorba đối với cô hải âu bé bỏng Lucky. Zorba đã giữ trọn ba lời hứa danh dự: không ăn quả trứng, chăm sóc hải âu non và dạy nó bay giữa bầu trời lộng gió. Câu chuyện sưởi ấm tâm hồn độc giả bằng lòng trắc ẩn trong sáng và trách nhiệm bảo vệ môi trường biển.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/chuyen-con-meo-day-hai-au-bay.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00096",
+    "productName": "Khởi Nghiệp Tinh Gọn (The Lean Startup)",
+    "author": "Eric Ries",
+    "productType": "Kinh tế",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2020,
+    "isbn": "9786041165434",
+    "tags": ["khởi nghiệp", "lean startup", "mvp", "thử nghiệm nhanh", "đổi mới sáng tạo"],
+    "description": "Khởi Nghiệp Tinh Gọn định hình lại phương thức phát triển sản phẩm công nghệ bằng việc liên tục thử nghiệm giả định và học hỏi có kiểm chứng từ người dùng thực tế. Mô hình Vòng lặp Xây dựng - Đo lường - Học hỏi giúp doanh nghiệp tiết kiệm tối đa nguồn lực và nhanh chóng xoay trục trước khi cạn kiệt vốn. Cuốn sách là kim chỉ nam bắt buộc cho các nhà sáng lập startup và nhà quản lý đổi mới sản phẩm.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/khoi-nghiep-tinh-gon-p123987.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00097",
+    "productName": "Hạt Của Chúa: Hành Trình Khám Phá Hạt Higgs",
+    "author": "Sean Carroll",
+    "productType": "Khoa học",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2018,
+    "isbn": "9786041132145",
+    "tags": ["vật lý hạt", "cern", "hạt higgs", "nguồn gốc vũ trụ", "khám phá khoa học"],
+    "description": "Hạt Của Chúa tái hiện cuộc đua khoa học vĩ đại kéo dài nhiều thập kỷ tại máy gia tốc hạt lớn LHC để săn lùng hạt boson Higgs bí ẩn. Tác giả giải thích dễ hiểu cơ chế tạo nên khối lượng cho mọi vật chất và khẳng định tính đúng đắn của Mô hình Chuẩn trong vật lý hiện đại. Tác phẩm truyền cảm hứng mạnh mẽ về lòng đam mê khám phá sự thật và tinh thần lao động khoa học phi thường của nhân loại.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/hat-cua-chua.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00098",
+    "productName": "Phương Pháp Giáo Dục Montessori",
+    "author": "Maria Montessori",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Phụ Nữ Việt Nam",
+    "publishYear": 2019,
+    "isbn": "9786045667890",
+    "tags": ["giáo dục sớm", "montessori", "phát triển trẻ em", "tự lập", "tôn trọng trẻ"],
+    "description": "Phương Pháp Giáo Dục Montessori đặt nền móng cho cuộc cách mạng sư phạm tôn trọng cá tính và quyền tự do khám phá thiên bẩm của trẻ nhỏ. Tác phẩm hướng dẫn cách tạo lập môi trường học tập khuyến khích tính tự lập, khả năng tập trung và sự sáng tạo không gò bó. Đây là cẩm nang giáo dục không thể thiếu cho các bậc cha mẹ và giáo viên mầm non nuôi dạy con trẻ một cách khoa học.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/phuong-phap-giao-duc-montessori-p890123.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00099",
+    "productName": "Người Bán Hàng Vĩ Đại Nhất Thế Giới",
+    "author": "Og Mandino",
+    "productType": "Kỹ năng sống",
+    "publisher": "NXB Tổng Hợp TP.HCM",
+    "publishYear": 2020,
+    "isbn": "9786045893214",
+    "tags": ["bán hàng", "truyền cảm hứng", "nguyên tắc sống", "thành công", "ngụ ngôn"],
+    "description": "Người Bán Hàng Vĩ Đại Nhất Thế Giới kể về cậu bé chăn lạc đà nghèo Hafid đã vươn lên thành thương gia giàu có nhờ mười cuộn da dê chứa đựng những bí mật cổ xưa. Cuốn sách khẳng định bán hàng đích thực không chỉ là trao đổi hàng hóa mà là nghệ thuật trao đi tình yêu thương và sự kiên trì bền bỉ. Những lời khuyên đầy chất thơ trong tác phẩm là nguồn động viên quý báu nâng đỡ tinh thần hàng triệu bạn đọc.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/nguoi-ban-hang-vi-dai-nhat-the-gioi.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00100",
+    "productName": "Sức Mạnh Của Thói Quen",
+    "author": "Charles Duhigg",
+    "productType": "Tâm lý",
+    "publisher": "NXB Lao Động",
+    "publishYear": 2021,
+    "isbn": "9786045998763",
+    "tags": ["thói quen", "thay đổi bản thân", "khoa học não bộ", "hiệu suất", "tâm lý học hành vi"],
+    "description": "Sức Mạnh Của Thói Quen khám phá cơ chế vận hành của vòng lặp thói quen gồm Gợi ý - Hành động - Phần thưởng trong não bộ con người. Tác giả đưa ra phương pháp khoa học để thay đổi các thói quen tiêu cực và thiết lập những thói quen then chốt giúp bứt phá năng suất làm việc. Cuốn sách mang tính thực tiễn cao, giúp cá nhân và tổ chức làm chủ hành vi để kiến tạo thành công bền vững.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/suc-manh-cua-thoi-quen-p456123.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00101",
+    "productName": "Cấu Trúc Dữ Liệu Và Giải Thuật Ứng Dụng",
+    "author": "Robert Sedgewick",
+    "productType": "Công nghệ",
+    "publisher": "NXB Bách Khoa Hà Nội",
+    "publishYear": 2022,
+    "isbn": "9786049988229",
+    "tags": ["giải thuật", "cấu trúc dữ liệu", "thuật toán sắp xếp", "đồ thị", "tối ưu mã nguồn"],
+    "description": "Cấu Trúc Dữ Liệu Và Giải Thuật Ứng Dụng phân tích chuyên sâu các thuật toán quan trọng nhất về sắp xếp, tìm kiếm, xử lý đồ thị và chuỗi văn bản. Sách đi kèm việc đánh giá độ phức tạp thuật toán và cách cài đặt tối ưu trên các hệ thống phần mềm thực tế. Tác phẩm là người bạn đồng hành thiết yếu giúp lập trình viên rèn luyện tư duy logic sắc bén và vượt qua các vòng phỏng vấn kỹ thuật.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/cau-truc-du-lieu-va-giai-thuat.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00102",
+    "productName": "Vật Lý Thiên Văn Cho Người Vội Vã",
+    "author": "Neil deGrasse Tyson",
+    "productType": "Khoa học",
+    "publisher": "NXB Trẻ",
+    "publishYear": 2018,
+    "isbn": "9786041128765",
+    "tags": ["vật lý thiên văn", "vũ trụ", "hố đen", "vật chất tối", "khoa học đại chúng"],
+    "description": "Vật Lý Thiên Văn Cho Người Vội Vã tóm lược những câu hỏi lớn nhất về vũ trụ từ Vụ Nổ Lớn, bản chất không - thời gian cho đến năng lượng tối và các hố đen bí ẩn. Lối kể chuyện hóm hỉnh, ngắn gọn và giàu hình ảnh của nhà thiên văn học Tyson khiến những khái niệm vật lý phức tạp trở nên gần gũi vô cùng. Cuốn sách thắp sáng trí tò mò của người đọc về vị trí khiêm nhường nhưng kỳ diệu của nhân loại giữa vũ trụ bao la.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/vat-ly-thien-van-cho-nguoi-voi-va-p789456.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00103",
+    "productName": "Đất Rừng Phương Nam",
+    "author": "Đoàn Giỏi",
+    "productType": "Văn học",
+    "publisher": "NXB Kim Đồng",
+    "publishYear": 2021,
+    "isbn": "9786042213456",
+    "tags": ["văn học thiếu nhi", "nam bộ", "thiên nhiên kỳ thú", "kháng chiến", "tình người"],
+    "description": "Đất Rừng Phương Nam là khúc ca mộc mạc và sống động về thiên nhiên hoang dã trù phú cùng con người nghĩa hiệp miền Tây Nam Bộ qua bước chân lưu lạc của cậu bé An. Tác phẩm vẽ nên những trang văn tuyệt đẹp về cảnh săn cá sấu, ăn ong rừng U Minh và tấm lòng trung kiên kháng chiến của đồng bào. Cuốn tiểu thuyết mang lại cho nhiều thế hệ độc giả tình yêu quê hương đất nước dạt dào và sâu lắng.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/dat-rung-phuong-nam.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00104",
+    "productName": "Mật Mã Da Vinci",
+    "author": "Dan Brown",
+    "productType": "Văn học",
+    "publisher": "NXB Văn Học",
+    "publishYear": 2019,
+    "isbn": "9786049823458",
+    "tags": ["trinh thám ly kỳ", "chén thánh", "leonardo da vinci", "mật mã", "nghệ thuật"],
+    "description": "Mật Mã Da Vinci mở đầu bằng vụ án mạng bí ẩn bên trong bảo tàng Louvre kéo giáo sư Robert Langdon và nữ chuyên gia giải mật Sophie Neveu vào cuộc trốn chạy kịch tính. Họ phải lần theo những mật mã ẩn giấu trong các bức họa trứ danh của Leonardo da Vinci để giải mã bí mật lớn nhất của Kitô giáo. Tác phẩm tạo nên cơn sốt văn hóa toàn cầu nhờ sự kết hợp tài tình giữa lịch sử, tôn giáo và nghệ thuật kể chuyện hồi hộp.",
+    "buyLinks": [
+      { "store": "Tiki", "url": "https://tiki.vn/mat-ma-da-vinci-p234567.html" }
+    ],
+    "pathImage": ""
+  },
+  {
+    "productId": "BK00105",
+    "productName": "Trí Tuệ Cảm Xúc (EQ)",
+    "author": "Daniel Goleman",
+    "productType": "Tâm lý",
+    "publisher": "NXB Tri Thức",
+    "publishYear": 2020,
+    "isbn": "9786049437892",
+    "tags": ["trí tuệ cảm xúc", "eq", "thấu cảm", "kiểm soát cảm xúc", "thành công sự nghiệp"],
+    "description": "Trí Tuệ Cảm Xúc chứng minh rằng năng lực nhận biết và làm chủ cảm xúc của bản thân cũng như thấu cảm với người khác đóng vai trò quyết định thành công hơn cả chỉ số thông minh IQ. Goleman phân tích cấu trúc thần kinh của xúc cảm và đưa ra hướng dẫn rèn luyện năm thành tố cốt lõi của EQ trong học tập và công việc. Cuốn sách là nghiên cứu tâm lý học đột phá giúp xây dựng cuộc sống hài hòa và các mối quan hệ xã hội tốt đẹp.",
+    "buyLinks": [
+      { "store": "Fahasa", "url": "https://www.fahasa.com/tri-tue-cam-xuc-eq.html" }
+    ],
+    "pathImage": ""
+  }
+]

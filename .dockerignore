@@ -1,0 +1,8 @@
+node_modules
+.git
+.env
+public/uploads/*
+!public/uploads/.gitkeep
+tests
+docs
+*.md
