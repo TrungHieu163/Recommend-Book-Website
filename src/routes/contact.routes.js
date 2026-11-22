@@ -10,6 +10,7 @@ const rateLimit = require('express-rate-limit');
 const contactController = require('../controllers/contact.controller');
 const validate = require('../middlewares/validate');
 const { createContactSchema, updateContactStatusSchema } = require('../validators/contact.schema');
+const { requireAdmin } = require('../middlewares/auth');
 
 // Rate limit gửi liên hệ: tối đa 5 yêu cầu / 10 phút từ 1 IP
 const contactLimiter = rateLimit({
@@ -30,9 +31,9 @@ const contactLimiter = rateLimit({
 router.post('/contact', contactLimiter, validate(createContactSchema, 'body'), contactController.submitContact);
 
 // GET /api/admin/contacts — Quản lý liên hệ (Admin)
-router.get('/admin/contacts', contactController.listContacts);
+router.get('/admin/contacts', requireAdmin, contactController.listContacts);
 
 // PATCH /api/admin/contacts/:id — Đổi trạng thái (Admin)
-router.patch('/admin/contacts/:id', validate(updateContactStatusSchema, 'body'), contactController.updateStatus);
+router.patch('/admin/contacts/:id', requireAdmin, validate(updateContactStatusSchema, 'body'), contactController.updateStatus);
 
 module.exports = router;

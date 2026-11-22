@@ -4,6 +4,14 @@
 (function () {
   'use strict';
 
+  function getCsrfToken() {
+    const metaTag = document.querySelector('meta[name="csrf-token"]');
+    if (metaTag) return metaTag.getAttribute('content');
+    const inputTag = document.querySelector('input[name="_csrf"]');
+    if (inputTag) return inputTag.value;
+    return '';
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
     const messageInput = document.getElementById('message');
@@ -77,12 +85,16 @@
       spinner.classList.remove('d-none');
 
       try {
+        const csrfToken = getCsrfToken();
+        const headers = {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        };
+        if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+
         const res = await fetch('/api/contact', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
+          headers,
           body: JSON.stringify({ fullName, email, phone, subject, message, hpField }),
         });
 

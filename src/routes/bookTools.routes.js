@@ -15,6 +15,7 @@ const router = express.Router();
 const bookToolsController = require('../controllers/bookTools.controller');
 const validate = require('../middlewares/validate');
 const { bulkIdsSchema } = require('../validators/bookTools.schema');
+const { requireAdmin } = require('../middlewares/auth');
 
 // Cấu hình Multer riêng cho import (hỗ trợ .xlsx, .json, .xml, .zip lên đến MAX_IMPORT_ZIP_MB)
 const uploadImport = multer({
@@ -28,28 +29,28 @@ const uploadImport = multer({
 // GET /api/books/types — Danh sách thể loại hiện có (F06)
 router.get('/types', bookToolsController.getTypes);
 
-// GET /api/books/export — Xuất dữ liệu sách (F09)
-router.get('/export', bookToolsController.exportBooks);
+// GET /api/books/export — Xuất dữ liệu sách (F09, chỉ admin theo 11 mục 2)
+router.get('/export', requireAdmin, bookToolsController.exportBooks);
 
-// GET /api/books/import/template — Tải file/gói mẫu (F09)
-router.get('/import/template', bookToolsController.downloadTemplate);
+// GET /api/books/import/template — Tải file/gói mẫu (F09, chỉ admin)
+router.get('/import/template', requireAdmin, bookToolsController.downloadTemplate);
 
-// POST /api/books/import — Nhập dữ liệu sách (F09)
-router.post('/import', uploadImport, bookToolsController.importBooks);
+// POST /api/books/import — Nhập dữ liệu sách (F09, chỉ admin)
+router.post('/import', requireAdmin, uploadImport, bookToolsController.importBooks);
 
 // POST /api/search/reindex — Đánh lại chỉ mục tìm kiếm (Admin)
-router.post('/search/reindex', bookToolsController.reindex);
+router.post('/search/reindex', requireAdmin, bookToolsController.reindex);
 
-// POST /api/books/bulk-delete — Xóa nhiều (F05)
-router.post('/bulk-delete', validate(bulkIdsSchema, 'body'), bookToolsController.bulkDelete);
+// POST /api/books/bulk-delete — Xóa nhiều (F05, chỉ admin)
+router.post('/bulk-delete', requireAdmin, validate(bulkIdsSchema, 'body'), bookToolsController.bulkDelete);
 
-// POST /api/books/bulk-copy — Sao chép nhiều (F08)
-router.post('/bulk-copy', validate(bulkIdsSchema, 'body'), bookToolsController.bulkCopy);
+// POST /api/books/bulk-copy — Sao chép nhiều (F08, chỉ admin)
+router.post('/bulk-copy', requireAdmin, validate(bulkIdsSchema, 'body'), bookToolsController.bulkCopy);
 
-// POST /api/books/:id/copy — Sao chép 1 (F07)
-router.post('/:id/copy', bookToolsController.copyBook);
+// POST /api/books/:id/copy — Sao chép 1 (F07, chỉ admin)
+router.post('/:id/copy', requireAdmin, bookToolsController.copyBook);
 
-// DELETE /api/books/:id — Xóa 1 (F05)
-router.delete('/:id', bookToolsController.deleteBook);
+// DELETE /api/books/:id — Xóa 1 (F05, chỉ admin)
+router.delete('/:id', requireAdmin, bookToolsController.deleteBook);
 
 module.exports = router;

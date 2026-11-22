@@ -6,6 +6,7 @@
 
 const express = require('express');
 const router = express.Router();
+const { requireAdmin } = require('../middlewares/auth');
 
 // GET /contact — Trang gửi liên hệ người dùng
 router.get('/contact', (req, res) => {
@@ -15,8 +16,8 @@ router.get('/contact', (req, res) => {
   });
 });
 
-// GET /admin/contacts — Trang quản trị danh sách liên hệ
-router.get('/admin/contacts', (req, res) => {
+// GET /admin/contacts — Trang quản trị danh sách liên hệ (Chỉ Admin)
+router.get('/admin/contacts', requireAdmin, (req, res) => {
   res.render('admin/contacts', {
     title: 'Quản lý liên hệ',
     activeNav: 'admin-contacts',

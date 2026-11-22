@@ -23,6 +23,14 @@
     }
   }
 
+  function getCsrfToken() {
+    const metaTag = document.querySelector('meta[name="csrf-token"]');
+    if (metaTag) return metaTag.getAttribute('content');
+    const inputTag = document.querySelector('input[name="_csrf"]');
+    if (inputTag) return inputTag.value;
+    return '';
+  }
+
   class AdminContactsManager {
     constructor() {
       this.tbody = document.getElementById('contactsTableBody');
@@ -59,12 +67,16 @@
           if (!id || !newStatus) return;
 
           try {
+            const csrfToken = getCsrfToken();
+            const headers = {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            };
+            if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+
             const res = await fetch(`/api/admin/contacts/${id}`, {
               method: 'PATCH',
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
+              headers,
               body: JSON.stringify({ status: newStatus }),
             });
 
