@@ -2,18 +2,19 @@
 
 /**
  * gemini.provider.js — Nhà cung cấp Google Gemini API (C sở hữu, AI lõi)
- * Sử dụng REST API chuẩn qua native fetch (Node.js 24)
- * Hỗ trợ: generateText, generateJson, embedText (chuẩn hóa L2 norm = 1)
+ * Hỗ trợ cả khóa Google AI Studio (AIza...) và Google Cloud Express (AQ...)
  */
 
 const AppError = require('../../../utils/AppError');
 const env = require('../../../config/env');
 
-const GEMINI_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
+const AI_STUDIO_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
+const VERTEX_EXPRESS_BASE_URL = 'https://aiplatform.googleapis.com/v1/publishers/google';
 
-/**
- * Chuẩn hóa vector về độ dài L2 = 1 (khi đó cosine similarity = tích vô hướng dot product)
- */
+function getBaseUrl(apiKey) {
+  return String(apiKey || '').startsWith('AQ.') ? VERTEX_EXPRESS_BASE_URL : AI_STUDIO_BASE_URL;
+}
+
 function normalizeVector(vector) {
   if (!Array.isArray(vector) || vector.length === 0) return vector;
   let sumSq = 0;
@@ -25,9 +26,6 @@ function normalizeVector(vector) {
   return vector.map((val) => val / norm);
 }
 
-/**
- * Chuẩn bị danh sách contents cho Gemini API
- */
 function buildGeminiContents(messages) {
   if (!Array.isArray(messages)) {
     return [{ role: 'user', parts: [{ text: String(messages || '') }] }];
@@ -43,15 +41,14 @@ function buildGeminiContents(messages) {
   });
 }
 
-/**
- * Thực hiện gọi HTTP fetch có kiểm soát timeout và bắt lỗi chuẩn AppError
- */
-async function callGeminiApi(url, body) {
+async function callGeminiApi(path, body) {
   const apiKey = env.ai.apiKey;
   if (!apiKey) {
     throw new AppError('AI_UNAVAILABLE', 'Chưa cấu hình AI_API_KEY cho dịch vụ Gemini', 503);
   }
 
+  const baseUrl = getBaseUrl(apiKey);
+  const url = `${baseUrl}${path}`;
   const endpoint = `${url}${url.includes('?') ? '&' : '?'}key=${apiKey}`;
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), env.ai.timeoutMs);
@@ -105,18 +102,16 @@ async function callGeminiApi(url, body) {
   }
 }
 
-/**
- * Sinh văn bản từ prompt/messages
- */
 async function generateText({ system, messages, temperature = 0.7, maxTokens = 1000 } = {}) {
-  const model = env.ai.model || 'gemini-1.5-flash';
-  const url = `${GEMINI_BASE_URL}/models/${model}:generateContent`;
+  const model = env.ai.model || 'gemini-3.8-flash';
+  const path = `/models/${model}:generateContent`;
 
   const payload = {
     contents: buildGeminiContents(messages),
     generationConfig: {
       temperature,
       maxOutputTokens: maxTokens,
+      thinkingConfig: { thinkingBudget: 0 },
     },
   };
 
@@ -126,17 +121,14 @@ async function generateText({ system, messages, temperature = 0.7, maxTokens = 1
     };
   }
 
-  const result = await callGeminiApi(url, payload);
+  const result = await callGeminiApi(path, payload);
   const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
   return text ? text.trim() : '';
 }
 
-/**
- * Sinh JSON có cấu trúc
- */
 async function generateJson({ system, messages, schemaHint } = {}) {
-  const model = env.ai.model || 'gemini-1.5-flash';
-  const url = `${GEMINI_BASE_URL}/models/${model}:generateContent`;
+  const model = env.ai.model || 'gemini-3.8-flash';
+  const path = `/models/${model}:generateContent`;
 
   let systemPrompt = system || 'Bạn là trợ lý AI trả lời dữ liệu định dạng JSON.';
   if (schemaHint) {
@@ -151,13 +143,13 @@ async function generateJson({ system, messages, schemaHint } = {}) {
     generationConfig: {
       responseMimeType: 'application/json',
       temperature: 0.2,
+      thinkingConfig: { thinkingBudget: 0 },
     },
   };
 
-  const result = await callGeminiApi(url, payload);
+  const result = await callGeminiApi(path, payload);
   let text = result.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
 
-  // Dọn dẹp markdown fences nếu có
   text = text.trim();
   if (text.startsWith('```json')) {
     text = text.replace(/^```json\s*/i, '').replace(/\s*```$/, '');
@@ -174,38 +166,34 @@ async function generateJson({ system, messages, schemaHint } = {}) {
   }
 }
 
-/**
- * Tạo vector embedding cho một chuỗi hoặc mảng chuỗi
- * Trả về vector số hoặc mảng vector, luôn được chuẩn hóa L2 norm = 1
- */
 async function embedText(textOrArray) {
   const isArray = Array.isArray(textOrArray);
-  const embedModel = env.ai.embedModel || 'text-embedding-004';
+  const embedModel = env.ai.embedModel || 'gemini-embedding-001';
   const dimensions = env.ai.embedDimensions || 768;
 
   if (isArray) {
     if (textOrArray.length === 0) return [];
 
-    const url = `${GEMINI_BASE_URL}/models/${embedModel}:batchEmbedContents`;
+    const path = `/models/${embedModel}:batchEmbedContents`;
     const requests = textOrArray.map((t) => ({
       model: `models/${embedModel}`,
       content: { parts: [{ text: String(t || '').slice(0, 2000) }] },
       outputDimensionality: dimensions,
     }));
 
-    const result = await callGeminiApi(url, { requests });
+    const result = await callGeminiApi(path, { requests });
     const rawEmbeddings = result.embeddings || [];
     return rawEmbeddings.map((item) => normalizeVector(item.values || []));
   }
 
   const singleText = String(textOrArray || '').slice(0, 2000);
-  const url = `${GEMINI_BASE_URL}/models/${embedModel}:embedContent`;
+  const path = `/models/${embedModel}:embedContent`;
   const payload = {
     content: { parts: [{ text: singleText }] },
     outputDimensionality: dimensions,
   };
 
-  const result = await callGeminiApi(url, payload);
+  const result = await callGeminiApi(path, payload);
   const values = result.embedding?.values || [];
   return normalizeVector(values);
 }
