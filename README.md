@@ -41,7 +41,7 @@ Chỉ với 3 lệnh từ môi trường sạch:
 
 ```bash
 # 1. Clone repository
-git clone <URL_REPO>
+git clone <https://github.com/TrungHieu163/Recommend-Book-Website.git>
 cd BookWeb
 
 # 2. Tạo file cấu hình môi trường từ mẫu
