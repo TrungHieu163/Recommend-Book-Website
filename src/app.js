@@ -13,6 +13,11 @@ const bookToolsRoutes = require('./routes/bookTools.routes'); // B: xóa, sao ch
 const bookRoutes = require('./routes/book.routes');
 const contactRoutes = require('./routes/contact.routes');
 const aiSearchRoutes = require('./routes/aiSearch.routes');
+const { sessionMiddleware } = require('./config/session');
+const csrfMiddleware = require('./middlewares/csrf');
+const { attachUser, requireAdmin } = require('./middlewares/auth');
+const authRoutes = require('./routes/auth.routes');
+const pageAccountRoutes = require('./routes/pageAccount.routes');
 
 const app = express();
 
@@ -37,10 +42,15 @@ app.set('layout', 'layouts/main');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// Cấu hình Session, CSRF & attachUser (C sở hữu, F13)
+app.use(sessionMiddleware);
+app.use(csrfMiddleware);
+app.use(attachUser);
+
 // Biến locals mặc định cho view EJS
 app.use((req, res, next) => {
-  res.locals.currentUser = req.user || null;
-  res.locals.csrfToken = '';
+  res.locals.currentUser = req.user ? (typeof req.user.toJSON === 'function' ? req.user.toJSON() : req.user) : null;
+  res.locals.csrfToken = req.session ? req.session.csrfToken || '' : '';
   res.locals.title = '';
   res.locals.activeNav = '';
   next();
@@ -74,6 +84,13 @@ app.use('/api/books', bookToolsRoutes);
 
 // Mount API Books (A sở hữu)
 app.use('/api/books', bookRoutes);
+
+// Mount Auth API & Account Pages (C sở hữu, F12, F13)
+app.use('/api/auth', authRoutes);
+app.use('/', pageAccountRoutes);
+
+// Bảo vệ phân quyền cho các route Quản trị viên (F13)
+app.use('/admin', requireAdmin);
 
 // Mount Contact API & Pages (B sở hữu)
 app.use('/api', contactRoutes);
