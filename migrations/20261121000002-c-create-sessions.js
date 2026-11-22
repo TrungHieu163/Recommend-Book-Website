@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * 20261121000002-c-create-sessions.js — Migration tạo bảng sessions cho session store (C sở hữu, F13)
- * @type {import('sequelize-cli').Migration}
+- 20261121000002-c-create-sessions.js — Migration tạo bảng sessions cho session store (C sở hữu, F13)
+- @type {import('sequelize-cli').Migration}
  */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -22,13 +22,15 @@ module.exports = {
           type: Sequelize.TEXT,
           allowNull: true,
         },
-        createdAt: {
+        created_at: {
           type: Sequelize.DATE,
           allowNull: false,
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
-        updatedAt: {
+        updated_at: {
           type: Sequelize.DATE,
           allowNull: false,
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
         },
       },
       {
