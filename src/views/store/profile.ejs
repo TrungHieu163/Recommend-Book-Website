@@ -1,0 +1,149 @@
+<%# Trang hồ sơ & sở thích (F16 - C sở hữu) - profile.ejs %>
+<div class="profile-page pb-5">
+  <!-- Breadcrumb điều hướng -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="bi bi-house-door me-1"></i>Trang chủ</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Hồ sơ & Sở thích</li>
+    </ol>
+  </nav>
+
+  <!-- Header thông tin người dùng -->
+  <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 bg-white">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center fw-bold fs-3" style="width: 64px; height: 64px;">
+          <%= (user.fullName || user.email || 'U').charAt(0).toUpperCase() %>
+        </div>
+        <div>
+          <h4 class="fw-bold mb-1"><%= user.fullName || 'Người dùng' %></h4>
+          <div class="d-flex align-items-center gap-2 text-muted small">
+            <span><i class="bi bi-envelope me-1"></i><%= user.email %></span>
+            <span>&bull;</span>
+            <% if (user.role === 'admin') { %>
+              <span class="badge bg-warning text-dark"><i class="bi bi-shield-check me-1"></i>Quản trị viên</span>
+            <% } else { %>
+              <span class="badge bg-secondary-subtle text-secondary"><i class="bi bi-person me-1"></i>Thành viên</span>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a href="/me/favorites" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+          <i class="bi bi-heart-fill me-1"></i>Xem sách yêu thích
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Cột trái: Cập nhật thông tin & Thể loại yêu thích -->
+    <div class="col-lg-7">
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+        <h5 class="fw-bold mb-3 d-flex align-items-center">
+          <i class="bi bi-person-gear text-primary me-2 fs-5"></i>Thông tin tài khoản & Sở thích
+        </h5>
+        <p class="text-muted small mb-4">
+          Thông tin họ tên và thể loại bạn quan tâm giúp AI gợi ý những cuốn sách phù hợp nhất với sở thích của bạn.
+        </p>
+
+        <form id="profileForm" novalidate>
+          <div class="mb-3">
+            <label for="profileEmail" class="form-label fw-semibold small">Địa chỉ Email</label>
+            <input type="email" class="form-control bg-light" id="profileEmail" value="<%= user.email %>" readonly disabled>
+            <div class="form-text">Email dùng để đăng nhập và không thể thay đổi.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="profileFullName" class="form-label fw-semibold small">Họ và tên <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="profileFullName" name="fullName" value="<%= user.fullName || '' %>" required minlength="2" maxlength="100" placeholder="Nhập họ và tên...">
+            <div class="invalid-feedback" id="err-fullName">Họ tên phải có từ 2 đến 100 ký tự.</div>
+          </div>
+
+          <div class="mb-4">
+            <label for="profilePhone" class="form-label fw-semibold small">Số điện thoại</label>
+            <input type="tel" class="form-control" id="profilePhone" name="phone" value="<%= user.phone || '' %>" maxlength="20" placeholder="Nhập số điện thoại liên hệ...">
+            <div class="invalid-feedback" id="err-phone">Số điện thoại không hợp lệ.</div>
+          </div>
+
+          <!-- Thể loại yêu thích (Tối đa 5 thể loại) -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label class="form-label fw-semibold small mb-0">
+                <i class="bi bi-bookmark-heart text-danger me-1"></i>Thể loại sách yêu thích (tối đa 5):
+              </label>
+              <span class="small text-muted" id="genreCount">
+                Đã chọn: <%= Array.isArray(user.preferredGenres) ? user.preferredGenres.length : 0 %>/5
+              </span>
+            </div>
+            
+            <%
+              const standardGenres = [
+                'Văn học', 'Kinh tế', 'Kỹ năng sống', 'Tâm lý', 'Thiếu nhi',
+                'Khoa học', 'Công nghệ', 'Lịch sử', 'Ngoại ngữ', 'Truyện tranh'
+              ];
+              const userGenres = Array.isArray(user.preferredGenres) ? user.preferredGenres : [];
+            %>
+
+            <div class="d-flex flex-wrap gap-2 mb-2" id="profileGenreChipsContainer">
+              <% standardGenres.forEach(function(genre) { %>
+                <% const isSelected = userGenres.includes(genre); %>
+                <button type="button" 
+                        class="btn btn-sm rounded-pill profile-genre-chip <%= isSelected ? 'btn-primary text-white active' : 'btn-outline-secondary' %>" 
+                        data-genre="<%= genre %>">
+                  <%= isSelected ? '✓ ' + genre : '+ ' + genre %>
+                </button>
+              <% }); %>
+            </div>
+            <input type="hidden" id="preferredGenresInput" name="preferredGenres" value='<%= JSON.stringify(userGenres) %>'>
+            <div class="form-text">Các thể loại này sẽ được ưu tiên trong khu vực "Dành cho bạn".</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold shadow-sm" id="btnSubmitProfile">
+            <span class="spinner-border spinner-border-sm d-none me-1" id="profileSpinner" role="status"></span>
+            <span><i class="bi bi-check2 me-1"></i>Lưu thay đổi</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Cột phải: Đổi mật khẩu -->
+    <div class="col-lg-5">
+      <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100">
+        <h5 class="fw-bold mb-3 d-flex align-items-center">
+          <i class="bi bi-shield-lock text-warning me-2 fs-5"></i>Đổi mật khẩu
+        </h5>
+        <p class="text-muted small mb-4">
+          Để bảo vệ tài khoản, hãy sử dụng mật khẩu mạnh có ít nhất 8 ký tự, bao gồm cả chữ cái và chữ số.
+        </p>
+
+        <form id="changePasswordForm" novalidate>
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label fw-semibold small">Mật khẩu hiện tại <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="currentPassword" name="currentPassword" required placeholder="Nhập mật khẩu hiện tại...">
+            <div class="invalid-feedback" id="err-currentPassword">Vui lòng nhập mật khẩu hiện tại.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="newPassword" class="form-label fw-semibold small">Mật khẩu mới <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" required minlength="8" placeholder="Tối thiểu 8 ký tự, gồm chữ và số...">
+            <div class="invalid-feedback" id="err-newPassword">Mật khẩu mới phải từ 8 ký tự, gồm cả chữ và số.</div>
+          </div>
+
+          <div class="mb-4">
+            <label for="confirmNewPassword" class="form-label fw-semibold small">Xác nhận mật khẩu mới <span class="text-danger">*</span></label>
+            <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" required placeholder="Nhập lại mật khẩu mới...">
+            <div class="invalid-feedback" id="err-confirmNewPassword">Xác nhận mật khẩu mới không khớp.</div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-warning text-dark px-4 py-2 rounded-pill fw-semibold" id="btnSubmitChangePassword">
+            <span class="spinner-border spinner-border-sm d-none me-1" id="passwordSpinner" role="status"></span>
+            <span><i class="bi bi-key me-1"></i>Cập nhật mật khẩu</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/profile.js"></script>

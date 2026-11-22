@@ -1,0 +1,106 @@
+<%# Partial Chatbot Widget AI RAG (AI-1, C sở hữu) - chatbot-widget.ejs %>
+
+<!-- Nút nổi mở Chatbot AI (Alt+B) -->
+<div id="chatbotContainer">
+  <button type="button" 
+          class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center position-fixed" 
+          id="btnChatbotToggle" 
+          style="bottom: 25px; right: 25px; width: 56px; height: 56px; z-index: 1050;" 
+          title="Trợ lý đọc sách AI (Alt+B)"
+          aria-label="Mở Chatbot AI">
+    <i class="bi bi-robot fs-4"></i>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="chatbotUnreadBadge" style="display: none;">
+      1
+    </span>
+  </button>
+
+  <!-- Cửa sổ Chatbot dạng Popup -->
+  <div class="card shadow-lg border-0 rounded-4 position-fixed d-none flex-column" 
+       id="chatbotWindow" 
+       style="bottom: 92px; right: 25px; width: 380px; max-width: calc(100vw - 30px); height: 520px; max-height: calc(100vh - 120px); z-index: 1050; overflow: hidden;">
+    
+    <!-- Header Chatbot -->
+    <div class="card-header bg-primary text-white d-flex align-items-center justify-content-between p-3 border-0">
+      <div class="d-flex align-items-center gap-2">
+        <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
+          <i class="bi bi-robot fs-5"></i>
+        </div>
+        <div>
+          <h6 class="fw-bold mb-0 lh-1">Trợ lý đọc sách AI</h6>
+          <small class="text-white-50" style="font-size: 0.75rem;">
+            <i class="bi bi-circle-fill text-success me-1" style="font-size: 0.55rem;"></i>Sẵn sàng hỗ trợ
+          </small>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-1">
+        <button type="button" class="btn btn-sm btn-link text-white p-1" id="btnChatbotClear" title="Xóa lịch sử hội thoại">
+          <i class="bi bi-arrow-clockwise fs-6"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-link text-white p-1" id="btnChatbotClose" title="Đóng cửa sổ (Alt+B hoặc Esc)">
+          <i class="bi bi-x-lg fs-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Body Chatbot: Vùng hiển thị tin nhắn -->
+    <div class="card-body p-3 overflow-y-auto d-flex flex-column gap-3 bg-light" id="chatbotMessages" style="flex: 1 1 auto;">
+      <!-- Tin nhắn chào mừng mặc định -->
+      <div class="d-flex align-items-start gap-2">
+        <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center flex-shrink-0" style="width: 28px; height: 28px;">
+          <i class="bi bi-robot small"></i>
+        </div>
+        <div class="p-3 bg-white rounded-4 shadow-sm text-dark small" style="max-width: 85%; line-height: 1.5;">
+          Xin chào! Mình là trợ lý AI của BookWeb. Bạn đang muốn tìm sách theo nội dung, tâm trạng hay thể loại nào hôm nay?
+        </div>
+      </div>
+
+      <!-- Gợi ý câu hỏi nhanh -->
+      <div id="chatbotQuickSuggestions" class="d-flex flex-column gap-1 my-1">
+        <small class="text-muted fw-semibold" style="font-size: 0.75rem;">Gợi ý câu hỏi:</small>
+        <div class="d-flex flex-wrap gap-1">
+          <button type="button" class="btn btn-sm btn-outline-primary rounded-pill py-0 px-2 small chatbot-chip" data-query="Sách giúp bớt trì hoãn, dễ đọc và tạo động lực">
+            🚀 Bớt trì hoãn, tạo động lực
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-primary rounded-pill py-0 px-2 small chatbot-chip" data-query="Tiểu thuyết trinh thám ly kỳ, bất ngờ">
+            🕵️ Tiểu thuyết trinh thám
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-primary rounded-pill py-0 px-2 small chatbot-chip" data-query="Sách quản lý tài chính cá nhân cho người mới">
+            💰 Tài chính cho người mới
+          </button>
+        </div>
+      </div>
+
+      <!-- Trạng thái đang trả lời (Typing indicator) -->
+      <div class="d-flex align-items-start gap-2 d-none" id="chatbotTyping">
+        <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center flex-shrink-0" style="width: 28px; height: 28px;">
+          <i class="bi bi-robot small"></i>
+        </div>
+        <div class="p-2 px-3 bg-white rounded-4 shadow-sm text-muted small d-flex align-items-center gap-2">
+          <div class="spinner-grow spinner-grow-sm text-primary" role="status"></div>
+          <span>Đang tìm kiếm sách và suy nghĩ...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Chatbot: Ô nhập liệu -->
+    <div class="card-footer bg-white p-2 border-top">
+      <form id="chatbotForm" class="d-flex gap-2 align-items-center">
+        <input type="text" 
+               class="form-control form-control-sm rounded-pill shadow-none" 
+               id="chatbotInput" 
+               placeholder="Nhập câu hỏi... (Alt+B để mở/đóng)" 
+               maxlength="500" 
+               autocomplete="off" 
+               required>
+        <button type="submit" class="btn btn-primary btn-sm rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" id="btnChatbotSend" style="width: 32px; height: 32px;">
+          <i class="bi bi-send-fill small"></i>
+        </button>
+      </form>
+      <div class="text-center mt-1 text-muted" style="font-size: 0.68rem;">
+        Không nhập thông tin cá nhân &bull; Bấm <kbd>Alt+B</kbd> để bật/tắt
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/chatbot.js"></script>

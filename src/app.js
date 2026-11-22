@@ -18,6 +18,8 @@ const csrfMiddleware = require('./middlewares/csrf');
 const { attachUser, requireAdmin } = require('./middlewares/auth');
 const authRoutes = require('./routes/auth.routes');
 const pageAccountRoutes = require('./routes/pageAccount.routes');
+const meRoutes = require('./routes/me.routes');
+const aiRoutes = require('./routes/ai.routes');
 
 const app = express();
 
@@ -88,6 +90,10 @@ app.use('/api/books', bookRoutes);
 // Mount Auth API & Account Pages (C sở hữu, F12, F13)
 app.use('/api/auth', authRoutes);
 app.use('/', pageAccountRoutes);
+
+// Mount User Area Routes: Favorites & Profile (C sở hữu, F15, F16)
+app.use('/', meRoutes);
+app.use('/', aiRoutes);
 
 // Bảo vệ phân quyền cho các route Quản trị viên (F13)
 app.use('/admin', requireAdmin);
