@@ -13,6 +13,7 @@ const bookToolsRoutes = require('./routes/bookTools.routes'); // B: xóa, sao ch
 const bookRoutes = require('./routes/book.routes');
 const contactRoutes = require('./routes/contact.routes');
 const aiSearchRoutes = require('./routes/aiSearch.routes');
+const aiAdminRoutes = require('./routes/aiAdmin.routes');
 const { sessionMiddleware } = require('./config/session');
 const csrfMiddleware = require('./middlewares/csrf');
 const { attachUser, requireAdmin } = require('./middlewares/auth');
@@ -100,7 +101,9 @@ app.use('/admin', requireAdmin);
 
 // Mount Contact API & Pages (B sở hữu)
 app.use('/api', contactRoutes);
+// Mount AI Search & AI Admin APIs
 app.use('/api/ai', aiSearchRoutes);
+app.use('/api/ai', aiAdminRoutes);
 app.use('/', pageContactRoutes);
 
 // Mount Page Routes (A sở hữu)

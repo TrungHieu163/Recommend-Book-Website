@@ -5,6 +5,14 @@
 (function () {
   'use strict';
 
+  function getCsrfToken() {
+    const metaTag = document.querySelector('meta[name="csrf-token"]');
+    if (metaTag) return metaTag.getAttribute('content');
+    const inputTag = document.querySelector('input[name="_csrf"]');
+    if (inputTag) return inputTag.value;
+    return '';
+  }
+
   const BooksBulk = {
     /**
      * Xóa 1 sách (F05) — gọi từ nút xóa trên mỗi dòng
@@ -15,9 +23,13 @@
       if (!confirm(`Bạn có chắc chắn muốn xóa sách "${title}"?`)) return;
 
       try {
+        const csrfToken = getCsrfToken();
+        const headers = { Accept: 'application/json' };
+        if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+
         const res = await fetch(`/api/books/${id}`, {
           method: 'DELETE',
-          headers: { Accept: 'application/json' },
+          headers,
         });
 
         const result = await res.json();
@@ -47,12 +59,16 @@
       if (!confirm(`Bạn có chắc chắn muốn xóa ${ids.length} sách đã chọn?`)) return;
 
       try {
+        const csrfToken = getCsrfToken();
+        const headers = {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        };
+        if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+
         const res = await fetch('/api/books/bulk-delete', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
+          headers,
           body: JSON.stringify({ ids }),
         });
 
@@ -76,9 +92,13 @@
      */
     async copySingle(id) {
       try {
+        const csrfToken = getCsrfToken();
+        const headers = { Accept: 'application/json' };
+        if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+
         const res = await fetch(`/api/books/${id}/copy`, {
           method: 'POST',
-          headers: { Accept: 'application/json' },
+          headers,
         });
 
         const result = await res.json();
@@ -109,12 +129,16 @@
       if (!confirm(`Sao chép ${ids.length} sách đã chọn?`)) return;
 
       try {
+        const csrfToken = getCsrfToken();
+        const headers = {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        };
+        if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+
         const res = await fetch('/api/books/bulk-copy', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
+          headers,
           body: JSON.stringify({ ids }),
         });
 

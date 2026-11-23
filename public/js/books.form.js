@@ -96,6 +96,84 @@
           this.handleSubmit();
         });
       }
+
+      // 7. Nút AI gợi ý thể loại & tags (AI-6)
+      const btnAiSuggest = document.getElementById('btnAiSuggestMetadata');
+      if (btnAiSuggest) {
+        btnAiSuggest.addEventListener('click', async () => {
+          await this.handleAiSuggestMetadata(btnAiSuggest);
+        });
+      }
+    }
+
+    async handleAiSuggestMetadata(button) {
+      const nameInput = document.getElementById('formProductName');
+      const descInput = document.getElementById('formDescription');
+      const authorInput = document.getElementById('formAuthor');
+      const typeInput = document.getElementById('formProductType');
+      const tagsInput = document.getElementById('formTags');
+
+      const productName = nameInput ? nameInput.value.trim() : '';
+      const description = descInput ? descInput.value.trim() : '';
+      const author = authorInput ? authorInput.value.trim() : '';
+
+      if (!productName && !description) {
+        if (window.showToast) {
+          window.showToast('warning', 'Vui lòng nhập tên sách hoặc mô tả trước khi yêu cầu AI gợi ý.');
+        }
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      const origHtml = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status"></span>Đang gợi ý...';
+
+      try {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+        const res = await fetch('/api/ai/suggest-metadata', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            'X-CSRF-Token': csrfToken,
+          },
+          body: JSON.stringify({ productName, description, author }),
+        });
+
+        const result = await res.json();
+        if (!res.ok) {
+          throw new Error(result.error?.message || 'Dịch vụ AI hiện không khả dụng');
+        }
+
+        const data = result.data || {};
+        let filledCount = 0;
+
+        if (data.productType && typeInput) {
+          typeInput.value = data.productType;
+          filledCount++;
+        }
+
+        if (Array.isArray(data.tags) && data.tags.length > 0 && tagsInput) {
+          tagsInput.value = data.tags.join(', ');
+          filledCount++;
+        }
+
+        if (window.showToast) {
+          if (filledCount > 0) {
+            window.showToast('success', '✨ AI đã gợi ý thể loại & tags! Vui lòng kiểm tra lại trước khi lưu.');
+          } else {
+            window.showToast('info', 'AI không tìm thấy gợi ý phù hợp cho nội dung này.');
+          }
+        }
+      } catch (err) {
+        if (window.showToast) {
+          window.showToast('warning', `Không thể gợi ý từ AI: ${err.message}`);
+        }
+      } finally {
+        button.disabled = false;
+        button.innerHTML = origHtml;
+      }
     }
 
     addBuyLinkRow(store = '', url = '') {

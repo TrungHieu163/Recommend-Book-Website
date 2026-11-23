@@ -39,7 +39,7 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 ## Phase 4 — Import/Export, cột, phím tắt (F09, F10, F11)
 - [x] [B] Export xlsx/json/xml/**zip** (đúng phạm vi: đã tick → bộ lọc → tất cả; có `buyLinks`; zip kèm ảnh)
 - [x] [B] Import xlsx/json/xml và **gói ZIP kèm ảnh** (xử lý `pathImage`: trống/URL/đường dẫn trong gói; dùng `zipBundle.service` của A), validate từng dòng, báo cáo lỗi + cảnh báo, file/gói mẫu, `importFromDirectory(dir)` cho seed
-- [ ] [A] Chuyển `npm run seed` sang gọi `importFromDirectory` của B (mode overwrite, idempotent)
+- [x] [A] Chuyển `npm run seed` sang gọi `importFromDirectory` của B (mode overwrite, idempotent)
 - [x] [C] Cấu hình ẩn/hiện cột (localStorage)
 - [x] [C] Phím tắt + modal trợ giúp `Alt+K`
 
@@ -58,7 +58,7 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 ## Phase 5 — AI lõi: tìm theo nội dung & chatbot (AI-4, AI-1)
 - [x] [B] Migration + model `BookEmbedding` (bảng `book_embeddings`), `embedding.service` (tạo embedding bất đồng bộ khi thêm/sửa/import, `npm run embed`, chỉ mục trong bộ nhớ)
 - [x] [B] `smartSearch.service` (tìm kiếm lai bằng RRF) + `POST /api/ai/search`
-- [ ] [A] Công tắc "Tìm thông minh (AI)" và dòng "Hiểu truy vấn" ở trang `/`
+- [x] [A] Công tắc "Tìm thông minh (AI)" và dòng "Hiểu truy vấn" ở trang `/`
 - [x] [C] `chatbot.service` (truy xuất bằng `smartSearch` → prompt → trả lời), `POST /api/ai/chat`, rate limit
 - [x] [C] Widget chatbot (thẻ sách, trạng thái đang trả lời, dự phòng khi AI lỗi), phím `Alt+B`, hàm `window.BookChatbot.sendMessage`
 
@@ -70,8 +70,8 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 ## Phase 7 — Đề xuất cá nhân hóa & hỗ trợ admin (AI-4, AI-6, tùy chọn AI-3/AI-5)
 - [x] [C] Sách tương tự (`/api/books/:id/similar`, có fallback content-based)
 - [x] [C] "Dành cho bạn" (`GET /api/ai/recommend/for-me`, xử lý khởi đầu lạnh)
-- [ ] [A] Hiển thị khối "Dành cho bạn" ở trang `/` và "Sách tương tự" ở trang chi tiết
-- [ ] [A] AI gợi ý thể loại & tags: `POST /api/ai/suggest-metadata` + nút "✨" trong form thêm/sửa
+- [x] [A] Hiển thị khối "Dành cho bạn" ở trang `/` và "Sách tương tự" ở trang chi tiết
+- [x] [A] AI gợi ý thể loại & tags: `POST /api/ai/suggest-metadata` + nút "✨" trong form thêm/sửa
 - [ ] [A] (Tùy chọn) OCR ảnh bìa (`/api/ai/ocr`, nút camera, "Điền từ ảnh bìa")
 - [x] [B] (Tùy chọn) Giọng nói bằng Web Speech API (`voice.js`)
 - [x] [C] (Tùy chọn) Provider Ollama (`bge-m3`) làm dự phòng/offline; thêm service `ollama` vào compose (xem `12` mục 6B)
@@ -80,7 +80,7 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 
 ## Phase 8 — Hoàn thiện
 - [x] [C] Bộ truy vấn `tests/ai/queries.json` (≥ 20) + `npm run eval:search` (P@5: từ khóa / ngữ nghĩa / lai); lưu cache embedding vào file (đã `.gitignore`) để chạy lại không tốn hạn mức
-- [ ] [A] README (cài đặt, biến môi trường, chạy docker, khóa AI cần có, ảnh chụp màn hình) + rà soát bảo mật theo `07` và `11` mục 6
+- [x] [A] README (cài đặt, biến môi trường, chạy docker, khóa AI cần có, ảnh chụp màn hình) + rà soát bảo mật theo `07` và `11` mục 6
 - [ ] [A] Kiểm tra Docker từ **máy sạch** theo `12-docker-and-deployment.md` mục 12 (`git clone` → `cp .env.example .env` → `docker compose up --build`; `down`/`up` giữ dữ liệu; `down -v`/`up` dựng lại từ đầu)
 - [x] [B] Checklist kiểm thử thủ công ở `09` cho cả nhóm; test tự động cho import/export/search; viết hướng dẫn sao lưu/khôi phục bằng `mysqldump` vào README
 - [x] [C] Kịch bản demo + bộ câu hỏi bảo vệ (AI + xác thực)

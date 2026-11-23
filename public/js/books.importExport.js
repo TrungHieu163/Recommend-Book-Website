@@ -11,6 +11,14 @@
     return div.innerHTML;
   }
 
+  function getCsrfToken() {
+    const metaTag = document.querySelector('meta[name="csrf-token"]');
+    if (metaTag) return metaTag.getAttribute('content');
+    const inputTag = document.querySelector('input[name="_csrf"]');
+    if (inputTag) return inputTag.value;
+    return '';
+  }
+
   const BooksImportExport = {
     init() {
       this.bindExportEvents();
@@ -115,10 +123,14 @@
         formData.append('mode', mode);
 
         try {
+          const csrfToken = getCsrfToken();
+          const headers = { Accept: 'application/json' };
+          if (csrfToken) headers['X-CSRF-Token'] = csrfToken;
+
           const res = await fetch('/api/books/import', {
             method: 'POST',
             body: formData,
-            headers: { Accept: 'application/json' },
+            headers,
           });
 
           const json = await res.json();
