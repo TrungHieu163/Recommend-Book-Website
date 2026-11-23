@@ -1,12 +1,100 @@
-<%# toolbar-columns.ejs — Do [C] phát triển (Stub tạm thời) %>
-<div class="dropdown" id="toolbarColumnsArea">
-  <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-    <i class="bi bi-layout-three-columns me-1"></i>Cột
+<%# toolbar-columns.ejs — Do [C] phát triển (F10 - Cột & F11 - Phím tắt) %>
+<div class="d-flex align-items-center gap-1">
+  <!-- F10: Cấu hình ẩn/hiện cột -->
+  <div class="dropdown" id="toolbarColumnsArea">
+    <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="btnColumnsDropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" title="Cấu hình ẩn / hiện cột hiển thị (Alt+H)">
+      <i class="bi bi-layout-three-columns me-1"></i>Cột
+    </button>
+    <div class="dropdown-menu dropdown-menu-end p-3 shadow" style="min-width: 230px;" aria-labelledby="btnColumnsDropdown">
+      <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+        <h6 class="dropdown-header p-0 m-0 fw-bold text-dark">Ẩn / hiện cột</h6>
+        <button type="button" class="btn btn-link btn-sm p-0 text-decoration-none text-primary" id="btnResetColumns" title="Khôi phục danh sách cột hiển thị mặc định">
+          Mặc định
+        </button>
+      </div>
+      <div id="columnCheckboxes" class="d-flex flex-column gap-2">
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input col-toggle-checkbox" type="checkbox" id="colToggle-pathImage" data-col="pathImage">
+          <label class="form-check-label small" for="colToggle-pathImage">Ảnh bìa</label>
+        </div>
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input col-toggle-checkbox" type="checkbox" id="colToggle-productId" data-col="productId">
+          <label class="form-check-label small" for="colToggle-productId">Mã sách</label>
+        </div>
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input col-toggle-checkbox" type="checkbox" id="colToggle-productName" data-col="productName" checked disabled>
+          <label class="form-check-label small" for="colToggle-productName">Tên sách <span class="text-muted">(cố định)</span></label>
+        </div>
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input col-toggle-checkbox" type="checkbox" id="colToggle-productType" data-col="productType">
+          <label class="form-check-label small" for="colToggle-productType">Thể loại</label>
+        </div>
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input col-toggle-checkbox" type="checkbox" id="colToggle-author" data-col="author">
+          <label class="form-check-label small" for="colToggle-author">Tác giả</label>
+        </div>
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input col-toggle-checkbox" type="checkbox" id="colToggle-publishYear" data-col="publishYear">
+          <label class="form-check-label small" for="colToggle-publishYear">Năm xuất bản</label>
+        </div>
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input col-toggle-checkbox" type="checkbox" id="colToggle-createDate" data-col="createDate">
+          <label class="form-check-label small" for="colToggle-createDate">Ngày tạo</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F11: Nút mở Modal trợ giúp phím tắt Alt+K -->
+  <button type="button" class="btn btn-outline-secondary btn-sm" id="btnShortcutsHelp" data-bs-toggle="modal" data-bs-target="#shortcutsModal" title="Xem danh sách phím tắt (Alt+K)">
+    <i class="bi bi-keyboard"></i>
   </button>
-  <div class="dropdown-menu dropdown-menu-end p-3 shadow" style="min-width: 200px;">
-    <h6 class="dropdown-header px-0">Ẩn / hiện cột</h6>
-    <div id="columnCheckboxes" class="d-flex flex-column gap-1">
-      <!-- Cột sẽ được sinh động hoặc cấu hình ở đây -->
+</div>
+
+<!-- Modal Trợ giúp phím tắt F11 -->
+<div class="modal fade" id="shortcutsModal" tabindex="-1" aria-labelledby="shortcutsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow border-0">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold" id="shortcutsModalLabel">
+          <i class="bi bi-keyboard text-primary me-2"></i>Phím tắt hệ thống
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body p-3">
+        <p class="text-muted small mb-3">Sử dụng phím tắt để thao tác nhanh hơn trong trang quản trị sách:</p>
+        <div class="table-responsive">
+          <table class="table table-sm table-striped align-middle mb-0">
+            <thead>
+              <tr class="table-light">
+                <th scope="col" style="width: 140px;">Phím tắt</th>
+                <th scope="col">Chức năng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><kbd>Alt</kbd> + <kbd>N</kbd></td><td>Thêm mới sách</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>U</kbd></td><td>Cập nhật dòng đang tick (đúng 1 dòng)</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>V</kbd></td><td>Xem chi tiết dòng đang tick (đúng 1 dòng)</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>R</kbd></td><td>Xóa các dòng đang tick</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>C</kbd></td><td>Sao chép các dòng đang tick</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>S</kbd></td><td>Focus ô tìm kiếm</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>I</kbd></td><td>Nhập dữ liệu (Import)</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>O</kbd></td><td>Xuất dữ liệu (Export)</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>H</kbd></td><td>Mở cấu hình cột (Hide/Show)</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>A</kbd></td><td>Chọn / bỏ chọn tất cả dòng</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>B</kbd></td><td>Mở / đóng Chatbot AI</td></tr>
+              <tr><td><kbd>Alt</kbd> + <kbd>K</kbd></td><td>Xem danh sách phím tắt này</td></tr>
+              <tr><td><kbd>Esc</kbd></td><td>Đóng modal / dropdown hiện tại</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer bg-light py-2">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+      </div>
     </div>
   </div>
 </div>
+
+<script src="/js/columns.js"></script>
+<script src="/js/shortcuts.js"></script>

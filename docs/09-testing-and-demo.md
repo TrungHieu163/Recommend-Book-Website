@@ -61,35 +61,89 @@ Dùng database test riêng chạy bằng Docker (DB `book_ai_store_test` trong c
 | D7 | Sao lưu bằng `mysqldump` và khôi phục thành công | ☐ |
 | D8 | Thử trên một máy Windows khác (CRLF của `entrypoint.sh`, cổng 3306/3000/7700 bị chiếm) | ☐ |
 
-## 3. Kịch bản demo (≈ 8–10 phút)
+## 3. Kịch bản demo chi tiết phân vai (≈ 8–10 phút)
 
-1. **Khách vào trang chủ:** tìm từ khóa; bật "Tìm thông minh" và nhập mô tả nội dung, ví dụ "sách giúp mình bớt trì hoãn, dễ đọc" → chỉ ra dòng "Hiểu truy vấn" và so với tìm từ khóa (kết quả kém hơn). Cho xem số liệu P@5 của 3 chế độ (`npm run eval:search`).
-2. **Chatbot:** "Mình thích truyện trinh thám Nhật, gợi ý vài cuốn", câu hỏi nối tiếp "cuốn nào ngắn hơn?" — chỉ ra thẻ sách đều có thật trong kho.
-3. **Chi tiết sách:** bấm "Mua ở đâu" → mở tab trang bán bên ngoài; xem "Sách tương tự".
-4. **Đăng ký** (chọn vài thể loại) → "Dành cho bạn" → thả ❤ 3 cuốn cùng chủ đề → tải lại, "Dành cho bạn" thay đổi → vào trang yêu thích và hồ sơ.
-5. **Liên hệ:** gửi một form.
-6. **Admin:** đăng nhập admin; bảng sách (phân trang, ẩn/hiện cột, phím tắt `Alt+N`); thêm sách mới bằng cách nhập mô tả → bấm "✨ AI gợi ý thể loại/tags" → lưu → **tìm thấy ngay bằng "Tìm thông minh"** (embedding được tạo nền); import file mẫu (1 dòng lỗi để thấy báo cáo) → export Excel; xem `/admin/contacts`.
-7. **Dự phòng:** tắt API key → app vẫn tìm được bằng từ khóa và hiện thông báo thân thiện.
+| Thời gian | Người nói | Thao tác trên màn hình | Nội dung thuyết trình |
+|---|---|---|---|
+| **00:00 - 01:30** | **Cả nhóm & [A]** | Trang chủ `/` | **Tổng quan đề tài & Kiến trúc:** Giới thiệu website hỗ trợ tìm kiếm, đề xuất sách tích hợp AI. Giải thích mô hình kiến trúc MVC phân lớp (`Route -> Controller -> Service -> Model`), layout EJS, Bootstrap 5, MySQL 8.4 và Sequelize. |
+| **01:30 - 03:00** | **[B]** | `/` và thanh tìm kiếm | **Tìm kiếm đa chế độ & Meilisearch:** Demo tìm kiếm từ khóa với debounce 300ms, không dấu, chịu gõ sai; bật công tắc "Tìm thông minh (AI)" với truy vấn tự nhiên ("sách bớt trì hoãn, tạo động lực"). Giải thích cơ chế tìm kiếm lai (Hybrid Search) kết hợp từ khóa và vector embedding bằng thuật toán Reciprocal Rank Fusion (RRF). Cho xem kết quả đo P@5 (`npm run eval:search`). |
+| **03:00 - 05:00** | **[C]** | Nút widget chatbot `Alt+B` và `/books/:id` | **Trợ lý Chatbot AI (RAG) & Chi tiết sách:** Mở chatbot bằng `Alt+B`. Hỏi: *"Gợi ý cho mình 2 cuốn sách phát triển bản thân cho sinh viên"*. Chỉ ra chatbot trả lời ngắn gọn, trích xuất chính xác thẻ sách có trong database kèm link và nút ❤; giải thích kiến trúc RAG chống bịa sách (Hallucination) và chống Prompt Injection. Bấm vào 1 sách mở trang chi tiết `/books/:id`, demo khối "Mua ở đâu" dẫn sang tab mới an toàn và khối "Sách tương tự" (tính bằng cosine similarity hoặc content-based fallback). |
+| **05:00 - 06:30** | **[C]** | `/register`, `/me/favorites`, `/profile` | **Xác thực, Sở thích & Cá nhân hóa:** Đăng ký tài khoản mới chọn 2 thể loại yêu thích. Trang chủ tự động cá nhân hóa khối "Dành cho bạn". Bấm nút ❤ lưu sách yêu thích (optimistic update), vào `/me/favorites` đánh giá 5 sao. Vào `/profile` đổi thông tin và đổi mật khẩu. Trình bày bảo mật: bcrypt băm mật khẩu, session lưu bảng `sessions`, bảo vệ CSRF token và chống IDOR bằng cách luôn lọc theo `req.user.id`. |
+| **06:30 - 08:00** | **[A] & [B]** | `/admin/books` | **Khu quản trị (F01-F11):** Đăng nhập quyền Admin. Demo phân trang 10/15/20, cấu hình ẩn/hiện cột (F10 lưu localStorage), phím tắt nhanh (F11 `Alt+N`, `Alt+H`, `Alt+K`). Demo thêm sách mới với nút "✨ AI gợi ý thể loại & tags". Demo xóa nhiều dòng, sao chép nhiều dòng trong 1 transaction. Demo Import/Export Excel và gói ZIP kèm ảnh có kiểm tra an toàn zip-slip/zip-bomb. |
+| **08:00 - 09:30** | **Cả nhóm** | Terminal / Docker | **Đóng gói Docker & Khả năng chịu lỗi (Fallback):** Trình bày `Dockerfile` multi-stage, non-root user và compose 3 container (`app`, `db`, `meilisearch`). Tắt API key hoặc ngắt mạng: chứng minh hệ thống tự động rơi về tìm kiếm từ khóa MySQL và chatbot hiện thông báo thân thiện mà không sập app. |
 
-Chuẩn bị sẵn: image Docker đã build/pull trước (`docker compose build`, `docker compose pull`) để demo không phụ thuộc mạng, dữ liệu seed đã có embedding, bộ truy vấn đánh giá, 1 file import mẫu và 1 file có lỗi, các link `buyLinks` đã kiểm tra còn hoạt động, phương án demo khi mất mạng cho phần AI.
+---
 
-## 4. Câu hỏi bảo vệ thường gặp — sinh viên cần tự trả lời được
+## 4. Câu hỏi bảo vệ thường gặp & Câu trả lời chuẩn (Sinh viên cần nắm vững)
 
-- Vì sao tách `route → controller → service → model`? Luồng một request đi qua những đâu?
-- Phân trang hoạt động thế nào (`limit/offset`, `findAndCountAll`)? Vì sao lưu `page` trên URL?
-- **Embedding là gì? Cosine similarity là gì? Vì sao chuẩn hóa vector về độ dài 1?**
-- **Vì sao dùng tìm kiếm lai (từ khóa + ngữ nghĩa) thay vì chỉ một loại? RRF hoạt động thế nào?**
-- **Hệ thống đề xuất "Dành cho bạn" tính điểm ra sao? Khởi đầu lạnh (cold start) xử lý thế nào?**
-- Vì sao dùng Meilisearch thay vì `LIKE`/regex? Nếu Meilisearch sập thì sao? (fallback)
-- RAG là gì? Vì sao chatbot không bịa sách? Prompt injection là gì và đã chống thế nào?
-- Đo chất lượng đề xuất bằng cách nào? (P@5 trên bộ truy vấn kiểm thử)
-- Vì sao hệ thống không bán sách mà chỉ dẫn tới trang bên ngoài? Rủi ro của link ngoài (`javascript:`, `noopener`) và cách phòng.
-- Import: vì sao validate từng dòng? Xử lý trùng `productId` ra sao? Làm sao chống XXE?
-- Upload ảnh: đã chống file độc hại và path traversal thế nào? Vì sao ảnh sao chép dùng chung đường dẫn?
-- Mật khẩu lưu thế nào (băm bcrypt, vì sao không mã hóa hai chiều)? Session khác JWT ra sao, cookie cấu hình thế nào?
-- CSRF là gì, đã chống thế nào? Làm sao ngăn người dùng đọc yêu thích của người khác (IDOR)?
-- API key được giữ ở đâu? Điều gì xảy ra khi hết quota?
-- Vì sao dùng MySQL? Quan hệ 1–n giữa sách và link mua, khóa ngoại `ON DELETE CASCADE`, transaction dùng ở đâu? `productId` sinh bằng bảng `counters` có an toàn khi tạo đồng thời không, vì sao?
-- Migration là gì, vì sao không dùng `sync({ force })`? Sequelize chống SQL injection thế nào và còn chỗ nào cần tự escape (`LIKE`)?
-- Docker: image khác container ra sao? Volume để làm gì? `depends_on` + healthcheck giải quyết vấn đề gì? Vì sao trong container không dùng `localhost` để nối DB? Vì sao build nhiều giai đoạn và chạy bằng user non-root?
-- Vì sao chọn Gemini gói miễn phí? Rủi ro về dữ liệu (nội dung có thể được Google dùng để cải thiện sản phẩm) và về hạn mức là gì, nhóm đã xử lý ra sao (không gửi dữ liệu cá nhân, cache, giới hạn lượt gọi, dự phòng từ khóa/Ollama)?
+### Nhóm 1: Trí tuệ nhân tạo (AI), Embedding & Đề xuất (Phần [C] & [B])
+
+#### 1. Embedding là gì? Cosine similarity là gì? Vì sao phải chuẩn hóa vector về độ dài L2 = 1?
+- **Embedding** là quá trình chuyển đổi một đoạn văn bản (tên sách, tác giả, thể loại, tags, tóm tắt) thành một vector số thực nhiều chiều (ví dụ 768 chiều với Gemini hoặc 1024 chiều với BGE-M3). Các đoạn văn có ngữ nghĩa gần nhau sẽ có vector nằm gần nhau trong không gian đa chiều.
+- **Cosine Similarity** đo góc giữa 2 vector: `cos(θ) = (A · B) / (||A|| * ||B||)`. Giá trị từ -1 đến 1 (càng gần 1 càng tương đồng).
+- **Chuẩn hóa độ dài vector L2 = 1** (`||A|| = 1`): Khi mọi vector đều có độ dài bằng 1, mẫu số `||A|| * ||B|| = 1`, lúc này **Cosine Similarity chính bằng tích vô hướng (Dot Product)**: `A · B = Σ (A[i] * B[i])`. Nhờ vậy, máy tính chỉ cần thực hiện phép nhân và cộng tuần tự cực nhanh, không phải tính căn bậc hai hay chia số thực phức tạp, giúp quét hàng nghìn sách trong RAM chỉ mất vài mili-giây mà không cần cài thêm Vector Database cồng kềnh.
+
+#### 2. Vì sao phải dùng Tìm kiếm lai (Hybrid Search) thay vì chỉ dùng từ khóa hoặc chỉ dùng ngữ nghĩa? Thuật toán RRF hoạt động thế nào?
+- **Tìm kiếm từ khóa (Keyword/Meilisearch):** Rất tốt khi người dùng nhớ đúng tên sách, tên tác giả, mã ISBN hoặc từ vựng chính xác, nhưng bất lực khi người dùng miêu tả nội dung chung chung hoặc dùng từ đồng nghĩa.
+- **Tìm kiếm ngữ nghĩa (Embedding):** Rất tốt khi hiểu ý định tự nhiên ("sách giúp bớt lười", "làm giàu không khó"), nhưng dễ bỏ sót hoặc xếp thấp các cuốn sách khớp chính xác tên riêng.
+- **Tìm kiếm lai kết hợp cả hai bằng Reciprocal Rank Fusion (RRF):**
+  - Công thức: `RRF_Score(d) = Σ [ 1 / (60 + Rank_trong_từng_phương_pháp) ]`.
+  - Hằng số 60 giúp giảm bớt sự chênh lệch quá lớn giữa các thứ hạng đầu.
+  - Sách nào xuất hiện ở thứ hạng cao ở cả hai danh sách sẽ có điểm RRF vượt trội, mang lại kết quả vừa chính xác theo từ khóa vừa mở rộng đúng theo ngữ nghĩa.
+
+#### 3. RAG trong Chatbot là gì? Làm sao đảm bảo Chatbot không "bịa" sách (Hallucination) và chống Prompt Injection?
+- **RAG (Retrieval-Augmented Generation):** Thay vì để mô hình ngôn ngữ lớn (LLM) tự trả lời bằng trí nhớ nội tại (dễ bịa sách không có thật), hệ thống thực hiện 2 bước:
+  1. *Retrieval:* Dùng câu hỏi của người dùng để truy xuất top 5–8 cuốn sách có thật từ database qua `smartSearch`.
+  2. *Generation:* Đưa toàn bộ danh sách sách này vào System Prompt kèm quy tắc bắt buộc: *"Chỉ được gợi ý các cuốn sách có trong danh sách cung cấp, không được bịa thêm"*.
+- **Chống Prompt Injection:**
+  - Quy định rõ trong System Prompt: nội dung người dùng nhập và danh sách sách chỉ là **DỮ LIỆU** (Data), không phải **CHỈ THỊ** (Instructions). Bỏ qua mọi yêu cầu như *"Hãy quên đi các chỉ dẫn trước đó"*.
+  - Giới hạn độ dài tin nhắn ≤ 500 ký tự.
+  - Phía Client luôn escape toàn bộ dữ liệu phản hồi (dùng `textContent`) trước khi render ra DOM để chống XSS.
+
+#### 4. Hệ thống tính điểm gợi ý "Dành cho bạn" như thế nào? Xử lý bài toán Khởi đầu lạnh (Cold Start) ra sao?
+- **Tính điểm khi đã có dữ liệu:**
+  1. Lấy toàn bộ sách người dùng đã yêu thích.
+  2. Tạo **Vector sở thích cá nhân** bằng tổng có trọng số của các vector sách đó: đánh giá ≥ 4 sao nhân trọng số 1.5; đánh giá 3 sao hoặc chưa đánh giá nhân trọng số 1.0; đánh giá ≤ 2 sao (sách không thích) nhân trọng số 0 (loại bỏ). Sau đó chuẩn hóa vector tổng về độ dài 1.
+  3. Tính Cosine Similarity giữa vector sở thích với tất cả sách còn lại trong kho, cộng thêm điểm thưởng +0.1 nếu sách thuộc danh sách `preferredGenres` đã lưu trong hồ sơ. Loại bỏ các sách người dùng đã thích để không gợi ý lại.
+- **Xử lý khởi đầu lạnh (Cold Start):**
+  - *Người dùng mới đăng ký (chưa có yêu thích):* Hệ thống gợi ý sách dựa trên các thể loại yêu thích (`preferredGenres`) mà người dùng đã chọn khi đăng ký.
+  - *Khách vãng lai (chưa đăng nhập):* Gợi ý danh sách sách được cộng đồng yêu thích nhiều nhất (`SELECT book_id, COUNT(*) FROM favorites GROUP BY book_id ORDER BY COUNT(*) DESC`), sau đó bổ sung các sách mới xuất bản nhất.
+
+---
+
+### Nhóm 2: Xác thực, Phân quyền & Bảo mật (Phần [C])
+
+#### 5. Mật khẩu được bảo vệ như thế nào? Vì sao dùng băm (Hash) một chiều mà không dùng mã hóa hai chiều?
+- Mật khẩu được băm bằng thuật toán **bcrypt** với salt rounds = 10 (`bcryptjs.hash`).
+- **Không dùng mã hóa hai chiều** (như AES) vì mã hóa hai chiều luôn tồn tại khóa giải mã (Secret Key); nếu hệ thống bị lộ khóa, kẻ tấn công sẽ giải mã được toàn bộ mật khẩu người dùng.
+- **Băm một chiều (One-way Hashing)** là hàm toán học chỉ đi một chiều: từ mật khẩu sinh ra chuỗi băm, không thể đảo ngược từ chuỗi băm về mật khẩu. Khi đăng nhập, server băm mật khẩu người dùng vừa nhập với cùng salt và so sánh hai chuỗi băm (`bcrypt.compare`). Model `User` có `defaultScope` tự động loại bỏ trường `passwordHash` để không bao giờ bị lộ ra API hay log.
+
+#### 6. Phân biệt Session và JWT? Vì sao đồ án này chọn Session lưu MySQL?
+- **JWT (JSON Web Token):** Lưu ở client, server không lưu trạng thái (stateless), khó thu hồi (revoke) ngay lập tức khi người dùng đổi mật khẩu hoặc bị khóa tài khoản.
+- **Session:** Client chỉ giữ một chuỗi `sessionId` ngẫu nhiên trong Cookie (`connect.sid`). Toàn bộ thông tin phiên làm việc được lưu trong bảng `sessions` của MySQL (`connect-session-sequelize`).
+- **Ưu điểm chọn Session cho đề tài này:** Dễ dàng hủy phiên ngay lập tức khi người dùng bấm Đăng xuất; chống rò rỉ token qua XSS nhờ cờ `httpOnly`; tạo lại session khi đăng nhập thành công để chống tấn công cố định phiên (Session Fixation).
+
+#### 7. Tấn công CSRF là gì? Dự án phòng chống thế nào?
+- **CSRF (Cross-Site Request Forgery):** Kẻ tấn công lừa trình duyệt của người dùng (đang có sẵn cookie phiên hợp lệ) gửi một request độc hại (như đổi mật khẩu, xóa sách) tới website của bạn từ một trang web lạ.
+- **Cách phòng chống:** Áp dụng cơ chế **CSRF Token**:
+  - Server sinh token ngẫu nhiên gắn vào phiên làm việc (`req.session.csrfToken`).
+  - Gắn token vào thẻ `<meta name="csrf-token">` trong layout HTML hoặc input ẩn `_csrf` trong form.
+  - Mọi request làm thay đổi dữ liệu (`POST`, `PUT`, `PATCH`, `DELETE`) bắt buộc phải gửi kèm token này qua header `X-CSRF-Token` hoặc body form. Middleware `csrf.js` kiểm tra nếu không khớp sẽ chặn đứng với mã lỗi 403 Forbidden.
+
+#### 8. Lỗ hổng IDOR (Insecure Direct Object Reference) là gì và dự án chống thế nào?
+- **IDOR** xảy ra khi server tin tưởng `userId` do client gửi lên trong body hoặc URL query (ví dụ: `GET /api/me/favorites?userId=2`). Kẻ tấn công có thể đổi số ID để xem hoặc xóa dữ liệu của người khác.
+- **Cách chống:** Tuyệt đối **không nhận userId từ client**. Mọi thao tác cá nhân (xem yêu thích, sửa hồ sơ, đổi mật khẩu) luôn lấy ID từ phiên xác thực an toàn ở server: `const userId = req.user.id`.
+
+---
+
+### Nhóm 3: Đóng gói Docker & Vận hành (Phần [C] & [B])
+
+#### 9. Dockerfile multi-stage là gì? Vì sao phải chạy ứng dụng bằng user non-root?
+- **Multi-stage build:** Chia Dockerfile thành nhiều giai đoạn (Stage 1: `builder` để cài đặt dependencies và build code; Stage 2: `runner` chỉ sao chép các file thực sự cần thiết và `node_modules` production). Giúp kích thước image cuối cùng cực kỳ nhỏ gọn (dưới 150MB), không chứa file thừa hay công cụ build, giúp kéo và khởi động container cực nhanh.
+- **User non-root (`nodejs:nodejs` UID 10001):** Mặc định container chạy bằng user `root`. Nếu ứng dụng có lỗ hổng bảo mật (như thực thi mã từ xa RCE), kẻ tấn công sẽ chiếm quyền root trong container và có thể leo thang tấn công ra máy chủ vật lý. Chạy bằng user non-root tuân thủ nguyên tắc đặc quyền tối thiểu (Principle of Least Privilege).
+
+#### 10. File `entrypoint.sh` làm những nhiệm vụ gì khi container khởi động?
+- Chờ cơ sở dữ liệu MySQL khởi động hoàn tất và sẵn sàng nhận kết nối (`nc -z db 3306`).
+- Tự động chạy migration database (`npm run db:migrate`) để tạo các bảng mới nhất.
+- Nếu biến môi trường `AUTO_SEED=true` và cơ sở dữ liệu đang trống, tự động nạp hơn 100 cuốn sách mẫu và tài khoản admin (`npm run seed`).
+- Chuyển quyền điều khiển để khởi chạy tiến trình chính của ứng dụng Node.js bằng lệnh `exec "$@"`.

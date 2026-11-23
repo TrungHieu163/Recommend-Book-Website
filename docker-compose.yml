@@ -47,6 +47,17 @@ services:
       - db
     restart: unless-stopped
 
+  ollama:
+    image: ollama/ollama:latest
+    container_name: book_ai_store_ollama
+    profiles:
+      - local-ai
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
   app:
     build: .
     container_name: book_ai_store_app
@@ -70,3 +81,4 @@ volumes:
   mysql_data:
   meili_data:
   uploads_data:
+  ollama_data:

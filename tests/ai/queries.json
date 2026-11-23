@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "query": "sách chữa lành vết thương tâm hồn và tìm lại bình yên nội tại",
+    "category": "Kỹ năng sống",
+    "relevantProductIds": ["BK00072", "BK00074", "BK00002"],
+    "keywords": ["chữa lành", "nội tâm", "bình yên", "hạnh phúc"]
+  },
+  {
+    "id": 2,
+    "query": "tiểu thuyết tội phạm dằn vặt lương tâm và cứu rỗi linh hồn",
+    "category": "Văn học",
+    "relevantProductIds": ["BK00073", "BK00010"],
+    "keywords": ["tội ác", "trừng phạt", "lương tâm", "chuộc tội"]
+  },
+  {
+    "id": 3,
+    "query": "nhân quả tiền kiếp và luân hồi tâm linh phương đông",
+    "category": "Tâm lý",
+    "relevantProductIds": ["BK00071", "BK00074"],
+    "keywords": ["tiền kiếp", "luân hồi", "nhân quả", "tâm linh"]
+  },
+  {
+    "id": 4,
+    "query": "quản lý tài chính cá nhân làm giàu và tư duy đầu tư",
+    "category": "Kinh tế",
+    "relevantProductIds": ["BK00006", "BK00040", "BK00077"],
+    "keywords": ["tài chính", "đầu tư", "làm giàu", "tiền tệ"]
+  },
+  {
+    "id": 5,
+    "query": "thói quen tích cực và nghệ thuật thay đổi bản thân từng ngày",
+    "category": "Kỹ năng sống",
+    "relevantProductIds": ["BK00004", "BK00075", "BK00085"],
+    "keywords": ["thói quen", "nguyên tử", "thay đổi", "kỷ luật"]
+  },
+  {
+    "id": 6,
+    "query": "trí tuệ nhân tạo học máy và tương lai công nghệ",
+    "category": "Công nghệ",
+    "relevantProductIds": ["BK00018", "BK00055", "BK00089"],
+    "keywords": ["trí tuệ nhân tạo", "AI", "công nghệ", "máy học"]
+  },
+  {
+    "id": 7,
+    "query": "lịch sử loài người từ thời kỳ đồ đá đến hiện đại",
+    "category": "Lịch sử",
+    "relevantProductIds": ["BK00014", "BK00081", "BK00095"],
+    "keywords": ["lịch sử", "loài người", "sapiens", "tiến hóa"]
+  },
+  {
+    "id": 8,
+    "query": "chiến tranh thế giới và bài học lịch sử hào hùng",
+    "category": "Lịch sử",
+    "relevantProductIds": ["BK00015", "BK00082", "BK00096"],
+    "keywords": ["chiến tranh", "lịch sử", "thế chiến", "quân sự"]
+  },
+  {
+    "id": 9,
+    "query": "vũ trụ các vì sao và hố đen không gian",
+    "category": "Khoa học",
+    "relevantProductIds": ["BK00012", "BK00079", "BK00093"],
+    "keywords": ["vũ trụ", "không gian", "vật lý", "thiên văn"]
+  },
+  {
+    "id": 10,
+    "query": "nghệ thuật giao tiếp ứng xử thu phục lòng người",
+    "category": "Kỹ năng sống",
+    "relevantProductIds": ["BK00001", "BK00076", "BK00086"],
+    "keywords": ["giao tiếp", "đắc nhân tâm", "ứng xử", "thuyết phục"]
+  },
+  {
+    "id": 11,
+    "query": "tâm lý học hành vi và cách con người đưa ra quyết định phi lý trí",
+    "category": "Tâm lý",
+    "relevantProductIds": ["BK00008", "BK00078", "BK00091"],
+    "keywords": ["tâm lý", "hành vi", "tư duy", "phi lý trí"]
+  },
+  {
+    "id": 12,
+    "query": "truyện phiêu lưu kỳ ảo thế giới phép thuật thiếu nhi",
+    "category": "Thiếu nhi",
+    "relevantProductIds": ["BK00011", "BK00045", "BK00080"],
+    "keywords": ["phiêu lưu", "phép thuật", "cổ tích", "thiếu nhi"]
+  },
+  {
+    "id": 13,
+    "query": "tiểu thuyết tình yêu lãng mạn kinh điển thế giới",
+    "category": "Văn học",
+    "relevantProductIds": ["BK00003", "BK00038", "BK00073"],
+    "keywords": ["tình yêu", "lãng mạn", "tiểu thuyết", "kinh điển"]
+  },
+  {
+    "id": 14,
+    "query": "học tiếng Anh giao tiếp và phương pháp ghi nhớ từ vựng",
+    "category": "Ngoại ngữ",
+    "relevantProductIds": ["BK00016", "BK00083", "BK00097"],
+    "keywords": ["tiếng anh", "ngoại ngữ", "từ vựng", "giao tiếp"]
+  },
+  {
+    "id": 15,
+    "query": "truyện tranh trinh thám suy luận phá án kịch tính",
+    "category": "Truyện tranh",
+    "relevantProductIds": ["BK00017", "BK00084", "BK00098"],
+    "keywords": ["trinh thám", "truyện tranh", "suy luận", "phá án"]
+  },
+  {
+    "id": 16,
+    "query": "vượt qua lo âu trầm cảm và cân bằng cảm xúc",
+    "category": "Tâm lý",
+    "relevantProductIds": ["BK00009", "BK00072", "BK00092"],
+    "keywords": ["lo âu", "trầm cảm", "cảm xúc", "tâm lý"]
+  },
+  {
+    "id": 17,
+    "query": "khởi nghiệp tinh gọn và xây dựng mô hình kinh doanh đột phá",
+    "category": "Kinh tế",
+    "relevantProductIds": ["BK00007", "BK00042", "BK00090"],
+    "keywords": ["khởi nghiệp", "kinh doanh", "tinh gọn", "chiến lược"]
+  },
+  {
+    "id": 18,
+    "query": "lập trình phần mềm cấu trúc dữ liệu và giải thuật",
+    "category": "Công nghệ",
+    "relevantProductIds": ["BK00019", "BK00056", "BK00099"],
+    "keywords": ["lập trình", "phần mềm", "giải thuật", "code"]
+  },
+  {
+    "id": 19,
+    "query": "khoa học não bộ và bí mật của trí nhớ con người",
+    "category": "Khoa học",
+    "relevantProductIds": ["BK00013", "BK00050", "BK00094"],
+    "keywords": ["não bộ", "trí nhớ", "khoa học", "thần kinh"]
+  },
+  {
+    "id": 20,
+    "query": "triết học hiện sinh và ý nghĩa cuộc sống con người",
+    "category": "Tâm lý",
+    "relevantProductIds": ["BK00073", "BK00087", "BK00100"],
+    "keywords": ["hiện sinh", "ý nghĩa cuộc sống", "triết học", "tự do"]
+  },
+  {
+    "id": 21,
+    "query": "phương pháp nuôi dạy con và thấu hiểu tâm lý trẻ em",
+    "category": "Kỹ năng sống",
+    "relevantProductIds": ["BK00005", "BK00088", "BK00101"],
+    "keywords": ["nuôi dạy con", "trẻ em", "cha mẹ", "tâm lý học"]
+  },
+  {
+    "id": 22,
+    "query": "kinh tế học vĩ mô lạm phát và chu kỳ thị trường tiền tệ",
+    "category": "Kinh tế",
+    "relevantProductIds": ["BK00006", "BK00041", "BK00102"],
+    "keywords": ["kinh tế vĩ mô", "lạm phát", "tiền tệ", "chu kỳ"]
+  },
+  {
+    "id": 23,
+    "query": "văn học hiện thực phê phán xã hội phong kiến Việt Nam",
+    "category": "Văn học",
+    "relevantProductIds": ["BK00002", "BK00036", "BK00103"],
+    "keywords": ["văn học việt nam", "hiện thực", "phong kiến", "làng quê"]
+  },
+  {
+    "id": 24,
+    "query": "nghệ thuật lãnh đạo đội ngũ và truyền cảm hứng làm việc",
+    "category": "Kỹ năng sống",
+    "relevantProductIds": ["BK00001", "BK00043", "BK00104"],
+    "keywords": ["lãnh đạo", "đội ngũ", "truyền cảm hứng", "quản lý"]
+  },
+  {
+    "id": 25,
+    "query": "sách khoa học viễn tưởng du hành thời gian và tương lai",
+    "category": "Văn học",
+    "relevantProductIds": ["BK00012", "BK00046", "BK00105"],
+    "keywords": ["khoa học viễn tưởng", "thời gian", "tương lai", "vũ trụ"]
+  }
+]

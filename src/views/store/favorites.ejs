@@ -1,0 +1,59 @@
+<%# Trang danh sách sách yêu thích (F15 - C sở hữu) - favorites.ejs %>
+<div class="favorites-page pb-5">
+  <!-- Breadcrumb điều hướng -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/" class="text-decoration-none"><i class="bi bi-house-door me-1"></i>Trang chủ</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Sách yêu thích</li>
+    </ol>
+  </nav>
+
+  <!-- Tiêu đề trang -->
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4 pb-3 border-bottom">
+    <div>
+      <h3 class="fw-bold mb-1 d-flex align-items-center">
+        <i class="bi bi-heart-fill text-danger me-2"></i>Sách yêu thích của tôi
+      </h3>
+      <p class="text-muted small mb-0">
+        Những cuốn sách bạn đã lưu lại và đánh giá — tín hiệu giúp AI đề xuất sách cá nhân hóa chính xác hơn
+      </p>
+    </div>
+    <div>
+      <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill fs-6" id="favoritesCountBadge">
+        Đang tải...
+      </span>
+    </div>
+  </div>
+
+  <!-- Trạng thái Đang tải -->
+  <div id="favoritesLoading" class="text-center py-5">
+    <div class="spinner-border text-danger mb-2" role="status" style="width: 3rem; height: 3rem;"></div>
+    <div class="text-muted">Đang tải danh sách sách yêu thích...</div>
+  </div>
+
+  <!-- Trạng thái Rỗng -->
+  <div id="favoritesEmpty" class="text-center py-5 d-none bg-white rounded-4 border p-5 my-3 shadow-sm">
+    <i class="bi bi-heart display-3 text-danger-subtle mb-3 d-block"></i>
+    <h4 class="fw-bold mb-2">Chưa có cuốn sách yêu thích nào</h4>
+    <p class="text-muted mb-4" style="max-width: 480px; margin: 0 auto;">
+      Hãy khám phá kho sách, bấm biểu tượng <i class="bi bi-heart-fill text-danger"></i> trên bất kỳ cuốn sách nào bạn quan tâm để lưu lại vào đây nhé!
+    </p>
+    <a href="/" class="btn btn-primary px-4 py-2 rounded-pill fw-semibold shadow-sm">
+      <i class="bi bi-compass me-1"></i>Khám phá sách ngay
+    </a>
+  </div>
+
+  <!-- Lưới hiển thị danh sách sách yêu thích -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 d-none" id="favoritesGrid">
+    <!-- Thẻ sách yêu thích sẽ được render qua JS favorites.js -->
+  </div>
+
+  <!-- Phân trang danh sách yêu thích -->
+  <div class="d-flex justify-content-center mt-5 d-none" id="favoritesPaginationWrapper">
+    <nav aria-label="Phân trang sách yêu thích">
+      <ul class="pagination pagination-sm shadow-sm" id="favoritesPaginationNav">
+        <!-- Phân trang render qua JS -->
+      </ul>
+    </nav>
+  </div>
+</div>

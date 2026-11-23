@@ -40,8 +40,8 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 - [x] [B] Export xlsx/json/xml/**zip** (đúng phạm vi: đã tick → bộ lọc → tất cả; có `buyLinks`; zip kèm ảnh)
 - [x] [B] Import xlsx/json/xml và **gói ZIP kèm ảnh** (xử lý `pathImage`: trống/URL/đường dẫn trong gói; dùng `zipBundle.service` của A), validate từng dòng, báo cáo lỗi + cảnh báo, file/gói mẫu, `importFromDirectory(dir)` cho seed
 - [x] [A] Chuyển `npm run seed` sang gọi `importFromDirectory` của B (mode overwrite, idempotent)
-- [ ] [C] Cấu hình ẩn/hiện cột (localStorage)
-- [ ] [C] Phím tắt + modal trợ giúp `Alt+K`
+- [x] [C] Cấu hình ẩn/hiện cột (localStorage)
+- [x] [C] Phím tắt + modal trợ giúp `Alt+K`
 
 > Cuối Phase 4: **11 chức năng quản trị hoàn tất.** Chạy checklist thủ công ở `09`.
 
@@ -49,8 +49,8 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 - [x] [C] Migration + model `User`, đăng ký (F12), chọn thể loại yêu thích khi đăng ký
 - [x] [C] Đăng nhập/đăng xuất, session (bảng `sessions`) + CSRF, `requireAuth`/`requireAdmin` thật; bật phân quyền cho các route admin (F13)
 - [x] [A] Trang khám phá `/` (lưới sách, tìm từ khóa, lọc thể loại, sắp xếp, phân trang) và trang chi tiết `/books/:id` có khối "Mua ở đâu" (F14)
-- [ ] [C] Yêu thích: migration + model `Favorite`, API, nút ❤ dùng chung, trang `/me/favorites` (F15)
-- [ ] [C] Hồ sơ & sở thích: sửa thông tin, thể loại yêu thích, đổi mật khẩu (F16)
+- [x] [C] Yêu thích: migration + model `Favorite`, API, nút ❤ dùng chung, trang `/me/favorites` (F15)
+- [x] [C] Hồ sơ & sở thích: sửa thông tin, thể loại yêu thích, đổi mật khẩu (F16)
 - [x] [B] Liên hệ: migration + model `Contact`, form `/contact`, rate limit + honeypot, trang `/admin/contacts` (F17)
 
 > Cuối Phase 4B: đi được trọn luồng *đăng ký → đăng nhập → khám phá sách → thích → xem "Mua ở đâu" → liên hệ*, và có đủ hơn 5 màn hình theo đề.
@@ -59,8 +59,8 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 - [x] [B] Migration + model `BookEmbedding` (bảng `book_embeddings`), `embedding.service` (tạo embedding bất đồng bộ khi thêm/sửa/import, `npm run embed`, chỉ mục trong bộ nhớ)
 - [x] [B] `smartSearch.service` (tìm kiếm lai bằng RRF) + `POST /api/ai/search`
 - [x] [A] Công tắc "Tìm thông minh (AI)" và dòng "Hiểu truy vấn" ở trang `/`
-- [ ] [C] `chatbot.service` (truy xuất bằng `smartSearch` → prompt → trả lời), `POST /api/ai/chat`, rate limit
-- [ ] [C] Widget chatbot (thẻ sách, trạng thái đang trả lời, dự phòng khi AI lỗi), phím `Alt+B`, hàm `window.BookChatbot.sendMessage`
+- [x] [C] `chatbot.service` (truy xuất bằng `smartSearch` → prompt → trả lời), `POST /api/ai/chat`, rate limit
+- [x] [C] Widget chatbot (thẻ sách, trạng thái đang trả lời, dự phòng khi AI lỗi), phím `Alt+B`, hàm `window.BookChatbot.sendMessage`
 
 ## Phase 6 — Search engine (AI-2)
 - [x] [B] `meili.provider.js`, cấu hình thuộc tính tìm kiếm/lọc, đồng bộ chỉ mục khi CRUD/import/copy
@@ -68,20 +68,20 @@ Phụ thuộc giữa các vai trò xử lý bằng stub/mock theo "hợp đồng
 - [x] [B] Kiểm thử truy vấn không dấu & gõ sai nhẹ
 
 ## Phase 7 — Đề xuất cá nhân hóa & hỗ trợ admin (AI-4, AI-6, tùy chọn AI-3/AI-5)
-- [ ] [C] Sách tương tự (`/api/books/:id/similar`, có fallback content-based)
-- [ ] [C] "Dành cho bạn" (`GET /api/ai/recommend/for-me`, xử lý khởi đầu lạnh)
+- [x] [C] Sách tương tự (`/api/books/:id/similar`, có fallback content-based)
+- [x] [C] "Dành cho bạn" (`GET /api/ai/recommend/for-me`, xử lý khởi đầu lạnh)
 - [x] [A] Hiển thị khối "Dành cho bạn" ở trang `/` và "Sách tương tự" ở trang chi tiết
 - [x] [A] AI gợi ý thể loại & tags: `POST /api/ai/suggest-metadata` + nút "✨" trong form thêm/sửa
 - [ ] [A] (Tùy chọn) OCR ảnh bìa (`/api/ai/ocr`, nút camera, "Điền từ ảnh bìa")
 - [x] [B] (Tùy chọn) Giọng nói bằng Web Speech API (`voice.js`)
-- [ ] [C] (Tùy chọn) Provider Ollama (`bge-m3`) làm dự phòng/offline; thêm service `ollama` vào compose (xem `12` mục 6B)
+- [x] [C] (Tùy chọn) Provider Ollama (`bge-m3`) làm dự phòng/offline; thêm service `ollama` vào compose (xem `12` mục 6B)
 - [ ] [A] (Tùy chọn) Script `seed:enrich`: đọc ISBN, gọi Google Books API (key miễn phí, ≤ 1 request/giây, có cache), ghi **file nháp** để người duyệt
-- [ ] [C] (Tùy chọn) Script `check:links`: kiểm tra link mua (cách nhau ≥ 1 giây), báo link hỏng/chuyển hướng lạ
+- [x] [C] (Tùy chọn) Script `check:links`: kiểm tra link mua (cách nhau ≥ 1 giây), báo link hỏng/chuyển hướng lạ
 
 ## Phase 8 — Hoàn thiện
-- [ ] [C] Bộ truy vấn `tests/ai/queries.json` (≥ 20) + `npm run eval:search` (P@5: từ khóa / ngữ nghĩa / lai); lưu cache embedding vào file (đã `.gitignore`) để chạy lại không tốn hạn mức
+- [x] [C] Bộ truy vấn `tests/ai/queries.json` (≥ 20) + `npm run eval:search` (P@5: từ khóa / ngữ nghĩa / lai); lưu cache embedding vào file (đã `.gitignore`) để chạy lại không tốn hạn mức
 - [x] [A] README (cài đặt, biến môi trường, chạy docker, khóa AI cần có, ảnh chụp màn hình) + rà soát bảo mật theo `07` và `11` mục 6
 - [ ] [A] Kiểm tra Docker từ **máy sạch** theo `12-docker-and-deployment.md` mục 12 (`git clone` → `cp .env.example .env` → `docker compose up --build`; `down`/`up` giữ dữ liệu; `down -v`/`up` dựng lại từ đầu)
 - [x] [B] Checklist kiểm thử thủ công ở `09` cho cả nhóm; test tự động cho import/export/search; viết hướng dẫn sao lưu/khôi phục bằng `mysqldump` vào README
-- [ ] [C] Kịch bản demo + bộ câu hỏi bảo vệ (AI + xác thực)
+- [x] [C] Kịch bản demo + bộ câu hỏi bảo vệ (AI + xác thực)
 - [ ] [A][B][C] Mỗi người viết test cho phần của mình, responsive, thông báo lỗi thân thiện

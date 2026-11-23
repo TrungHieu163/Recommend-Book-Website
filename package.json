@@ -11,6 +11,8 @@
     "reindex": "node scripts/reindex.js",
     "lint": "eslint src/ scripts/ tests/ --fix --no-error-on-unmatched-pattern",
     "test": "jest --forceExit --detectOpenHandles",
+    "eval:search": "node scripts/evalSearch.js",
+    "check:links": "node scripts/checkLinks.js",
     "db:migrate": "sequelize-cli db:migrate",
     "db:migrate:undo": "sequelize-cli db:migrate:undo",
     "db:migrate:undo:all": "sequelize-cli db:migrate:undo:all"

@@ -17,6 +17,7 @@
 const AppError = require('../../utils/AppError');
 const env = require('../../config/env');
 const geminiProvider = require('./providers/gemini.provider');
+const ollamaProvider = require('./providers/ollama.provider');
 const noneProvider = require('./providers/none.provider');
 
 // Cache embedding truy vấn trong bộ nhớ (Map, tối đa 200 truy vấn)
@@ -38,6 +39,8 @@ function getActiveProvider() {
   switch (providerName) {
     case 'gemini':
       return geminiProvider;
+    case 'ollama':
+      return ollamaProvider;
     case 'none':
     case 'disabled':
       return noneProvider;
