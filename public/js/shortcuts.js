@@ -126,7 +126,7 @@
           return;
         }
 
-        // Alt+U: Cập nhật dòng đang tick (đúng 1 dòng)
+        // Alt+U: Cập nhật dòng đang chọn
         if (e.code === SHORTCUTS_CONFIG.UPDATE.code) {
           e.preventDefault();
           const selected = this.getSelectedIds();
@@ -142,7 +142,7 @@
           return;
         }
 
-        // Alt+V: Xem chi tiết dòng đang tick (đúng 1 dòng)
+        // Alt+V: Xem chi tiết dòng đang chọn
         if (e.code === SHORTCUTS_CONFIG.VIEW.code) {
           e.preventDefault();
           const selected = this.getSelectedIds();
