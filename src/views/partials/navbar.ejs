@@ -16,15 +16,24 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <%= typeof activeNav !== 'undefined' && activeNav === 'admin-books' ? 'active fw-semibold' : '' %>" href="/admin/books">
-            <i class="bi bi-table me-1"></i>Quản trị sách
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link <%= typeof activeNav !== 'undefined' && activeNav === 'contact' ? 'active fw-semibold' : '' %>" href="/contact">
             <i class="bi bi-envelope me-1"></i>Liên hệ
           </a>
         </li>
+        <% if (typeof currentUser !== 'undefined' && currentUser && currentUser.role === 'admin') { %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle <%= typeof activeNav !== 'undefined' && (activeNav === 'admin-dashboard' || activeNav === 'admin-books' || activeNav === 'admin-contacts' || activeNav === 'admin-users') ? 'active fw-semibold' : '' %>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-gear-fill me-1"></i>Quản trị
+          </a>
+          <ul class="dropdown-menu shadow">
+            <li><a class="dropdown-item" href="/admin"><i class="bi bi-speedometer2 me-2"></i>Bảng điều khiển</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/admin/books"><i class="bi bi-table me-2"></i>Quản lý sách</a></li>
+            <li><a class="dropdown-item" href="/admin/users"><i class="bi bi-people me-2"></i>Quản lý người dùng</a></li>
+            <li><a class="dropdown-item" href="/admin/contacts"><i class="bi bi-chat-left-dots me-2"></i>Quản lý liên hệ</a></li>
+          </ul>
+        </li>
+        <% } %>
       </ul>
 
       <ul class="navbar-nav ms-auto align-items-center gap-2">
