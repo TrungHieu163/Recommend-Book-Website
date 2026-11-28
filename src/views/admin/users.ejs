@@ -1,0 +1,116 @@
+<%# Trang quản lý người dùng /admin/users %>
+<div class="admin-users pb-5">
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/admin" class="text-decoration-none"><i class="bi bi-speedometer2 me-1"></i>Quản trị</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Quản lý người dùng</li>
+    </ol>
+  </nav>
+
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3 pb-3 border-bottom">
+        <div>
+          <h4 class="card-title fw-bold mb-1">
+            <i class="bi bi-people-fill text-primary me-2"></i>Quản lý tài khoản người dùng
+          </h4>
+          <p class="text-muted small mb-0">Xem, phân quyền và quản lý tài khoản trong hệ thống</p>
+        </div>
+
+        <!-- Lọc theo vai trò -->
+        <div class="d-flex gap-2 align-items-center">
+          <label for="roleFilter" class="small text-muted text-nowrap">Vai trò:</label>
+          <select class="form-select form-select-sm" id="roleFilter" style="width: 150px;">
+            <option value="">Tất cả</option>
+            <option value="admin">Quản trị viên</option>
+            <option value="user">Người dùng</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bảng danh sách người dùng -->
+      <div class="table-responsive">
+        <table class="table table-hover align-middle border mb-0" id="usersTable">
+          <thead class="table-light">
+            <tr>
+              <th scope="col" style="width: 60px;">ID</th>
+              <th scope="col" style="width: 200px;">Họ tên</th>
+              <th scope="col" style="width: 220px;">Email</th>
+              <th scope="col" style="width: 130px;">Điện thoại</th>
+              <th scope="col" style="width: 120px;">Vai trò</th>
+              <th scope="col" style="width: 130px;">Thể loại YT</th>
+              <th scope="col" style="width: 150px;">Ngày tạo</th>
+              <th scope="col" style="width: 120px;" class="text-center">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody">
+            <tr>
+              <td colspan="8" class="text-center py-5 text-muted">
+                <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+                <span>Đang tải danh sách người dùng...</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Phân trang -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3 pt-3 border-top">
+        <span class="small text-muted" id="usersPaginationInfo">Hiển thị 0–0 / 0</span>
+        <nav aria-label="Phân trang người dùng">
+          <ul class="pagination pagination-sm mb-0" id="usersPaginationNav"></ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal chi tiết / chỉnh sửa người dùng -->
+<div class="modal fade" id="userDetailModal" tabindex="-1" aria-labelledby="userDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow border-0">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fw-bold" id="userDetailModalLabel">Chi tiết người dùng</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="text-center mb-3">
+          <div class="rounded-circle bg-primary-subtle text-primary d-inline-flex align-items-center justify-content-center fw-bold fs-2 mb-2" style="width: 72px; height: 72px;" id="userAvatar">U</div>
+          <h5 class="fw-bold mb-0" id="userDetailName">—</h5>
+          <span class="text-muted small" id="userDetailEmail">—</span>
+        </div>
+        <hr>
+        <div class="row g-3">
+          <div class="col-6">
+            <label class="small text-muted fw-bold">Điện thoại:</label>
+            <div id="userDetailPhone">—</div>
+          </div>
+          <div class="col-6">
+            <label class="small text-muted fw-bold">Ngày tạo:</label>
+            <div id="userDetailDate">—</div>
+          </div>
+          <div class="col-12">
+            <label class="small text-muted fw-bold">Thể loại yêu thích:</label>
+            <div id="userDetailGenres">—</div>
+          </div>
+          <div class="col-12">
+            <label for="userRoleSelect" class="small text-muted fw-bold">Vai trò:</label>
+            <select class="form-select form-select-sm" id="userRoleSelect">
+              <option value="user">Người dùng</option>
+              <option value="admin">Quản trị viên</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary btn-sm px-3" id="btnSaveUserRole">
+          <i class="bi bi-check2 me-1"></i>Lưu thay đổi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/admin.users.js"></script>

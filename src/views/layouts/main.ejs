@@ -23,9 +23,37 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-top py-3 mt-auto text-center text-muted small">
+  <footer class="bg-dark text-white-50 py-4 mt-auto">
     <div class="container">
-      &copy; <%= new Date().getFullYear() %> BookWeb AI — Đồ án môn học Node.js & Ngôn ngữ kịch bản
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-2"><i class="bi bi-book-half text-primary me-1"></i>BookWeb AI</h6>
+          <p class="small mb-0">Hệ thống đề xuất & tìm kiếm sách thông minh với trí tuệ nhân tạo. Đồ án môn học Node.js & Ngôn ngữ kịch bản.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-2">Liên kết</h6>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-1"><a href="/" class="text-white-50 text-decoration-none"><i class="bi bi-compass me-1"></i>Khám phá sách</a></li>
+            <li class="mb-1"><a href="/contact" class="text-white-50 text-decoration-none"><i class="bi bi-envelope me-1"></i>Liên hệ</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-2">Tài khoản</h6>
+          <ul class="list-unstyled small mb-0">
+            <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+              <li class="mb-1"><a href="/me/profile" class="text-white-50 text-decoration-none"><i class="bi bi-person me-1"></i>Hồ sơ</a></li>
+              <li class="mb-1"><a href="/me/favorites" class="text-white-50 text-decoration-none"><i class="bi bi-heart me-1"></i>Yêu thích</a></li>
+            <% } else { %>
+              <li class="mb-1"><a href="/auth/login" class="text-white-50 text-decoration-none"><i class="bi bi-box-arrow-in-right me-1"></i>Đăng nhập</a></li>
+              <li class="mb-1"><a href="/auth/register" class="text-white-50 text-decoration-none"><i class="bi bi-person-plus me-1"></i>Đăng ký</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary my-3">
+      <div class="text-center small">
+        &copy; <%= new Date().getFullYear() %> BookWeb AI — Đồ án môn học Node.js & Ngôn ngữ kịch bản
+      </div>
     </div>
   </footer>
 

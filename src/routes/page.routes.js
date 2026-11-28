@@ -33,11 +33,27 @@ router.get(
   }),
 );
 
+// Trang Dashboard quản trị
+router.get('/admin', (req, res) => {
+  res.render('admin/dashboard', {
+    title: 'Bảng điều khiển Quản trị',
+    activeNav: 'admin-dashboard',
+  });
+});
+
 // Trang quản trị sách F01
 router.get('/admin/books', (req, res) => {
   res.render('books/index', {
     title: 'Quản trị sách',
     activeNav: 'admin-books',
+  });
+});
+
+// Trang quản lý người dùng
+router.get('/admin/users', (req, res) => {
+  res.render('admin/users', {
+    title: 'Quản lý người dùng',
+    activeNav: 'admin-users',
   });
 });
 

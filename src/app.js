@@ -21,6 +21,7 @@ const authRoutes = require('./routes/auth.routes');
 const pageAccountRoutes = require('./routes/pageAccount.routes');
 const meRoutes = require('./routes/me.routes');
 const aiRoutes = require('./routes/ai.routes');
+const adminApiRoutes = require('./routes/admin.routes');
 
 const app = express();
 
@@ -98,6 +99,9 @@ app.use('/', aiRoutes);
 
 // Bảo vệ phân quyền cho các route Quản trị viên (F13)
 app.use('/admin', requireAdmin);
+
+// Mount Admin API (Dashboard stats, User management)
+app.use('/api/admin', adminApiRoutes);
 
 // Mount Contact API & Pages (B sở hữu)
 app.use('/api', contactRoutes);

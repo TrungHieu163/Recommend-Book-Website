@@ -78,3 +78,13 @@ body {
   object-fit: cover;
   display: block;
 }
+
+/* Hover effect cho dashboard shortcut cards */
+.hover-shadow {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-shadow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.12) !important;
+}

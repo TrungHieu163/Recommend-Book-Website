@@ -107,11 +107,7 @@ function requireAdmin(req, res, next) {
     return next(new AppError('FORBIDDEN', 'Yêu cầu quyền Quản trị viên để thực hiện', 403));
   }
 
-  return res.status(403).render('errors/500', {
-    error: {
-      message: '403 Forbidden - Bạn không có quyền quản trị để truy cập trang này.',
-    },
-  });
+  return res.status(403).render('errors/403');
 }
 
 module.exports = {
